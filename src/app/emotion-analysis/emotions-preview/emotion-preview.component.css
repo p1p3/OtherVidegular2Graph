@@ -1,0 +1,45 @@
+/*
+.row {
+  overflow: hidden;
+}
+
+.row>div[class*="col-"] {
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+  border-style: solid;
+  border-color: red;
+  border-width: 2px;
+}
+
+*/
+
+/* Extra small devices (767px and down) */
+
+@media (max-width: 969px) {
+  .row.vertical-align {
+    display: block;
+    /* turn off the flexible box layout */
+  }
+}
+
+
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: 970px) {
+  .row.vertical-align {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.breadcrumb {
+  margin-bottom: 0;
+}
+
+.breadcrumb>li>a.active {
+  color: #777;
+}
+
+.breadcrumb>li>a {
+  cursor: pointer;
+}
