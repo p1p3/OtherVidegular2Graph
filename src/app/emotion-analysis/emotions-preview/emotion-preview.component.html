@@ -43,15 +43,25 @@
         </ol>
       </div>
       <div class="col-xs-12">
-        <div class="chartContainer" *ngIf="radarChartData.length > 0">
-          <canvas baseChart [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"  *ngIf="selectedGraph==graphs.radar"></canvas>
-          <canvas baseChart [data]="doughnutChartData"  [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
-            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"  *ngIf="selectedGraph==graphs.doughnut"></canvas>
-          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
-            [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" *ngIf="selectedGraph==graphs.bars"></canvas>
+        <div class="chartContainer" *ngIf="selectedGraph==graphs.radar">
+          <canvas baseChart [datasets]="radarChartData" [labels]="radarChartLabels" [options]="chartOptions" [legend]="chartLegend"
+            [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+        </div>
+        <div class="chartContainer" *ngIf="selectedGraph==graphs.doughnut">
+          <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [options]="chartOptions" [chartType]="doughnutChartType"
+            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+        </div>
+        <div class="chartContainer" *ngIf="selectedGraph==graphs.bars">
+          <canvas baseChart [datasets]="barChartData" id="myCanvas" [labels]="barChartLabels" [legend]="chartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="row lineChart text-center" *ngIf="false">
+  <div class="col-xs-12">
+    <canvas height="50px" baseChart [data]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [chartType]="lineChartType"
+      (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
   </div>
 </div>

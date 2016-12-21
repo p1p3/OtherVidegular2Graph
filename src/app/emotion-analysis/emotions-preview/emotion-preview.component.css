@@ -13,6 +13,7 @@
 
 */
 
+
 /* Extra small devices (767px and down) */
 
 @media (max-width: 969px) {
@@ -28,7 +29,7 @@
 @media (min-width: 970px) {
   .row.vertical-align {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
   }
 }
 
@@ -42,4 +43,13 @@
 
 .breadcrumb>li>a {
   cursor: pointer;
+}
+
+.chartContainer {
+  display: flex;
+  align-items: center;
+}
+
+.lineChart {
+  margin-top: 10px;
 }

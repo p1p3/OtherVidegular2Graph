@@ -22,24 +22,35 @@ export class EmotionPreviewComponent implements OnInit {
   public radarChartType: string = 'radar';
   public doughnutChartType: string = 'doughnut';
   public barChartType: string = 'bar';
+  public lineChartType: string = 'line';
 
   public radarChartLabels: Array<string> = EmotionChartData.chartLabels;
   public doughnutChartLabels: Array<string> = EmotionChartData.chartLabels;
   public barChartLabels: Array<string> = EmotionChartData.chartLabels;
+  public lineChartLabels: Array<string> = EmotionChartData.chartLabels;
 
   public radarChartData = new Array<EmotionChartData>();
   public doughnutChartData: Array<number>;
   public barChartData = new Array<EmotionChartData>();
 
   public emotionsSource: Observable<EmotionChartData>;
-
   public emotionDataSource = new Array<EmotionChartData>();
 
-  public barChartLegend:boolean = false;
-  public barChartOptions: any = {
+  public chartLegend: boolean = false;
+  public chartOptions: ChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
+
+
+  // lineChart
+  public lineChartData: Array<number[]> = [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ];
+
+
+
 
 
   constructor(api: VgAPI) {
