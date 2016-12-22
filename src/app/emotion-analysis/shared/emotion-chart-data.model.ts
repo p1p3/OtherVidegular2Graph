@@ -10,18 +10,18 @@ export class EmotionChartData {
     data = Array<number>();
     timeMarker: TimeMarker;
 
-    constructor(emotion: Emotion, label: string, timeMarker: TimeMarker) {
+    constructor(timeMarker: TimeMarker, label: string ) {
         this.label = label;
         this.timeMarker = timeMarker;
 
-        this.data.push(this.getPercentage(emotion.neutral));
-        this.data.push(this.getPercentage(emotion.happiness));
-        this.data.push(this.getPercentage(emotion.surprise));
-        this.data.push(this.getPercentage(emotion.sadness));
-        this.data.push(this.getPercentage(emotion.anger));
-        this.data.push(this.getPercentage(emotion.disgust));
-        this.data.push(this.getPercentage(emotion.fear));
-        this.data.push(this.getPercentage(emotion.contempt));
+        this.data.push(this.getPercentage(timeMarker.emotion.neutral));
+        this.data.push(this.getPercentage(timeMarker.emotion.happiness));
+        this.data.push(this.getPercentage(timeMarker.emotion.surprise));
+        this.data.push(this.getPercentage(timeMarker.emotion.sadness));
+        this.data.push(this.getPercentage(timeMarker.emotion.anger));
+        this.data.push(this.getPercentage(timeMarker.emotion.disgust));
+        this.data.push(this.getPercentage(timeMarker.emotion.fear));
+        this.data.push(this.getPercentage(timeMarker.emotion.contempt));
 
         this.checkIfDataMatchLabels();
     }

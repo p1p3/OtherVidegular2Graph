@@ -1,5 +1,8 @@
+import { Emotion } from './emotion.model';
+
 export class TimeMarker {
-    constructor(public MarkerId: string,
-    public StartTime: number,
-    public EndTime: number){}
+    constructor(public markerId: string,
+    public startTime: number,
+    public endTime: number,
+    public emotion:Emotion){}
 }

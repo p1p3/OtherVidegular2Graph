@@ -75,31 +75,30 @@ export class EmotionPreviewComponent implements OnInit {
   ngOnInit() {
     this.initGraphWithEmptyData();
     this.initMockData();
-    this.emotionDataSource.sort((a, b) => a.timeMarker.StartTime - b.timeMarker.StartTime)
+    this.emotionDataSource.sort((a, b) => a.timeMarker.startTime - b.timeMarker.startTime)
   }
 
   private initGraphWithEmptyData() {
     let emptyEmotion = new Emotion(0, 0, 0, 0, 0, 0, 0, 0);
-    let timeMarker = new TimeMarker('abc', 0, 0);
-    let emotionDataChart = new EmotionChartData(emptyEmotion, 'Emotions', timeMarker);
+    let timeMarker = new TimeMarker('abc', 0, 0, emptyEmotion);
+    let emotionDataChart = new EmotionChartData(timeMarker, 'Emotions');
 
     this.fillChartsData(emotionDataChart);
   }
 
   private initMockData() {
-    let tiemSpan = 10;
+    let tiemSpan = 1;
     for (let _i = 0; _i < 160; _i += tiemSpan) {
-      let timeMarker = new TimeMarker('abc', _i, _i + tiemSpan);
-      let mockData = this.createMockData(timeMarker);
+      let mockData = this.createMockData(_i, _i + tiemSpan);
       this.emotionDataSource.push(mockData);
     }
   }
 
-  private createMockData(timeMarker: TimeMarker) {
-
+  private createMockData(startSecond: number, endSecond: number) {
     let emotionMock = new Emotion(Math.random(), Math.random(), Math.random(), Math.random(),
       Math.random(), Math.random(), Math.random(), Math.random());
-    let emotionDataChart = new EmotionChartData(emotionMock, 'Emotions', timeMarker);
+    let timeMarker = new TimeMarker('abc', startSecond, endSecond, emotionMock);
+    let emotionDataChart = new EmotionChartData(timeMarker, 'Emotions');
     return emotionDataChart;
   }
 
@@ -135,7 +134,7 @@ export class EmotionPreviewComponent implements OnInit {
 
 
   isCurrentTimeInTimeMarkerInRange(currentTime: number, timeMarker: TimeMarker): boolean {
-    return (currentTime >= timeMarker.StartTime && currentTime <= timeMarker.EndTime);
+    return (currentTime >= timeMarker.startTime && currentTime <= timeMarker.endTime);
   }
 
   isNotNull(obj: any): boolean {
