@@ -1,3 +1,4 @@
+import { CoreModule } from './core/core.module';
 import { EmotionAnalysisModule } from './emotion-analysis/emotion-analysis.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    CoreModule,
     EmotionAnalysisModule
   ],
   providers: [],

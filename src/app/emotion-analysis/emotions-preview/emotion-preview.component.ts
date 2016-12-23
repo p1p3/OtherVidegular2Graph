@@ -1,9 +1,10 @@
+import { IEmotionService } from './../shared/services/def/emotions.service';
 import { VgAPI } from 'videogular2/core';
 import { element } from 'protractor';
-import { TimeMarker } from '../shared/time-marker.model';
-import { Emotion } from '../shared/emotion.model';
-import { EmotionChartData } from '../shared/emotion-chart-data.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { TimeMarker } from '../shared/models/time-marker.model';
+import { Emotion } from '../shared/models/emotion.model';
+import { EmotionChartData } from '../shared/models/emotion-chart-data.model';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Subject, Observable } from 'rxjs/Rx';
 
 @Component({
@@ -39,9 +40,11 @@ export class EmotionPreviewComponent implements OnInit {
   public chartLegend: boolean = false;
   public chartOptions: ChartOptions = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    animation :false
   };
-
+  
+  private recordID = 'z4eee59e-f1ae-4882-9bbe-ee0c409c5ded';
 
   // lineChart
   public lineChartData: Array<number[]> = [
@@ -49,12 +52,8 @@ export class EmotionPreviewComponent implements OnInit {
     [28, 48, 40, 19, 86, 27, 90]
   ];
 
-
-
-
-
-  constructor(api: VgAPI) {
-
+  constructor(@Inject('IEmotionService') private emotionService: IEmotionService,
+              api: VgAPI) {
 
     this.sources = [
       {
@@ -76,7 +75,8 @@ export class EmotionPreviewComponent implements OnInit {
     this.initGraphWithEmptyData();
     this.initMockData();
     this.emotionDataSource.sort((a, b) => a.timeMarker.startTime - b.timeMarker.startTime)
-  }
+    let ola = this.emotionService.getRecordEmotions(this.recordID).subscribe(x => console.log(x));
+ }
 
   private initGraphWithEmptyData() {
     let emptyEmotion = new Emotion(0, 0, 0, 0, 0, 0, 0, 0);
