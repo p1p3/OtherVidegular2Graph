@@ -67,7 +67,7 @@
           (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
       <div class="chartContainer" *ngIf="selectedGraph==graphs.bars">
-        <canvas baseChart [datasets]="barChartData" id="myCanvas" [labels]="barChartLabels" [legend]="chartLegend" [chartType]="barChartType"
+        <canvas baseChart [datasets]="barChartData" id="myCanvas" [labels]="barChartLabels" [options]="chartOptions" [legend]="chartLegend" [chartType]="barChartType"
           (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
     </div>

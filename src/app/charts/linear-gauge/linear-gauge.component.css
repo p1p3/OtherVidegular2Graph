@@ -14,4 +14,14 @@
   width: 100%;
   height: 1%;
   background-color: #4CAF50;
+  text-align: center;
+}
+
+#needle{
+    background-color: black;
+    height: 2px;
+    display: block;
+    position: absolute;
+    width: 130%;
+    margin-left: -15%;
 }
