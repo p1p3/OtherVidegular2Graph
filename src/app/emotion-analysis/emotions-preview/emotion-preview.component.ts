@@ -1,3 +1,4 @@
+import { LinearGaugeOptions } from './../../charts/linear-gauge/shared/linear-gauge-options.model';
 import { IEmotionService } from './../shared/services/def/emotions.service';
 import { VgAPI } from 'videogular2/core';
 import { element } from 'protractor';
@@ -16,6 +17,8 @@ export class EmotionPreviewComponent implements OnInit {
   sources: Array<Object>;
   api: VgAPI;
 
+  private recordID = 'z4eee59e-f1ae-4882-9bbe-ee0c409c5ded';
+
   public graphs = GraphType;
   public selectedGraph: GraphType = GraphType.radar;
   public currentEmotion: EmotionChartData;
@@ -24,6 +27,7 @@ export class EmotionPreviewComponent implements OnInit {
   public doughnutChartType: string = 'doughnut';
   public barChartType: string = 'bar';
   public lineChartType: string = 'line';
+  public linearGaugeType: string = 'Linear';
 
   public radarChartLabels: Array<string> = EmotionChartData.chartLabels;
   public doughnutChartLabels: Array<string> = EmotionChartData.chartLabels;
@@ -41,10 +45,10 @@ export class EmotionPreviewComponent implements OnInit {
   public chartOptions: ChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true,
-    animation :false
+    animation: false,
+    maintainAspectRatio :false
   };
-  
-  private recordID = 'z4eee59e-f1ae-4882-9bbe-ee0c409c5ded';
+
 
   // lineChart
   public lineChartData: Array<number[]> = [
@@ -52,8 +56,12 @@ export class EmotionPreviewComponent implements OnInit {
     [28, 48, 40, 19, 86, 27, 90]
   ];
 
-  constructor(@Inject('IEmotionService') private emotionService: IEmotionService,
-              api: VgAPI) {
+  public linearGaugeSource: Observable<number>;
+  public linearGaugeOptions: LinearGaugeOptions;
+  public sentimentSource = new Subject<number>();
+
+  constructor( @Inject('IEmotionService') private emotionService: IEmotionService,
+    api: VgAPI) {
 
     this.sources = [
       {
@@ -72,17 +80,17 @@ export class EmotionPreviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initGraphWithEmptyData();
+    this.initGraphsWithEmptyData();
+    this.initLinearGauge();
     this.initMockData();
     this.emotionDataSource.sort((a, b) => a.timeMarker.startTime - b.timeMarker.startTime)
-    let ola = this.emotionService.getRecordEmotions(this.recordID).subscribe(x => console.log(x));
- }
+    //let ola = this.emotionService.getRecordEmotions(this.recordID).subscribe(x => console.log(x));
+  }
 
-  private initGraphWithEmptyData() {
+  private initGraphsWithEmptyData() {
     let emptyEmotion = new Emotion(0, 0, 0, 0, 0, 0, 0, 0);
     let timeMarker = new TimeMarker('abc', 0, 0, emptyEmotion);
     let emotionDataChart = new EmotionChartData(timeMarker, 'Emotions');
-
     this.fillChartsData(emotionDataChart);
   }
 
@@ -94,6 +102,13 @@ export class EmotionPreviewComponent implements OnInit {
     }
   }
 
+  private initLinearGauge() {
+    this.linearGaugeOptions = new LinearGaugeOptions(0, 100, 0);
+    this.linearGaugeOptions.addRange(0, 49, 'red');
+    this.linearGaugeOptions.addRange(50, 100, 'green');
+    this.linearGaugeSource = this.sentimentSource.asObservable();
+  }
+
   private createMockData(startSecond: number, endSecond: number) {
     let emotionMock = new Emotion(Math.random(), Math.random(), Math.random(), Math.random(),
       Math.random(), Math.random(), Math.random(), Math.random());
@@ -101,6 +116,7 @@ export class EmotionPreviewComponent implements OnInit {
     let emotionDataChart = new EmotionChartData(timeMarker, 'Emotions');
     return emotionDataChart;
   }
+
 
   // events
   public chartClicked(e: any): void {
@@ -130,6 +146,7 @@ export class EmotionPreviewComponent implements OnInit {
     this.radarChartData = [emotionChartdata];
     this.barChartData = [emotionChartdata];
     this.doughnutChartData = emotionChartdata.data;
+    this.sentimentSource.next(Math.random() * 100);
   }
 
 
@@ -157,3 +174,5 @@ export enum GraphType {
   radar,
   bars
 }
+
+

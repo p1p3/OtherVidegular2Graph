@@ -3,34 +3,38 @@
     "version": "1.0.0-beta.21",
     "name": "brainshark-ml"
   },
-  "apps": [{
-    "root": "src",
-    "outDir": "dist",
-    "assets": [
-      "assets",
-      "favicon.ico"
-    ],
-    "index": "index.html",
-    "main": "main.ts",
-    "test": "test.ts",
-    "tsconfig": "tsconfig.json",
-    "prefix": "app",
-    "mobile": false,
-    "styles": [
-      "styles.css",
-      "../node_modules/videogular2/fonts/videogular.css",
-      "../node_modules/videogular2/fonts/videogular.woff",
-      "../node_modules/videogular2/fonts/videogular.svg",
-      "../node_modules/videogular2/fonts/videogular.ttf",
-      "../node_modules/videogular2/fonts/videogular.eot"
-    ],
-    "scripts": ["../node_modules/chart.js/dist/Chart.min.js"],
-    "environments": {
-      "source": "environments/environment.ts",
-      "dev": "environments/environment.ts",
-      "prod": "environments/environment.prod.ts"
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.json",
+      "prefix": "app",
+      "mobile": false,
+      "styles": [
+        "styles.css",
+        "../node_modules/videogular2/fonts/videogular.css",
+        "../node_modules/videogular2/fonts/videogular.woff",
+        "../node_modules/videogular2/fonts/videogular.svg",
+        "../node_modules/videogular2/fonts/videogular.ttf",
+        "../node_modules/videogular2/fonts/videogular.eot"
+      ],
+      "scripts": [
+        "../node_modules/chart.js/dist/Chart.min.js"
+      ],
+      "environments": {
+        "source": "environments/environment.ts",
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
     }
-  }],
+  ],
   "addons": [],
   "packages": [],
   "e2e": {

@@ -21,6 +21,7 @@
     display: block;
     /* turn off the flexible box layout */
   }
+
 }
 
 
@@ -48,8 +49,49 @@
 .chartContainer {
   display: flex;
   align-items: center;
+  height: 100%;
+   max-height: 300px;
 }
 
 .lineChart {
   margin-top: 10px;
+}
+.gaugeChart{
+  height:90%;
+}
+
+.gauge-text{
+  height: 5%;
+}
+
+.videoPlayerContainer{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.full-height{
+  height: 100%;
+}
+
+
+.emotion-preview-container{
+  height: 200px;
+}
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: 970px) {
+  .emotion-preview-container{
+    height: 450px;
+  }
+}
+
+
+
+.chart{
+  margin-top: 35px; 
+}
+
+.chartsContainer{
+  max-height: 300px;
 }
