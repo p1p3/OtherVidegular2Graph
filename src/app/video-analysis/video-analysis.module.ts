@@ -1,5 +1,5 @@
+import { VideoAnalysisComponent } from './video-analysis.component';
 import { BSChartsModule } from './../charts/bs-charts.module';
-import { EmotionAnalysisComponent } from './emotion-analysis.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,7 +13,7 @@ import { IEmotionService } from './shared/services/def/emotions.service';
 import { EmotionService } from './shared/services/emotions.service';
 
 import { EmotionPreviewComponent } from './emotions-preview/emotion-preview.component';
-import { VideoAnalysisComponent } from './video-analysis/video-analysis.component';
+
 
 @NgModule({
   imports: [
@@ -25,8 +25,8 @@ import { VideoAnalysisComponent } from './video-analysis/video-analysis.componen
     VgControlsModule,
     VgBufferingModule
   ],
-  declarations: [EmotionPreviewComponent, EmotionAnalysisComponent, VideoAnalysisComponent],
-  exports: [EmotionAnalysisComponent],
-  providers : [{provide:'IEmotionService', useClass:EmotionService}]
+  declarations: [EmotionPreviewComponent, VideoAnalysisComponent],
+  exports: [VideoAnalysisComponent],
+  providers: [{ provide: 'IEmotionService', useClass: EmotionService }]
 })
-export class EmotionAnalysisModule { }
+export class VideoAnalysisModule { }
