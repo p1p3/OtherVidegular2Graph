@@ -1,11 +1,10 @@
 import { LinearGaugeOptions } from './../../charts/linear-gauge/shared/linear-gauge-options.model';
 import { IEmotionService } from './../shared/services/def/emotions.service';
 import { VgAPI } from 'videogular2/core';
-import { element } from 'protractor';
 import { TimeMarker } from '../shared/models/time-marker.model';
 import { Emotion } from '../shared/models/emotion.model';
 import { EmotionChartData } from '../shared/models/emotion-chart-data.model';
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Subject, Observable } from 'rxjs/Rx';
 
 @Component({
@@ -46,7 +45,7 @@ export class EmotionPreviewComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true,
     animation: false,
-    maintainAspectRatio :false
+    maintainAspectRatio: false
   };
 
 
@@ -82,9 +81,8 @@ export class EmotionPreviewComponent implements OnInit {
   ngOnInit() {
     this.initGraphsWithEmptyData();
     this.initLinearGauge();
-    this.initMockData();
+    this.initGraphdata();
     this.emotionDataSource.sort((a, b) => a.timeMarker.startTime - b.timeMarker.startTime)
-    //let ola = this.emotionService.getRecordEmotions(this.recordID).subscribe(x => console.log(x));
   }
 
   private initGraphsWithEmptyData() {
@@ -94,12 +92,13 @@ export class EmotionPreviewComponent implements OnInit {
     this.fillChartsData(emotionDataChart);
   }
 
-  private initMockData() {
-    let tiemSpan = 1;
-    for (let _i = 0; _i < 160; _i += tiemSpan) {
-      let mockData = this.createMockData(_i, _i + tiemSpan);
-      this.emotionDataSource.push(mockData);
-    }
+  private initGraphdata() {
+    this.emotionService.getRecordEmotions(this.recordID).subscribe(timeMarkers => {
+      timeMarkers.forEach(timeMarker => {
+        let emotionChartData = new EmotionChartData(timeMarker, 'Emotions');
+        this.emotionDataSource.push(emotionChartData);
+      });
+    });
   }
 
   private initLinearGauge() {

@@ -13,6 +13,7 @@ import { IEmotionService } from './shared/services/def/emotions.service';
 import { EmotionService } from './shared/services/emotions.service';
 
 import { EmotionPreviewComponent } from './emotions-preview/emotion-preview.component';
+import { VideoAnalysisComponent } from './video-analysis/video-analysis.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { EmotionPreviewComponent } from './emotions-preview/emotion-preview.comp
     VgControlsModule,
     VgBufferingModule
   ],
-  declarations: [EmotionPreviewComponent, EmotionAnalysisComponent],
+  declarations: [EmotionPreviewComponent, EmotionAnalysisComponent, VideoAnalysisComponent],
   exports: [EmotionAnalysisComponent],
   providers : [{provide:'IEmotionService', useClass:EmotionService}]
 })
