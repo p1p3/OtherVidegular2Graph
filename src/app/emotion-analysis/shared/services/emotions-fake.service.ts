@@ -1,3 +1,4 @@
+import { Sentiment } from './../models/sentiment.model';
 import { Emotion } from './../models/emotion.model';
 import { TimeMarker } from './../models/time-marker.model';
 import { IEmotionService } from './def/emotions.service';
@@ -22,9 +23,10 @@ export class FakeEmotionService implements IEmotionService {
 
 
     private createFakeTimeMarkerData(startSecond: number, endSecond: number) {
-        let emotionMock = new Emotion(Math.random(), Math.random(), Math.random(), Math.random(),
+        let fakeEmotion = new Emotion(Math.random(), Math.random(), Math.random(), Math.random(),
             Math.random(), Math.random(), Math.random(), Math.random());
-        let timeMarker = new TimeMarker('abc', startSecond, endSecond, emotionMock);
+        let fakeSentiment = new Sentiment(Math.random());
+        let timeMarker = new TimeMarker('abc', startSecond, endSecond, fakeEmotion, fakeSentiment);
         return timeMarker;
     }
 }

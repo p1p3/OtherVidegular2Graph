@@ -138,7 +138,6 @@ export class EmotionPreviewComponent implements OnInit {
     this.barChartData = [emotionChartdata];
     this.doughnutChartData = emotionChartdata.data;
     this.sentimentSource.next(emotionChartdata.timeMarker.sentiment.Positiveness);
-    console.log(emotionChartdata.timeMarker.sentiment.Positiveness);
   }
 
 
