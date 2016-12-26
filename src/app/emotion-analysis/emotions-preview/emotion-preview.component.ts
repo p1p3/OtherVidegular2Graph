@@ -108,15 +108,6 @@ export class EmotionPreviewComponent implements OnInit {
     this.linearGaugeSource = this.sentimentSource.asObservable();
   }
 
-  private createMockData(startSecond: number, endSecond: number) {
-    let emotionMock = new Emotion(Math.random(), Math.random(), Math.random(), Math.random(),
-      Math.random(), Math.random(), Math.random(), Math.random());
-    let timeMarker = new TimeMarker('abc', startSecond, endSecond, emotionMock);
-    let emotionDataChart = new EmotionChartData(timeMarker, 'Emotions');
-    return emotionDataChart;
-  }
-
-
   // events
   public chartClicked(e: any): void {
     console.log(e);
