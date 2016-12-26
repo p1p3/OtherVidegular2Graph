@@ -15,13 +15,17 @@
   height: 1%;
   background-color: #4CAF50;
   text-align: center;
+  -webkit-transition: height 0.5s cubic-bezier(0.15, 0.11, 0.02, 1.04);
+  -moz-transition: height 0.5s cubic-bezier(0.15, 0.11, 0.02, 1.04);
+  -o-transition: height 0.5s cubic-bezier(0.15, 0.11, 0.02, 1.04);
+  transition: height 0.5s cubic-bezier(0.15, 0.11, 0.02, 1.04);
 }
 
-#needle{
-    background-color: black;
-    height: 2px;
-    display: block;
-    position: absolute;
-    width: 130%;
-    margin-left: -15%;
+#needle {
+  background-color: black;
+  height: 2px;
+  display: block;
+  position: absolute;
+  width: 130%;
+  margin-left: -15%;
 }

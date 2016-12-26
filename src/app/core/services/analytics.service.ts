@@ -27,15 +27,14 @@ export class AnalyticsService implements IAnalyticsService {
 
   public getRecordEmotions(recordId: string): Observable<Response> {
     let headers = new Headers(this.TokenHeader);
-    let options = { headers: headers};
+    let options = { headers: headers };
     //let dataType =AssetRecordType.Emotion.toString();
 
     let dataType = '1';
     let getURL = this.AnalyticsURL + this.GetURI
-      .replace(this.dataTypeInterpolation,dataType)
-      .replace(this.assetIdInterpolation,recordId);
+      .replace(this.dataTypeInterpolation, dataType)
+      .replace(this.assetIdInterpolation, recordId);
 
-    return this.http.get(getURL,options);  
+    return this.http.get(getURL, options);
   }
 }
-
