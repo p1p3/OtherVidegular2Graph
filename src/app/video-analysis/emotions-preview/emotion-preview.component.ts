@@ -1,12 +1,11 @@
+import { ChartJsNames } from './../../charts/chartJs/chart-js-names.constants';
 import { Sentiment } from './../shared/models/sentiment.model';
-import { LinearGaugeOptions } from './../../charts/linear-gauge/shared/linear-gauge-options.model';
-import { IEmotionService } from './../shared/services/def/emotions.service';
-import { VgAPI } from 'videogular2/core';
+import { GraphType } from '../shared/enums/graph-type.enum';
 import { TimeMarker } from '../shared/models/time-marker.model';
 import { Emotion } from '../shared/models/emotion.model';
 import { EmotionChartData } from '../shared/models/emotion-chart-data.model';
-import { Component, OnInit, Inject } from '@angular/core';
-import { Subject, Observable } from 'rxjs/Rx';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-emotion-preview',
@@ -14,32 +13,17 @@ import { Subject, Observable } from 'rxjs/Rx';
   styleUrls: ['./emotion-preview.component.css']
 })
 export class EmotionPreviewComponent implements OnInit {
-  sources: Array<Object>;
-  api: VgAPI;
-
-  private recordID = 'z4eee59e-f1ae-4882-9bbe-ee0c409c5ded';
+  @Input() markers: Observable<TimeMarker>;
 
   public graphs = GraphType;
+  public chartsNames = ChartJsNames;
+
   public selectedGraph: GraphType = GraphType.bars;
-  public currentEmotion: EmotionChartData;
-
-  public radarChartType: string = 'radar';
-  public doughnutChartType: string = 'doughnut';
-  public barChartType: string = 'bar';
-  public lineChartType: string = 'line';
-  public linearGaugeType: string = 'Linear';
-
-  public radarChartLabels: Array<string> = EmotionChartData.chartLabels;
-  public doughnutChartLabels: Array<string> = EmotionChartData.chartLabels;
-  public barChartLabels: Array<string> = EmotionChartData.chartLabels;
-  public lineChartLabels: Array<string> = EmotionChartData.chartLabels;
+  public chartLabels = EmotionChartData.chartLabels;
 
   public radarChartData = new Array<EmotionChartData>();
   public doughnutChartData: Array<number>;
   public barChartData = new Array<EmotionChartData>();
-
-  public emotionsSource: Observable<EmotionChartData>;
-  public emotionDataSource = new Array<EmotionChartData>();
 
   public chartLegend: boolean = false;
   public chartOptions: ChartOptions = {
@@ -49,41 +33,12 @@ export class EmotionPreviewComponent implements OnInit {
     maintainAspectRatio: false
   };
 
-
-  // lineChart
-  public lineChartData: Array<number[]> = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
-  ];
-
-  public linearGaugeSource: Observable<number>;
-  public linearGaugeOptions: LinearGaugeOptions;
-  public sentimentSource = new Subject<number>();
-
-  constructor( @Inject('IEmotionService') private emotionService: IEmotionService,
-    api: VgAPI) {
-
-    this.sources = [
-      {
-        src: "http://static.videogular.com/assets/videos/videogular.mp4",
-        type: "video/mp4"
-      },
-      {
-        src: "http://static.videogular.com/assets/videos/videogular.ogg",
-        type: "video/ogg"
-      },
-      {
-        src: "http://static.videogular.com/assets/videos/videogular.webm",
-        type: "video/webm"
-      }
-    ];
+  constructor() {
   }
 
   ngOnInit() {
     this.initGraphsWithEmptyData();
-    this.initLinearGauge();
-    this.initGraphdata();
-    this.emotionDataSource.sort((a, b) => a.timeMarker.startTime - b.timeMarker.startTime)
+    this.markers.subscribe(timeMarker => this.displayData(timeMarker));
   }
 
   private initGraphsWithEmptyData() {
@@ -94,20 +49,20 @@ export class EmotionPreviewComponent implements OnInit {
     this.fillChartsData(emotionDataChart);
   }
 
-  private initGraphdata() {
-    this.emotionService.getRecordEmotions(this.recordID).subscribe(timeMarkers => {
-      timeMarkers.forEach(timeMarker => {
-        let emotionChartData = new EmotionChartData(timeMarker, 'Emotions');
-        this.emotionDataSource.push(emotionChartData);
-      });
-    });
+
+  displayData(timeMarker: TimeMarker) {
+    let emotionChartData = new EmotionChartData(timeMarker, 'Emotions');
+    this.fillChartsData(emotionChartData);
   }
 
-  private initLinearGauge() {
-    this.linearGaugeOptions = new LinearGaugeOptions(0, 100, 0);
-    this.linearGaugeOptions.addRange(0, 49, 'red');
-    this.linearGaugeOptions.addRange(50, 100, 'green');
-    this.linearGaugeSource = this.sentimentSource.asObservable();
+  fillChartsData(emotionChartdata: EmotionChartData) {
+    this.radarChartData = [emotionChartdata];
+    this.barChartData = [emotionChartdata];
+    this.doughnutChartData = emotionChartdata.data;
+  }
+
+  selectEmotionGraph(graphType: GraphType) {
+    this.selectedGraph = graphType;
   }
 
   // events
@@ -119,51 +74,6 @@ export class EmotionPreviewComponent implements OnInit {
     console.log(e);
   }
 
-
-  onPlayerReady(api: VgAPI) {
-    this.api = api;
-    this.api.getDefaultMedia().subscriptions.timeUpdate.subscribe(time => {
-      let currentTime = this.api.getDefaultMedia().currentTime;
-      let dataForCurrentTime = this.emotionDataSource.find(data => this.isCurrentTimeInTimeMarkerInRange(currentTime, data.timeMarker));
-
-      if (dataForCurrentTime && (this.isNotBeingDisplayed(dataForCurrentTime) || (!this.isNotNull(this.currentEmotion)))) {
-        this.fillChartsData(dataForCurrentTime);
-      }
-    });
-  }
-
-  fillChartsData(emotionChartdata: EmotionChartData) {
-    this.currentEmotion = emotionChartdata;
-    this.radarChartData = [emotionChartdata];
-    this.barChartData = [emotionChartdata];
-    this.doughnutChartData = emotionChartdata.data;
-    this.sentimentSource.next(emotionChartdata.timeMarker.sentiment.Positiveness);
-  }
-
-
-  isCurrentTimeInTimeMarkerInRange(currentTime: number, timeMarker: TimeMarker): boolean {
-    return (currentTime >= timeMarker.startTime && currentTime <= timeMarker.endTime);
-  }
-
-  isNotNull(obj: any): boolean {
-    return obj;
-  }
-
-  isNotBeingDisplayed(emotionChartData: EmotionChartData): boolean {
-    return this.currentEmotion !== emotionChartData;
-  }
-
-  selectEmotionGraph(graphType: GraphType) {
-    this.selectedGraph = graphType;
-  }
-
-}
-
-
-export enum GraphType {
-  doughnut = 0,
-  radar,
-  bars
 }
 
 

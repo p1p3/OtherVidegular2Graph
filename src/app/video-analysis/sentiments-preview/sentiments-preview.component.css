@@ -1,0 +1,19 @@
+.gaugeChart {
+  height: 80%;
+}
+
+@media (min-width: 970px) {
+  .gaugeChart {
+    height: 90%;
+  }
+}
+
+.gauge-text {
+  height: 10%;
+}
+
+@media (min-width: 970px) {
+  .gauge-text {
+    height: 5%;
+  }
+}

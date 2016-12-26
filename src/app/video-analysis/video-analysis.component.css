@@ -1,0 +1,16 @@
+.video-player-container{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.emotion-preview-container{
+  height: 200px;
+}
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: 970px) {
+  .emotion-preview-container{
+    height: 450px;
+  }
+}
