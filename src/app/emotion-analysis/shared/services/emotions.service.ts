@@ -1,3 +1,4 @@
+import { Sentiment } from './../models/sentiment.model';
 import { Emotion } from './../models/emotion.model';
 import { TimeMarker } from './../models/time-marker.model';
 import { Injectable, Inject } from '@angular/core';
@@ -39,8 +40,9 @@ export class EmotionService implements IEmotionService {
             }
 
             let emotion: Emotion = this.getEmotionFromJSON(timeInfo.Emotion);
+            let sentiment: Sentiment = this.getSentimentFromJSON(timeInfo.TimeTextSentiment);
 
-            return new TimeMarker(id, startTime, endTime, emotion);
+            return new TimeMarker(id, startTime, endTime, emotion, sentiment);
         });
 
 
@@ -50,6 +52,11 @@ export class EmotionService implements IEmotionService {
     private getDateFromTimeInfo(time: string): Date {
         let dateFormat = 'January 1, 1970, {time}';
         return new Date(dateFormat.replace('{time}', time));
+    }
+
+    private getSentimentFromJSON(jsonSentiment: any): Sentiment {
+        let score = JSON.parse(jsonSentiment).documents[0].score;
+        return new Sentiment(score);
     }
 
     private getEmotionFromJSON(jsonEmotion: any): Emotion {

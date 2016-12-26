@@ -1,3 +1,4 @@
+import { Sentiment } from './../shared/models/sentiment.model';
 import { LinearGaugeOptions } from './../../charts/linear-gauge/shared/linear-gauge-options.model';
 import { IEmotionService } from './../shared/services/def/emotions.service';
 import { VgAPI } from 'videogular2/core';
@@ -19,7 +20,7 @@ export class EmotionPreviewComponent implements OnInit {
   private recordID = 'z4eee59e-f1ae-4882-9bbe-ee0c409c5ded';
 
   public graphs = GraphType;
-  public selectedGraph: GraphType = GraphType.radar;
+  public selectedGraph: GraphType = GraphType.bars;
   public currentEmotion: EmotionChartData;
 
   public radarChartType: string = 'radar';
@@ -87,7 +88,8 @@ export class EmotionPreviewComponent implements OnInit {
 
   private initGraphsWithEmptyData() {
     let emptyEmotion = new Emotion(0, 0, 0, 0, 0, 0, 0, 0);
-    let timeMarker = new TimeMarker('abc', 0, 0, emptyEmotion);
+    let emptySentiment = new Sentiment(0);
+    let timeMarker = new TimeMarker('abc', 0, 0, emptyEmotion, emptySentiment);
     let emotionDataChart = new EmotionChartData(timeMarker, 'Emotions');
     this.fillChartsData(emotionDataChart);
   }
@@ -124,7 +126,6 @@ export class EmotionPreviewComponent implements OnInit {
       let currentTime = this.api.getDefaultMedia().currentTime;
       let dataForCurrentTime = this.emotionDataSource.find(data => this.isCurrentTimeInTimeMarkerInRange(currentTime, data.timeMarker));
 
-
       if (dataForCurrentTime && (this.isNotBeingDisplayed(dataForCurrentTime) || (!this.isNotNull(this.currentEmotion)))) {
         this.fillChartsData(dataForCurrentTime);
       }
@@ -136,7 +137,8 @@ export class EmotionPreviewComponent implements OnInit {
     this.radarChartData = [emotionChartdata];
     this.barChartData = [emotionChartdata];
     this.doughnutChartData = emotionChartdata.data;
-    this.sentimentSource.next(Math.random() * 100);
+    this.sentimentSource.next(emotionChartdata.timeMarker.sentiment.Positiveness);
+    console.log(emotionChartdata.timeMarker.sentiment.Positiveness);
   }
 
 
