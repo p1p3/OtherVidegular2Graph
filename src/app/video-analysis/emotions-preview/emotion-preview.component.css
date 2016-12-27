@@ -6,17 +6,6 @@
   height: 20%;
 }
 
-breadcrumb {
-  margin-bottom: 0;
-}
-
-.breadcrumb>li>a.active {
-  color: #777;
-}
-
-.breadcrumb>li>a {
-  cursor: pointer;
-}
 
 .chart-container {
   display: flex;

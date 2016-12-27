@@ -1,6 +1,6 @@
 <div class="row gauge-chart-container">
   <div class="col-xs-12 gauge-text">
-    <span>Positive</span>
+    <span [tooltip]="'Probability of ...'">Positive</span>
   </div>
   <div class="col-xs-12 gaugeChart">
     <graph-linear-gauge [valueSource]="linearGaugeSource" [options]="linearGaugeOptions"></graph-linear-gauge>

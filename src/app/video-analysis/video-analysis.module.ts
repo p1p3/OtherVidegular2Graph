@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { TabsModule } from 'ng2-bootstrap/tabs';
+import { TooltipModule } from 'ng2-bootstrap/tooltip';
 
 import { VgCoreModule } from 'videogular2/core';
 import { VgControlsModule } from 'videogular2/controls';
@@ -29,7 +30,8 @@ import { SentimentsPreviewComponent } from './sentiments-preview/sentiments-prev
     VgControlsModule,
     VgBufferingModule,
     AccordionModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   declarations: [EmotionPreviewComponent, VideoAnalysisComponent, SentimentsPreviewComponent],
   exports: [VideoAnalysisComponent],

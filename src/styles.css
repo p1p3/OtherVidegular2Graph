@@ -4,6 +4,7 @@ div[class*="col-"].full-height {
   height: 100%;
 }
 
+/* Tabs Styles For RightPaneemotions*/
 .group-tabs ul.nav.nav-tabs {
   height: 9%;
 }
@@ -14,6 +15,19 @@ div[class*="col-"].full-height {
 
 .group-tabs .tab-pane {
   height: 100%;
+}
+
+/* Styles For Right BreadCrum */
+breadcrumb {
+  margin-bottom: 0;
+}
+
+.breadcrumb>li>a.active {
+  color: #777;
+}
+
+.breadcrumb>li>a {
+  cursor: pointer;
 }
 
 
