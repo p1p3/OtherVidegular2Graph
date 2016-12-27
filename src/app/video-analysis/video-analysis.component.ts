@@ -11,6 +11,8 @@ import { Component, OnInit, Inject } from '@angular/core';
     styleUrls: ['video-analysis.component.css']
 })
 export class VideoAnalysisComponent implements OnInit {
+    public oneAtATime: boolean = true;
+
     private sources: Array<Object>;
     private api: VgAPI;
     private recordId = 'z4eee59e-f1ae-4882-9bbe-ee0c409c5ded';

@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AccordionModule } from 'ng2-bootstrap/accordion';
+import { TabsModule } from 'ng2-bootstrap/tabs';
+
 import { VgCoreModule } from 'videogular2/core';
 import { VgControlsModule } from 'videogular2/controls';
 import { VgOverlayPlayModule } from 'videogular2/overlay-play';
@@ -24,7 +27,9 @@ import { SentimentsPreviewComponent } from './sentiments-preview/sentiments-prev
     VgCoreModule,
     VgOverlayPlayModule,
     VgControlsModule,
-    VgBufferingModule
+    VgBufferingModule,
+    AccordionModule.forRoot(),
+    TabsModule.forRoot()
   ],
   declarations: [EmotionPreviewComponent, VideoAnalysisComponent, SentimentsPreviewComponent],
   exports: [VideoAnalysisComponent],

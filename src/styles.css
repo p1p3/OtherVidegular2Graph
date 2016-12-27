@@ -4,6 +4,17 @@ div[class*="col-"].full-height {
   height: 100%;
 }
 
+.group-tabs ul.nav.nav-tabs {
+  height: 9%;
+}
+
+.group-tabs .tab-content {
+  height: 90%;
+}
+
+.group-tabs .tab-pane {
+  height: 100%;
+}
 
 
 /* Extra small devices (767px and down) */
