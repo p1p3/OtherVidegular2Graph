@@ -1,4 +1,12 @@
-.breadcrumb {
+.emotions-chart-container {
+  height: 100%;
+}
+
+.graph-options{
+  height: 20%;
+}
+
+breadcrumb {
   margin-bottom: 0;
 }
 
@@ -10,7 +18,7 @@
   cursor: pointer;
 }
 
-.chartContainer {
+.chart-container {
   display: flex;
   align-items: center;
   height: 100%;
@@ -25,6 +33,8 @@
   margin-top: 35px;
 }
 
-.chartsContainer {
-  max-height: 300px;
+.charts{
+  height: 80%;
 }
+
+

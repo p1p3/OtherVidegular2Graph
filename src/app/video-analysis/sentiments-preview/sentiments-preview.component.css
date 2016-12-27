@@ -17,3 +17,7 @@
     height: 5%;
   }
 }
+
+.gauge-chart-container{
+    height: 100%;
+}
