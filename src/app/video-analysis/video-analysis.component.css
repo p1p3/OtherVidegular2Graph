@@ -20,3 +20,13 @@
 .static-graphs {
   margin-top: 30px;
 }
+
+.right-pane {
+  margin-top: 10px;
+}
+
+@media (min-width: 970px) {
+  .right-pane {
+    margin-top: 0px;
+  }
+}

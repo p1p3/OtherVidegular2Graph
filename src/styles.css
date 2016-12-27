@@ -4,20 +4,36 @@ div[class*="col-"].full-height {
   height: 100%;
 }
 
+
 /* Tabs Styles For RightPaneemotions*/
+
 .group-tabs ul.nav.nav-tabs {
-  height: 9%;
+  height: 20%;
+}
+
+@media (min-width: 970px) {
+  .group-tabs ul.nav.nav-tabs {
+    height: 9%;
+  }
 }
 
 .group-tabs .tab-content {
-  height: 90%;
+  height: 80%;
+}
+
+@media (min-width: 970px) {
+  .group-tabs .tab-content {
+    height: 90%;
+  }
 }
 
 .group-tabs .tab-pane {
   height: 100%;
 }
 
+
 /* Styles For Right BreadCrum */
+
 breadcrumb {
   margin-bottom: 0;
 }
