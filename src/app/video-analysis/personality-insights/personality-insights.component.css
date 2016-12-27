@@ -1,0 +1,105 @@
+h3 {
+  text-transform: capitalize;
+  text-align: left;
+  color: #9a9191;
+}
+
+span {
+  text-align: left;
+}
+
+.percent-bar {
+  background-color: #ececec;
+  height: 0rem;
+  width: 100%;
+  border-bottom: 1px solid #323232;
+  position: relative;
+}
+
+.percent-bar--meter {
+  width: 100%;
+  -webkit-transform: translate(0%);
+  -ms-transform: translate(0%);
+  transform: translate(0%);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.percent-bar--ball {
+  height: 0.8rem;
+  width: 0.8rem;
+  border-radius: 100%;
+  background-color: red;
+  position: absolute;
+  top: -0.4rem;
+  left: -0.4rem;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.percent-bar--ball_POSITIVE {
+  background-color: white;
+  border: 2px solid #00b4a0;
+}
+
+.percent-bar--ball_NEGATIVE {
+  background-color: white;
+  border: 2px solid #5596e6;
+}
+
+.percent-bar--ball_POSITIVE-FILL {
+  background-color: #00b4a0;
+  height: 1.6rem;
+  width: 1.6rem;
+  top: -0.8rem;
+  left: -0.8rem;
+}
+
+.percent-bar--ball_NEGATIVE-FILL {
+  background-color: #5596e6;
+  height: 1.6rem;
+  width: 1.6rem;
+  top: -0.8rem;
+  left: -0.8rem;
+}
+
+.percent-bar-and-score {
+  position: relative;
+}
+
+.percent-bar-and-score--percent-bar {
+  width: 100%;
+  margin-top: 2rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.percent-bar-and-score--label {
+  font-size: 0.9em;
+}
+
+.percent-bar-and-score--toggle-icon {
+  display: inline-block;
+  font-size: 5px;
+  margin-left: 0.5em;
+}
+
+.percent-bar-and-score--number {
+  position: absolute;
+  width: 3rem;
+  margin-top: 0rem;
+  left: -1.2rem;
+  top: -3rem;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #4178be;
+}
+
+.percent-bar-and-score.toggled .percent-bar-and-score--label .icon {
+  -webkit-transform: rotateZ(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotateZ(180deg);
+}

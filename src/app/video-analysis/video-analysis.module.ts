@@ -18,6 +18,7 @@ import { EmotionService } from './shared/services/emotions.service';
 
 import { EmotionPreviewComponent } from './emotions-preview/emotion-preview.component';
 import { SentimentsPreviewComponent } from './sentiments-preview/sentiments-preview.component';
+import { PersonalityInsightsComponent } from './personality-insights/personality-insights.component';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { SentimentsPreviewComponent } from './sentiments-preview/sentiments-prev
     TabsModule.forRoot(),
     TooltipModule.forRoot()
   ],
-  declarations: [EmotionPreviewComponent, VideoAnalysisComponent, SentimentsPreviewComponent],
+  declarations: [EmotionPreviewComponent, VideoAnalysisComponent, SentimentsPreviewComponent, PersonalityInsightsComponent],
   exports: [VideoAnalysisComponent],
   providers: [{ provide: 'IEmotionService', useClass: EmotionService }]
 })
