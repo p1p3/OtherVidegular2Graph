@@ -1,5 +1,5 @@
 import { CoreModule } from './core/core.module';
-import { EmotionAnalysisModule } from './emotion-analysis/emotion-analysis.module';
+import { VideoAnalysisModule } from './video-analysis/video-analysis.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule,
     CoreModule,
-    EmotionAnalysisModule
+    VideoAnalysisModule
   ],
   providers: [],
   bootstrap: [AppComponent]

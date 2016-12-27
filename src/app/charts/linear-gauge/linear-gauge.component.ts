@@ -8,7 +8,6 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser'
     selector: 'graph-linear-gauge',
     template: `<div id="gauge">
                   <div id="bar" [style.height]="value + '%'" [style.background]="backgroundStyle"> 
-                     <div id="needle"></div>  
                   </div>
                  
                </div>`,

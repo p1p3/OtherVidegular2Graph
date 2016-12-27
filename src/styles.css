@@ -1,18 +1,91 @@
+.row.full-height,
+.row.full-height>div[class*="col-"],
+div[class*="col-"].full-height {
+  height: 100%;
+}
+
+
+/* Tabs Styles For RightPaneemotions*/
+
+.group-tabs ul.nav.nav-tabs {
+  height: 20%;
+}
+
+@media (min-width: 970px) {
+  .group-tabs ul.nav.nav-tabs {
+    height: 9%;
+  }
+}
+
+.group-tabs .tab-content {
+  height: 80%;
+}
+
+@media (min-width: 970px) {
+  .group-tabs .tab-content {
+    height: 90%;
+  }
+}
+
+.group-tabs .tab-pane {
+  height: 100%;
+}
+
+
+/* Styles For Right BreadCrum */
+
+breadcrumb {
+  margin-bottom: 0;
+}
+
+.breadcrumb>li>a.active {
+  color: #777;
+}
+
+.breadcrumb>li>a {
+  cursor: pointer;
+}
+
+
+/* Extra small devices (767px and down) */
+
+@media (max-width: 969px) {
+  .row.vertical-align {
+    display: block;
+    /* turn off the flexible box layout */
+  }
+}
+
+
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: 970px) {
+  .row.vertical-align {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+
 /*!
  * Start Bootstrap - Freelancer v3.3.7+1 (http://startbootstrap.com/template-overviews/freelancer)
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+
 body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   overflow-x: hidden;
 }
+
 p {
   font-size: 20px;
 }
+
 p.small {
   font-size: 16px;
 }
+
 a,
 a:hover,
 a:focus,
@@ -21,6 +94,7 @@ a.active {
   color: #18BC9C;
   outline: none;
 }
+
 h1,
 h2,
 h3,
@@ -31,6 +105,7 @@ h6 {
   text-transform: uppercase;
   font-weight: 700;
 }
+
 hr.star-light,
 hr.star-primary {
   padding: 0;
@@ -40,6 +115,7 @@ hr.star-primary {
   max-width: 250px;
   margin: 25px auto 30px;
 }
+
 hr.star-light:after,
 hr.star-primary:after {
   content: "\f005";
@@ -50,36 +126,45 @@ hr.star-primary:after {
   font-size: 2em;
   padding: 0 0.25em;
 }
+
 hr.star-light {
   border-color: white;
 }
+
 hr.star-light:after {
   background-color: #18BC9C;
   color: white;
 }
+
 hr.star-primary {
   border-color: #2C3E50;
 }
+
 hr.star-primary:after {
   background-color: white;
   color: #2C3E50;
 }
+
 .img-centered {
   margin: 0 auto;
 }
+
 header {
   text-align: center;
   background: #18BC9C;
   color: white;
 }
+
 header .container {
   padding-top: 100px;
   padding-bottom: 50px;
 }
+
 header img {
   display: block;
   margin: 0 auto 20px;
 }
+
 header .intro-text .name {
   display: block;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -87,10 +172,12 @@ header .intro-text .name {
   font-weight: 700;
   font-size: 2em;
 }
+
 header .intro-text .skills {
   font-size: 1.25em;
   font-weight: 300;
 }
+
 @media (min-width: 768px) {
   header .container {
     padding-top: 160px;
@@ -103,6 +190,7 @@ header .intro-text .skills {
     font-size: 1.75em;
   }
 }
+
 .navbar-custom {
   background: #2C3E50;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -110,54 +198,66 @@ header .intro-text .skills {
   font-weight: 700;
   border: none;
 }
+
 .navbar-custom a:focus {
   outline: none;
 }
+
 .navbar-custom .navbar-brand {
   color: white;
 }
+
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus,
 .navbar-custom .navbar-brand:active,
 .navbar-custom .navbar-brand.active {
   color: white;
 }
+
 .navbar-custom .navbar-nav {
   letter-spacing: 1px;
 }
+
 .navbar-custom .navbar-nav li a {
   color: white;
 }
+
 .navbar-custom .navbar-nav li a:hover {
   color: #18BC9C;
   outline: none;
 }
+
 .navbar-custom .navbar-nav li a:focus,
 .navbar-custom .navbar-nav li a:active {
   color: white;
 }
+
 .navbar-custom .navbar-nav li.active a {
   color: white;
   background: #18BC9C;
 }
+
 .navbar-custom .navbar-nav li.active a:hover,
 .navbar-custom .navbar-nav li.active a:focus,
 .navbar-custom .navbar-nav li.active a:active {
   color: white;
   background: #18BC9C;
 }
+
 .navbar-custom .navbar-toggle {
   color: white;
   text-transform: uppercase;
   font-size: 10px;
   border-color: white;
 }
+
 .navbar-custom .navbar-toggle:hover,
 .navbar-custom .navbar-toggle:focus {
   background-color: #18BC9C;
   color: white;
   border-color: #18BC9C;
 }
+
 @media (min-width: 768px) {
   .navbar-custom {
     padding: 25px 0;
@@ -178,17 +278,21 @@ header .intro-text .skills {
     font-size: 1.5em;
   }
 }
+
 section {
   padding: 100px 0;
 }
+
 section h2 {
   margin: 0;
   font-size: 3em;
 }
+
 section.success {
   background: #18BC9C;
   color: white;
 }
+
 @media (max-width: 767px) {
   section {
     padding: 75px 0;
@@ -197,16 +301,19 @@ section.success {
     padding-top: 75px;
   }
 }
+
 #portfolio .portfolio-item {
   margin: 0 0 15px;
   right: 0;
 }
+
 #portfolio .portfolio-item .portfolio-link {
   display: block;
   position: relative;
   max-width: 400px;
   margin: 0 auto;
 }
+
 #portfolio .portfolio-item .portfolio-link .caption {
   background: rgba(24, 188, 156, 0.9);
   position: absolute;
@@ -217,9 +324,11 @@ section.success {
   -webkit-transition: all ease 0.5s;
   -moz-transition: all ease 0.5s;
 }
+
 #portfolio .portfolio-item .portfolio-link .caption:hover {
   opacity: 1;
 }
+
 #portfolio .portfolio-item .portfolio-link .caption .caption-content {
   position: absolute;
   width: 100%;
@@ -230,27 +339,33 @@ section.success {
   margin-top: -12px;
   color: white;
 }
+
 #portfolio .portfolio-item .portfolio-link .caption .caption-content i {
   margin-top: -12px;
 }
+
 #portfolio .portfolio-item .portfolio-link .caption .caption-content h3,
 #portfolio .portfolio-item .portfolio-link .caption .caption-content h4 {
   margin: 0;
 }
+
 #portfolio * {
- /* z-index: 2;*/
+  /* z-index: 2;*/
 }
+
 @media (min-width: 767px) {
   #portfolio .portfolio-item {
     margin: 0 0 30px;
   }
 }
+
 .floating-label-form-group {
   position: relative;
   margin-bottom: 0;
   padding-bottom: 0.5em;
   border-bottom: 1px solid #eeeeee;
 }
+
 .floating-label-form-group input,
 .floating-label-form-group textarea {
   z-index: 1;
@@ -264,6 +379,7 @@ section.success {
   box-shadow: none !important;
   resize: none;
 }
+
 .floating-label-form-group label {
   display: block;
   z-index: 0;
@@ -275,42 +391,52 @@ section.success {
   vertical-align: middle;
   vertical-align: baseline;
   opacity: 0;
-  -webkit-transition: top 0.3s ease,opacity 0.3s ease;
-  -moz-transition: top 0.3s ease,opacity 0.3s ease;
-  -ms-transition: top 0.3s ease,opacity 0.3s ease;
-  transition: top 0.3s ease,opacity 0.3s ease;
+  -webkit-transition: top 0.3s ease, opacity 0.3s ease;
+  -moz-transition: top 0.3s ease, opacity 0.3s ease;
+  -ms-transition: top 0.3s ease, opacity 0.3s ease;
+  transition: top 0.3s ease, opacity 0.3s ease;
 }
+
 .floating-label-form-group:not(:first-child) {
   padding-left: 14px;
   border-left: 1px solid #eeeeee;
 }
+
 .floating-label-form-group-with-value label {
   top: 0;
   opacity: 1;
 }
+
 .floating-label-form-group-with-focus label {
   color: #18BC9C;
 }
+
 form .row:first-child .floating-label-form-group {
   border-top: 1px solid #eeeeee;
 }
+
 footer {
   color: white;
 }
+
 footer h3 {
   margin-bottom: 30px;
 }
+
 footer .footer-above {
   padding-top: 50px;
   background-color: #2C3E50;
 }
+
 footer .footer-col {
   margin-bottom: 50px;
 }
+
 footer .footer-below {
   padding: 25px 0;
   background-color: #233140;
 }
+
 .btn-outline {
   color: white;
   font-size: 20px;
@@ -319,6 +445,7 @@ footer .footer-below {
   transition: all 0.3s ease-in-out;
   margin-top: 15px;
 }
+
 .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active,
@@ -327,12 +454,14 @@ footer .footer-below {
   background: white;
   border: solid 2px white;
 }
+
 .btn-primary {
   color: white;
   background-color: #2C3E50;
   border-color: #2C3E50;
   font-weight: 700;
 }
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
@@ -342,11 +471,13 @@ footer .footer-below {
   background-color: #1a242f;
   border-color: #161f29;
 }
+
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
   background-image: none;
 }
+
 .btn-primary.disabled,
 .btn-primary[disabled],
 fieldset[disabled] .btn-primary,
@@ -365,16 +496,19 @@ fieldset[disabled] .btn-primary.active {
   background-color: #2C3E50;
   border-color: #2C3E50;
 }
+
 .btn-primary .badge {
   color: #2C3E50;
   background-color: white;
 }
+
 .btn-success {
   color: white;
   background-color: #18BC9C;
   border-color: #18BC9C;
   font-weight: 700;
 }
+
 .btn-success:hover,
 .btn-success:focus,
 .btn-success:active,
@@ -384,11 +518,13 @@ fieldset[disabled] .btn-primary.active {
   background-color: #128f76;
   border-color: #11866f;
 }
+
 .btn-success:active,
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
   background-image: none;
 }
+
 .btn-success.disabled,
 .btn-success[disabled],
 fieldset[disabled] .btn-success,
@@ -407,10 +543,12 @@ fieldset[disabled] .btn-success.active {
   background-color: #18BC9C;
   border-color: #18BC9C;
 }
+
 .btn-success .badge {
   color: #18BC9C;
   background-color: white;
 }
+
 .btn-social {
   display: inline-block;
   height: 50px;
@@ -421,11 +559,13 @@ fieldset[disabled] .btn-success.active {
   font-size: 20px;
   line-height: 45px;
 }
+
 .btn:focus,
 .btn:active,
 .btn.active {
   outline: none;
 }
+
 .scroll-top {
   position: fixed;
   right: 2%;
@@ -434,6 +574,7 @@ fieldset[disabled] .btn-success.active {
   height: 50px;
   z-index: 1049;
 }
+
 .scroll-top .btn {
   font-size: 20px;
   width: 50px;
@@ -441,9 +582,11 @@ fieldset[disabled] .btn-success.active {
   border-radius: 100%;
   line-height: 28px;
 }
+
 .scroll-top .btn:focus {
   outline: none;
 }
+
 .portfolio-modal .modal-content {
   border-radius: 0;
   background-clip: border-box;
@@ -454,16 +597,20 @@ fieldset[disabled] .btn-success.active {
   padding: 100px 0;
   text-align: center;
 }
+
 .portfolio-modal .modal-content h2 {
   margin: 0;
   font-size: 3em;
 }
+
 .portfolio-modal .modal-content img {
   margin-bottom: 30px;
 }
+
 .portfolio-modal .modal-content .item-details {
   margin: 30px 0;
 }
+
 .portfolio-modal .close-modal {
   position: absolute;
   width: 75px;
@@ -473,9 +620,11 @@ fieldset[disabled] .btn-success.active {
   right: 25px;
   cursor: pointer;
 }
+
 .portfolio-modal .close-modal:hover {
   opacity: 0.3;
 }
+
 .portfolio-modal .close-modal .lr {
   height: 75px;
   width: 1px;
@@ -488,6 +637,7 @@ fieldset[disabled] .btn-success.active {
   /* Safari and Chrome */
   z-index: 1051;
 }
+
 .portfolio-modal .close-modal .lr .rl {
   height: 75px;
   width: 1px;
@@ -499,6 +649,7 @@ fieldset[disabled] .btn-success.active {
   /* Safari and Chrome */
   z-index: 1052;
 }
+
 .portfolio-modal .modal-backdrop {
   opacity: 0;
   display: none;

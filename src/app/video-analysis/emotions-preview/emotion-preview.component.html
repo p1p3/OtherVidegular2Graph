@@ -1,0 +1,23 @@
+<div class="row emotions-chart-container">
+  <div class="col-xs-12 graph-options">
+    <ol class="breadcrumb  pull-right">
+      <li (click)="selectEmotionGraph(graphs.bars)"><a [ngClass]="{active: selectedGraph==graphs.bars}">Bars</a></li>
+      <li (click)="selectEmotionGraph(graphs.doughnut)"><a [ngClass]="{active: selectedGraph==graphs.doughnut}"> Doughnut</a></li>
+      <li (click)="selectEmotionGraph(graphs.radar)"><a [ngClass]="{active: selectedGraph==graphs.radar}">Radar</a></li>
+    </ol>
+  </div>
+  <div class="col-xs-12 charts">
+    <div class="chart-container" *ngIf="selectedGraph==graphs.radar">
+      <canvas class="chart" baseChart [datasets]="radarChartData" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
+        [chartType]="chartsNames.radar" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    <div class="chart-container" *ngIf="selectedGraph==graphs.doughnut">
+      <canvas baseChart [data]="doughnutChartData" [labels]="chartLabels" [options]="chartOptions" [chartType]="chartsNames.doughnut"
+        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    <div class="chart-container" *ngIf="selectedGraph==graphs.bars">
+      <canvas baseChart [datasets]="barChartData" id="myCanvas" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
+        [chartType]="chartsNames.bar" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-12">
+    <ol class="breadcrumb  pull-right">
+      <li (click)="selectInsight(insightTypes.Personality)"><a [ngClass]="{active: selectedInsightType==insightTypes.Personality}">Personality</a></li>
+      <li (click)="selectInsight(insightTypes.ConsumerNeeds)"><a [ngClass]="{active: selectedInsightType==insightTypes.ConsumerNeeds}"> Consumer Needs</a></li>
+      <li (click)="selectInsight(insightTypes.Values)"><a [ngClass]="{active: selectedInsightType==insightTypes.Values}">Values</a></li>
+    </ol>
+  </div>
+  <div class="col-xs-12">
+    <div class="row" *ngIf="selectedInsightType==insightTypes.Personality">
+      <div class="col-xs-12">
+        <h3>Personality</h3>
+        <hr>
+        <div class="col-xs-12">
+      <span>Emotional range</span>
+        </div>
+  div
+        <div class="percent-bar percent-bar-and-score--percent-bar">
+          <div class="percent-bar--meter" style="-webkit-transform: translate(95%); transform: translate(95%)">
+            <div class="percent-bar--ball percent-bar--ball_POSITIVE-FILL"></div>
+            <div class="percent-bar-and-score--number">
+              95%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="" *ngIf="selectedInsightType==insightTypes.ConsumerNeeds">
+      <h3>Consumer Needs</h3>
+      <hr>
+    </div>
+    <div class="" *ngIf="selectedInsightType==insightTypes.Values">
+      <h3>Values</h3>
+      <hr>
+    </div>
+  </div>
+</div>
