@@ -8,6 +8,10 @@ span {
   text-align: left;
 }
 
+.insight{
+      margin-bottom: 25px;
+}
+
 .percent-bar {
   background-color: #ececec;
   height: 0rem;
