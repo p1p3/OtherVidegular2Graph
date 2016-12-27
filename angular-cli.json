@@ -23,7 +23,8 @@
         "../node_modules/videogular2/fonts/videogular.woff",
         "../node_modules/videogular2/fonts/videogular.svg",
         "../node_modules/videogular2/fonts/videogular.ttf",
-        "../node_modules/videogular2/fonts/videogular.eot"
+        "../node_modules/videogular2/fonts/videogular.eot",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
       "scripts": [
         "../node_modules/chart.js/dist/Chart.min.js"
