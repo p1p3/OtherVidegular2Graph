@@ -27,7 +27,8 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
       "scripts": [
-        "../node_modules/chart.js/dist/Chart.min.js"
+        "../node_modules/chart.js/dist/Chart.min.js",
+        "./assets/libraries/Chart.BarWithHorizontalLine.js"
       ],
       "environments": {
         "source": "environments/environment.ts",

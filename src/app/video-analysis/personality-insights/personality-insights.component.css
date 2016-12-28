@@ -8,8 +8,39 @@ span {
   text-align: left;
 }
 
-.insight{
-      margin-bottom: 25px;
+.label {
+  margin: 0px 2px;
+  cursor: pointer;
+}
+
+.insight {
+  margin-bottom: 25px;
+}
+
+.insights-display-container {
+  height: 100%;
+}
+
+.insight-options {
+  height: 10%;
+}
+
+.insight-info {
+  height: 90%
+}
+
+.insight-info-container {
+  height: 100%;
+}
+
+.insight-labels {
+  height: 12%;
+}
+
+.insight-graph {
+  height: 88%;
+  display: flex;
+  align-items: center;
 }
 
 .percent-bar {
