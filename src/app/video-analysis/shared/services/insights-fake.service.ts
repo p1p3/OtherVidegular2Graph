@@ -13,10 +13,7 @@ export class FakeInsightService implements IInsightService {
     constructor(private http: Http) { }
     public getRecordInsights(recordId: string): Observable<Insight> {
         return this.http.get('assets/mocks/insights.json')
-            .map((res: Response) => {
-                return this.mapJsonToInsight(res.json());
-            });
-
+            .map((res: Response) => this.mapJsonToInsight(res.json()));
     }
 
     private mapJsonToInsight(jsonResponse: any): Insight {
