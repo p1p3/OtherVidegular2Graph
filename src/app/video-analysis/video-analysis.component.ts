@@ -1,3 +1,5 @@
+import { Insight } from './shared/models/Insights/insight.model';
+import { IInsightService } from './shared/services/def/insights.service';
 import { TimeMarker } from './shared/models/time-marker.model';
 import { Emotion } from './shared/models/emotion.model';
 import { IEmotionService } from './shared/services/def/emotions.service';
@@ -19,8 +21,10 @@ export class VideoAnalysisComponent implements OnInit {
     private currentTimeMarkerSource = new Subject<TimeMarker>();
     private markersSource = new Array<TimeMarker>();
     private currentTimeMarker: TimeMarker;
+    private recordInsights: Insight;
 
-    constructor( @Inject('IEmotionService') private emotionService: IEmotionService) {
+    constructor( @Inject('IEmotionService') private emotionService: IEmotionService,
+        @Inject('IInsightService') private insightService: IInsightService) {
         this.sources = [
             {
                 src: "http://static.videogular.com/assets/videos/videogular.mp4",
@@ -39,12 +43,19 @@ export class VideoAnalysisComponent implements OnInit {
 
     ngOnInit() {
         this.fetchTimeMarkers(this.recordId);
+        this.fetchRecordInsights(this.recordId);
     }
 
     private fetchTimeMarkers(recordId: string) {
         this.emotionService.getRecordEmotions(recordId).subscribe(timeMarkers => {
             this.markersSource = timeMarkers;
             this.markersSource.sort((a, b) => a.startTime - b.startTime)
+        });
+    }
+
+    private fetchRecordInsights(recordId: string) {
+        this.insightService.getRecordInsights(recordId).subscribe(insight => {
+            this.recordInsights = insight;
         });
     }
 

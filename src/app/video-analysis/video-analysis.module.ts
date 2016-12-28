@@ -16,6 +16,9 @@ import { VgBufferingModule } from 'videogular2/buffering';
 import { IEmotionService } from './shared/services/def/emotions.service';
 import { EmotionService } from './shared/services/emotions.service';
 
+import { IInsightService } from './shared/services/def/insights.service';
+import { FakeInsightService } from './shared/services/insights-fake.service';
+
 import { EmotionPreviewComponent } from './emotions-preview/emotion-preview.component';
 import { SentimentsPreviewComponent } from './sentiments-preview/sentiments-preview.component';
 import { PersonalityInsightsComponent } from './personality-insights/personality-insights.component';
@@ -36,6 +39,6 @@ import { PersonalityInsightsComponent } from './personality-insights/personality
   ],
   declarations: [EmotionPreviewComponent, VideoAnalysisComponent, SentimentsPreviewComponent, PersonalityInsightsComponent],
   exports: [VideoAnalysisComponent],
-  providers: [{ provide: 'IEmotionService', useClass: EmotionService }]
+  providers: [{ provide: 'IEmotionService', useClass: EmotionService }, { provide: 'IInsightService', useClass: FakeInsightService }]
 })
 export class VideoAnalysisModule { }
