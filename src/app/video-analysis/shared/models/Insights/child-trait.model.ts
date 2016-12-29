@@ -1,3 +1,4 @@
+import { ChildTraitChartData } from './charts/child-trait-chart.data.model';
 import { Trait } from './trait.model';
 
 export class ChildTrait extends Trait {
@@ -6,5 +7,9 @@ export class ChildTrait extends Trait {
         public category: string,
         public percentile: number) {
         super(id, name, category, percentile);
+    }
+
+    public getChartData() {
+        return new ChildTraitChartData(this);
     }
 }

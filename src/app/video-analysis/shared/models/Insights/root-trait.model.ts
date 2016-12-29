@@ -1,8 +1,9 @@
-import { ChildTrait } from './child-trait.mode';
+import { RootTraitChartData } from './charts/root-trait-chart-data.model';
+import { ChildTrait } from './child-trait.model';
 import { Trait } from './trait.model';
 
 export class RootTrait extends Trait {
-    private _traits: Array<ChildTrait>
+    private _traits: Array<ChildTrait>;
 
     constructor(public id: string,
         public name: string,
@@ -19,4 +20,13 @@ export class RootTrait extends Trait {
     public addChildTrait(trait: ChildTrait) {
         this._traits.push(trait);
     }
+
+    public getChildrensById(id: string) {
+        return this._traits.filter(trait => trait.id === id);
+    }
+
+    public getChartData() {
+        return new RootTraitChartData(this);
+    }
+
 }

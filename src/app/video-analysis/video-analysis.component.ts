@@ -21,7 +21,6 @@ export class VideoAnalysisComponent implements OnInit {
     private currentTimeMarkerSource = new Subject<TimeMarker>();
     private markersSource = new Array<TimeMarker>();
     private currentTimeMarker: TimeMarker;
-    private recordInsights: Insight;
 
     constructor( @Inject('IEmotionService') private emotionService: IEmotionService,
         @Inject('IInsightService') private insightService: IInsightService) {
@@ -43,7 +42,6 @@ export class VideoAnalysisComponent implements OnInit {
 
     ngOnInit() {
         this.fetchTimeMarkers(this.recordId);
-        this.fetchRecordInsights(this.recordId);
     }
 
     private fetchTimeMarkers(recordId: string) {
@@ -52,13 +50,6 @@ export class VideoAnalysisComponent implements OnInit {
             this.markersSource.sort((a, b) => a.startTime - b.startTime)
         });
     }
-
-    private fetchRecordInsights(recordId: string) {
-        this.insightService.getRecordInsights(recordId).subscribe(insight => {
-            this.recordInsights = insight;
-        });
-    }
-
 
     onPlayerReady(api: VgAPI) {
         this.api = api;

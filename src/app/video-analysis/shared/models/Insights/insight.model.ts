@@ -1,15 +1,17 @@
+import { ChildTrait } from './child-trait.model';
 import { RootTrait } from './root-trait.model';
 
 export class Insight {
     private _personality: Array<RootTrait>;
-    private _needs: Array<RootTrait>;
-    private _values: Array<RootTrait>;
+    private _needs: RootTrait;
+    private _values: RootTrait;
 
     constructor() {
         this._personality = new Array<RootTrait>();
-        this._needs = new Array<RootTrait>();
-        this._values = new Array<RootTrait>();
+        this._needs = new RootTrait('Needs_Root', 'Needs', 'needs', -1);
+        this._values = new RootTrait('Values_Root', 'Values', 'values', -1);
     }
+
 
     get personality(): Array<RootTrait> {
         return this._personality;
@@ -19,22 +21,24 @@ export class Insight {
         this._personality.push(trait);
     }
 
-    get needs(): Array<RootTrait> {
+    getPersonalityRootTraitById(id: string) {
+        return this._personality.find(trait => trait.id === id);
+    }
+
+    get needs(): RootTrait {
         return this._needs;
     }
 
-    public addNeedsTrait(trait: RootTrait) {
-        this._needs.push(trait);
+    public addNeedsTrait(trait: ChildTrait) {
+        this._needs.addChildTrait(trait);
     }
 
-
-    get values(): Array<RootTrait> {
+    get values(): RootTrait {
         return this._values;
     }
 
-    public addValuesTrait(trait: RootTrait) {
-        this._values.push(trait);
+    public addValuesTrait(trait: ChildTrait) {
+        this._values.addChildTrait(trait);
     }
-
 
 }

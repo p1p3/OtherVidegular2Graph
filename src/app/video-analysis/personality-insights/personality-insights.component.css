@@ -34,11 +34,11 @@ span {
 }
 
 .insight-labels {
-  height: 12%;
+  height: 8%;
 }
 
 .insight-graph {
-  height: 88%;
+  height: 92%;
   display: flex;
   align-items: center;
 }

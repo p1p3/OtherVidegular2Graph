@@ -1,4 +1,4 @@
-<div class="row insights-display-container">
+<div class="row insights-display-container" *ngIf="insight">
   <div class="col-xs-12 insight-options">
     <ol class="breadcrumb  pull-right">
       <li (click)="selectInsight(insightTypes.Personality)"><a [ngClass]="{active: selectedInsightType==insightTypes.Personality}">Personality</a></li>
@@ -7,104 +7,13 @@
     </ol>
   </div>
   <div class="col-xs-12 insight-info">
-    <div class="row insight-info-container" *ngIf="selectedInsightType==insightTypes.Personality">
-      <div class="col-xs-12">
-        <!--  <div class="row insight">
-          <div class="col-xs-12">
-            <div class="row">
-              <div class="col-xs-4">
-                <span>Emotional range:</span>
-              </div>
-              <div class="col-xs-8">
-                <span class="label label-success">Fiery</span>
-                <span class="label label-primary">Prone to worry</span>
-                <span class="label label-info">Melancholy</span>
-                <span class="label label-warning">Immoderation</span>
-                <span class="label label-danger">Self-consciousness</span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="percent-bar percent-bar-and-score--percent-bar">
-                  <div class="percent-bar--meter" style="-webkit-transform: translate(95%); transform: translate(95%)">
-                    <div class="percent-bar--ball percent-bar--ball_POSITIVE-FILL"></div>
-                    <div class="percent-bar-and-score--number"> 95% </div>
-                  </div>
-                  <div class="percent-bar--meter" style="-webkit-transform: translate(1%); transform: translate(1%)">
-                    <div class="percent-bar--ball percent-bar--ball_POSITIVE-FILL"></div>
-                    <div class="percent-bar-and-score--number"> 1% </div>
-                  </div>
-                  <div class="percent-bar--meter" style="-webkit-transform: translate(22%); transform: translate(2%)">
-                    <div class="percent-bar--ball percent-bar--ball_POSITIVE-FILL"></div>
-                    <div class="percent-bar-and-score--number"> 2% </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr>
-        <div class="row insight">
-          <div class="col-xs-12">
-            <div class="row">
-              <div class="col-xs-6">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <span>Openness</span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <span class="label label-success">Fiery</span>
-                    <span class="label label-primary">Prone to worry</span>
-                    <span class="label label-info">Melancholy</span>
-                    <span class="label label-warning">Immoderation</span>
-                    <span class="label label-danger">Self-consciousness</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <div class="percent-bar percent-bar-and-score--percent-bar">
-                  <div class="percent-bar--meter" style="-webkit-transform: translate(1%); transform: translate(1%)">
-                    <div class="percent-bar--ball percent-bar--ball_POSITIVE-FILL"></div>
-                    <div class="percent-bar-and-score--number"> 1% </div>
-                  </div>
-                  <div class="percent-bar--meter" style="-webkit-transform: translate(2%); transform: translate(2%)">
-                    <div class="percent-bar--ball percent-bar--ball_POSITIVE-FILL"></div>
-                    <div class="percent-bar-and-score--number"> 1% </div>
-                  </div>
-                  <div class="percent-bar--meter" style="-webkit-transform: translate(13%); transform: translate(13%)">
-                    <div class="percent-bar--ball percent-bar--ball_POSITIVE-FILL"></div>
-                    <div class="percent-bar-and-score--number"> 13% </div>
-                  </div>
-                  <div class="percent-bar--meter" style="-webkit-transform: translate(17%); transform: translate(17%)">
-                    <div class="percent-bar--ball percent-bar--ball_POSITIVE-FILL"></div>
-                    <div class="percent-bar-and-score--number">17% </div>
-                  </div>
-                  <div class="percent-bar--meter" style="-webkit-transform: translate(2%); transform: translate(2%)">
-                    <div class="percent-bar--ball percent-bar--ball_POSITIVE-FILL"></div>
-                    <div class="percent-bar-and-score--number">2% </div>
-                  </div>
-                </div>
-              </div>
-            </div>-->
-      </div>
-    </div>
-    <div class="row insight-info-container" *ngIf="selectedInsightType==insightTypes.ConsumerNeeds">
+    <div class="row insight-info-container">
       <div class="col-xs-12 insight-labels text-center">
-        <span class="label label-danger">Emotional Range</span>
-        <span class="label label-primary">Openness</span>
-        <span class="label label-success">Conscientiousness</span>
-        <span class="label label-info">Introversion/Extraversion</span>
-        <span class="label label-warning">Agreeableness</span>
+        <span class="label label-danger" *ngFor="let trait of rootLabels" (click)="selectRootTrait(trait.id)">{{trait.name}}</span>
       </div>
-      <div class="col-xs-12 insight-graph">
-        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="chartOptions" [legend]="barChartLegend"
+      <div class="col-xs-12 insight-graph" *ngIf="showGraph">
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
           [chartType]="chartName"></canvas>
-      </div>
-    </div>
-    <div class="row insight-info-container" *ngIf="selectedInsightType==insightTypes.Values">
-      <div class="col-xs-12">
       </div>
     </div>
   </div>
