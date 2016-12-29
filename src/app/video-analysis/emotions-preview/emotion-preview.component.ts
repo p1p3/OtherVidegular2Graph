@@ -1,3 +1,4 @@
+import { BaseChartDirective } from './../../charts/chartJs/chartsJs';
 import { ChartJsNames } from './../../charts/chartJs/chart-js-names.constants';
 import { Sentiment } from './../shared/models/sentiment.model';
 import { GraphType } from '../shared/enums/graph-type.enum';
@@ -14,7 +15,6 @@ import { Observable } from 'rxjs/Rx';
 })
 export class EmotionPreviewComponent implements OnInit {
   @Input() markers: Observable<TimeMarker>;
-
   public graphs = GraphType;
   public chartsNames = ChartJsNames;
 

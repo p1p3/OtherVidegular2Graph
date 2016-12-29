@@ -14,8 +14,6 @@ import { ChartJsNames } from './../../charts/chartJs/chart-js-names.constants';
 })
 export class PersonalityInsightsComponent implements OnInit {
   @Input() record: string;
-
-  private bs3Colors: string[] = ["1"];
   private insight: Insight;
   private insightTypes = InsightType;
   private selectedInsightType = InsightType.Personality;
@@ -26,6 +24,7 @@ export class PersonalityInsightsComponent implements OnInit {
   public baseOptions: ChartBarWithLineOptions = {
     scaleShowVerticalLines: false,
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       yAxes: [{
         ticks: {
@@ -112,13 +111,6 @@ export class PersonalityInsightsComponent implements OnInit {
     Object.assign(this.barChartOptions, options, this.baseOptions);
   }
 
-  /**
-   * Returns a random integer between min (inclusive) and max (inclusive)
-   * Using Math.round() will give you a non-uniform distribution!
-   */
-  getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
 }
 
 

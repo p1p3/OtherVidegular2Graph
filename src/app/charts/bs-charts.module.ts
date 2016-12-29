@@ -11,6 +11,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     //ChartsJsModule
   ],
   declarations: [linearGaugeComponent],
-  exports: [ChartsModule, linearGaugeComponent,/*ChartsJsModule*/]
+  exports: [ChartsModule,
+    // ChartsJsModule ,
+    linearGaugeComponent]
 })
 export class BSChartsModule { }
