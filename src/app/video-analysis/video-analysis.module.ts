@@ -22,6 +22,10 @@ import { FakeInsightService } from './shared/services/insights-fake.service';
 import { EmotionPreviewComponent } from './emotions-preview/emotion-preview.component';
 import { SentimentsPreviewComponent } from './sentiments-preview/sentiments-preview.component';
 import { PersonalityInsightsComponent } from './personality-insights/personality-insights.component';
+import { EmotionTimeLineComponent } from './emotion-time-line/emotion-time-line.component';
+import { SentimentTimeLineComponent } from './sentiment-time-line/sentiment-time-line.component';
+import { TranscriptionPreviewComponent } from './transcription-preview/transcription-preview.component';
+import { ReadingEasePreviewComponent } from './reading-ease-preview/reading-ease-preview.component';
 
 
 @NgModule({
@@ -37,7 +41,7 @@ import { PersonalityInsightsComponent } from './personality-insights/personality
     TabsModule.forRoot(),
     TooltipModule.forRoot()
   ],
-  declarations: [EmotionPreviewComponent, VideoAnalysisComponent, SentimentsPreviewComponent, PersonalityInsightsComponent],
+  declarations: [EmotionPreviewComponent, VideoAnalysisComponent, SentimentsPreviewComponent, PersonalityInsightsComponent, EmotionTimeLineComponent, SentimentTimeLineComponent, TranscriptionPreviewComponent, ReadingEasePreviewComponent],
   exports: [VideoAnalysisComponent],
   providers: [{ provide: 'IEmotionService', useClass: EmotionService }, { provide: 'IInsightService', useClass: FakeInsightService }]
 })

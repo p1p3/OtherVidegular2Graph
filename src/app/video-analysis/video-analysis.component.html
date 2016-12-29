@@ -60,24 +60,41 @@
 <div class="row static-graphs">
   <div class="col-xs-12 col-md-7">
     <accordion [closeOthers]="oneAtATime">
-      <accordion-group heading="Static Header, initially expanded">
-        This content is straight in the template.
+      <accordion-group heading="Static Header, initially expanded" [isOpen]="true">
+        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="lineChartLegend"
+          [chartType]="lineChartType"></canvas>
       </accordion-group>
       <accordion-group heading="Other">
-        This content is straight in the template.
+        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="lineChartLegend"
+          [chartType]="lineChartType"></canvas>
       </accordion-group>
     </accordion>
   </div>
   <div class="col-xs-12 col-md-5">
-    <div class="list-group">
-      <a href="#" class="list-group-item active">
-        <span class="badge">00:00:01 - 00:00:15</span> Cras justo odio
-      </a>
-      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-      <a href="#" class="list-group-item">Morbi leo risus</a>
-      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="list-group">
+          <a href="#" class="list-group-item active">
+            <span class="badge">00:00:01 - 00:00:15</span> Cras justo odio
+          </a>
+          <a href="#" class="list-group-item">
+            <span class="badge">00:00:15 - 00:00:30</span>Dapibus ac facilisis in</a>
+          <a href="#" class="list-group-item">Morbi leo risus</a>
+          <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+          <a href="#" class="list-group-item">Vestibulum at eros</a>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <div style="height: 200px;width: 200px;">
+              <ng2-kw-gauge [bgRadius]="progressGraph.bgRadius" [bgColor]="progressGraph.bgColor" [rounded]="progressGraph.rounded" [reverse]="progressGraph.reverse"
+                [animationSecs]="progressGraph.animationSecs" [labels]="progressGraph.labels" [segments]="progressGraph.segments">
+              </ng2-kw-gauge>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-  
