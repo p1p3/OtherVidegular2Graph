@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { EmotionTimelineChartData } from './../shared/models/emotion-timeline-chart-data.model';
+import { Sentiment } from './../shared/models/sentiment.model';
+import { Emotion } from './../shared/models/emotion.model';
+import { TimeMarker } from './../shared/models/time-marker.model';
+import { Observable } from 'rxjs/Rx';
+import { EmotionChartData } from './../shared/models/emotion-chart-data.model';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-emotion-time-line',
@@ -6,67 +12,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./emotion-time-line.component.css']
 })
 export class EmotionTimeLineComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  public lineChartData: Array<any> = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-    { data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C' }
-  ];
-  public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartOptions: any = {
+  @Input() markers: Observable<TimeMarker[]>;
+  private showUpperLabels: boolean = true;
+  private lineChartData = Array<any>();
+  private lineChartLabels: Array<string>;
+  private lineChartOptions: any = {
     animation: false,
     responsive: true
   };
-  public lineChartType: string = 'line';
+  private lineChartType: string = 'line';
 
-  /* addData() {
-       let _lineChartData: Array<any> = new Array(this.lineChartData.length);
-       for (let dataset of this.lineChartData) {
-           dataset.push(Math.random() * 100);
-       }
-   }*/
+  constructor() { }
 
 
-  public addData(data: ChartDataSet): void {
-    //debugger;
-    this.lineChartLabels.push('new');
-    let _lineChartData = Array<any>();
-    for (let dataSet of this.lineChartData) {
-      let copy = Object.assign({ __proto__: dataSet.__proto__ }, dataSet);
-      copy.data.push(Math.floor((Math.random() * 100) + 1));
-      _lineChartData.push(copy);
-      //dataSet.data.push(Math.floor((Math.random() * 100) + 1));
-    }
-    /* for (let i = 0; i < this.lineChartData.length; i++) {
-         _lineChartData[i] = { data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label };
-         for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-             _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-         }
-     }*/
-    this.lineChartData = _lineChartData;
+  ngOnInit() {
+    this.initGraphsWithEmptyData();
+    this.markers.subscribe(timeMarkers => {
+      //TODO: FIX ALGORITHM
+      let chartData = new EmotionTimelineChartData(timeMarkers);
+      this.fillChartsData(chartData);
+    });
   }
 
-  public _addData(): void {
-    //debugger;
-    this.lineChartLabels.push('new');
-    let _lineChartData = Array<any>();
-    for (let dataSet of this.lineChartData) {
-      let copy = Object.assign({ __proto__: dataSet.__proto__ }, dataSet);
-      copy.data.push(Math.floor((Math.random() * 100) + 1));
-      _lineChartData.push(copy);
-      //dataSet.data.push(Math.floor((Math.random() * 100) + 1));
-    }
-    /* for (let i = 0; i < this.lineChartData.length; i++) {
-         _lineChartData[i] = { data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label };
-         for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-             _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-         }
-     }*/
-    this.lineChartData = _lineChartData;
+  private initGraphsWithEmptyData() {
+    let emptyEmotion = new Emotion(0, 0, 0, 0, 0, 0, 0, 0);
+    let emptySentiment = new Sentiment(0);
+    let timeMarker = new TimeMarker('', 0, 0, emptyEmotion, emptySentiment);
+    let emotionDataChart = new EmotionTimelineChartData([timeMarker]);
+    this.fillChartsData(emotionDataChart);
   }
+
+  fillChartsData(emotionChartdata: EmotionTimelineChartData) {
+    this.lineChartData = emotionChartdata.data;
+    this.lineChartLabels = emotionChartdata.markersLabels;
+  }
+
+
 }

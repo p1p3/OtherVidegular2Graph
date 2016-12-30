@@ -61,10 +61,10 @@
   <div class="col-xs-12 col-md-7">
     <accordion [closeOthers]="oneAtATime">
       <accordion-group heading="Emotions Timeline" [isOpen]="'true'">
-        <app-emotion-time-line></app-emotion-time-line>
+        <app-emotion-time-line [markers]="currentMarkerersObservable"></app-emotion-time-line>
       </accordion-group>
       <accordion-group heading="Sentiment Timeline">
-        <app-sentiment-time-line></app-sentiment-time-line>
+        <app-sentiment-time-line [markers]="currentMarkerersObservable"></app-sentiment-time-line>
       </accordion-group>
     </accordion>
   </div>

@@ -19,6 +19,7 @@ export class VideoAnalysisComponent implements OnInit {
     private api: VgAPI;
     private recordId = 'z4eee59e-f1ae-4882-9bbe-ee0c409c5ded';
     private currentTimeMarkerSource = new Subject<TimeMarker>();
+    private currentTimeMarkersSource = new Subject<TimeMarker[]>();
     private markersSource = new Array<TimeMarker>();
     private currentTimeMarker: TimeMarker;
 
@@ -60,12 +61,19 @@ export class VideoAnalysisComponent implements OnInit {
 
             if (timeMarker && (this.isNotBeingDisplayed(timeMarker) || (!this.isNotNull(this.currentTimeMarker)))) {
                 this.currentTimeMarkerSource.next(timeMarker);
+                let timeMarkersSpan = this.markersSource.filter(timeMarker =>
+                    this.timeMarkerInVideoRange(currentTime, timeMarker));
+                this.currentTimeMarkersSource.next(timeMarkersSpan);
             }
         });
     }
 
     isCurrentTimeInTimeMarkerInRange(currentTime: number, timeMarker: TimeMarker): boolean {
         return (currentTime >= timeMarker.startTime && currentTime <= timeMarker.endTime);
+    }
+
+    timeMarkerInVideoRange(currentTime: number, timeMarker: TimeMarker): boolean {
+        return (timeMarker.endTime <= currentTime);
     }
 
     isNotNull(obj: any): boolean {
@@ -79,6 +87,10 @@ export class VideoAnalysisComponent implements OnInit {
 
     get currentMarkerObservable(): Observable<TimeMarker> {
         return this.currentTimeMarkerSource.asObservable();
+    }
+
+    get currentMarkerersObservable(): Observable<TimeMarker[]> {
+        return this.currentTimeMarkersSource.asObservable();
     }
 
 }

@@ -50,6 +50,8 @@ export class EmotionService implements IEmotionService {
     }
 
     private getDateFromTimeInfo(time: string): Date {
+        debugger;
+        //TODO doesnt work when end time > 1 min
         let dateFormat = 'January 1, 1970, {time}';
         return new Date(dateFormat.replace('{time}', time));
     }
