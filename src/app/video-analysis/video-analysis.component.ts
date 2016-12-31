@@ -58,7 +58,7 @@ export class VideoAnalysisComponent implements OnInit {
             let currentTime = this.api.getDefaultMedia().currentTime;
 
             let timeMarker = this.markersSource.find(timeMarker => this.isCurrentTimeInTimeMarkerInRange(currentTime, timeMarker));
-
+          
             if (timeMarker && (this.isNotBeingDisplayed(timeMarker) || (!this.isNotNull(this.currentTimeMarker)))) {
                 this.currentTimeMarkerSource.next(timeMarker);
                 let timeMarkersSpan = this.markersSource.filter(timeMarker =>

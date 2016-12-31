@@ -32,11 +32,11 @@ export class EmotionService implements IEmotionService {
             let endTime: number;
 
             if (times.length > 1) {
-                startTime = this.getDateFromTimeInfo(times[0]).getSeconds();
-                endTime = this.getDateFromTimeInfo(times[1]).getSeconds();
+                startTime = this.getTotalSecondsFromDateTime(this.getDateFromTimeInfo(times[0]));
+                endTime = this.getTotalSecondsFromDateTime(this.getDateFromTimeInfo(times[1]));
             } else {
-                startTime = this.getDateFromTimeInfo(timeInfo.StartTime).getSeconds();
-                endTime = this.getDateFromTimeInfo(timeInfo.EndTime).getSeconds();
+                startTime = this.getTotalSecondsFromDateTime(this.getDateFromTimeInfo(timeInfo.StartTime));
+                endTime = this.getTotalSecondsFromDateTime(this.getDateFromTimeInfo(timeInfo.EndTime));
             }
 
             let emotion: Emotion = this.getEmotionFromJSON(timeInfo.Emotion);
@@ -50,10 +50,15 @@ export class EmotionService implements IEmotionService {
     }
 
     private getDateFromTimeInfo(time: string): Date {
-        debugger;
-        //TODO doesnt work when end time > 1 min
         let dateFormat = 'January 1, 1970, {time}';
         return new Date(dateFormat.replace('{time}', time));
+    }
+
+    private getTotalSecondsFromDateTime(time: Date) {
+        let seconds = time.getSeconds();
+        let secondsFromMinutes = time.getMinutes() * 60;
+        let secondsFromHours = time.getHours() * 3600;
+        return seconds + secondsFromMinutes + secondsFromHours;
     }
 
     private getSentimentFromJSON(jsonSentiment: any): Sentiment {
