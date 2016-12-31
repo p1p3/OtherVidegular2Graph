@@ -15,7 +15,7 @@ export class EmotionTimeLineComponent implements OnInit {
   @Input() markers: Observable<TimeMarker[]>;
   private showUpperLabels: boolean = true;
   private lineChartData = Array<any>();
-  private lineChartLabels: Array<string>;
+  private lineChartLabels = Array<string>();
   private lineChartOptions: any = {
     animation: false,
     responsive: true
@@ -26,20 +26,11 @@ export class EmotionTimeLineComponent implements OnInit {
 
 
   ngOnInit() {
-    this.initGraphsWithEmptyData();
     this.markers.subscribe(timeMarkers => {
       //TODO: FIX ALGORITHM
       let chartData = new EmotionTimelineChartData(timeMarkers);
       this.fillChartsData(chartData);
     });
-  }
-
-  private initGraphsWithEmptyData() {
-    let emptyEmotion = new Emotion(0, 0, 0, 0, 0, 0, 0, 0);
-    let emptySentiment = new Sentiment(0);
-    let timeMarker = new TimeMarker('', 0, 0, emptyEmotion, emptySentiment);
-    let emotionDataChart = new EmotionTimelineChartData([timeMarker]);
-    this.fillChartsData(emotionDataChart);
   }
 
   fillChartsData(emotionChartdata: EmotionTimelineChartData) {

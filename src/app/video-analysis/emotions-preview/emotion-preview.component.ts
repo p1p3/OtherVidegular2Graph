@@ -37,18 +37,8 @@ export class EmotionPreviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initGraphsWithEmptyData();
     this.markers.subscribe(timeMarker => this.displayData(timeMarker));
   }
-
-  private initGraphsWithEmptyData() {
-    let emptyEmotion = new Emotion(0, 0, 0, 0, 0, 0, 0, 0);
-    let emptySentiment = new Sentiment(0);
-    let timeMarker = new TimeMarker('abc', 0, 0, emptyEmotion, emptySentiment);
-    let emotionDataChart = new EmotionChartData(timeMarker, 'Emotions');
-    this.fillChartsData(emotionDataChart);
-  }
-
 
   displayData(timeMarker: TimeMarker) {
     let emotionChartData = new EmotionChartData(timeMarker, 'Emotions');

@@ -1,3 +1,4 @@
+import { Sentiment } from './shared/models/sentiment.model';
 import { Insight } from './shared/models/Insights/insight.model';
 import { IInsightService } from './shared/services/def/insights.service';
 import { TimeMarker } from './shared/models/time-marker.model';
@@ -58,7 +59,7 @@ export class VideoAnalysisComponent implements OnInit {
             let currentTime = this.api.getDefaultMedia().currentTime;
 
             let timeMarker = this.markersSource.find(timeMarker => this.isCurrentTimeInTimeMarkerInRange(currentTime, timeMarker));
-          
+
             if (timeMarker && (this.isNotBeingDisplayed(timeMarker) || (!this.isNotNull(this.currentTimeMarker)))) {
                 this.currentTimeMarkerSource.next(timeMarker);
                 let timeMarkersSpan = this.markersSource.filter(timeMarker =>
@@ -86,11 +87,20 @@ export class VideoAnalysisComponent implements OnInit {
 
 
     get currentMarkerObservable(): Observable<TimeMarker> {
-        return this.currentTimeMarkerSource.asObservable();
+        return this.currentTimeMarkerSource
+            .asObservable().startWith(this.getEmptyTimeMarker());
     }
 
     get currentMarkerersObservable(): Observable<TimeMarker[]> {
-        return this.currentTimeMarkersSource.asObservable();
+        return this.currentTimeMarkersSource
+            .asObservable().startWith([this.getEmptyTimeMarker()]);
+    }
+
+    private getEmptyTimeMarker() {
+        let emptyEmotion = new Emotion(0, 0, 0, 0, 0, 0, 0, 0);
+        let emptySentiment = new Sentiment(0);
+        let timeMarker = new TimeMarker('', 0, 0, emptyEmotion, emptySentiment);
+        return timeMarker;
     }
 
 }

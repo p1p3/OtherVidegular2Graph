@@ -1,3 +1,4 @@
+import { ChartData } from './../shared/models/chart-data.model';
 import { Sentiment } from './../shared/models/sentiment.model';
 import { Emotion } from './../shared/models/emotion.model';
 import { EmotionTimelineChartData } from './../shared/models/emotion-timeline-chart-data.model';
@@ -23,27 +24,18 @@ export class SentimentTimeLineComponent implements OnInit {
 
   constructor() { }
 
-
   ngOnInit() {
-    this.initGraphsWithEmptyData();
     this.markers.subscribe(timeMarkers => {
-      //TODO: FIX ALGORITHM
-      let chartData = new EmotionTimelineChartData(timeMarkers);
-      this.fillChartsData(chartData);
+      let labels = timeMarkers.map(marker => marker.formatedHmsStartTime);
+      let data = timeMarkers.map(marker => marker.sentiment.Positiveness);
+      let chartData = new ChartData(data, 'Positiveness');
+      this.fillChartsData(chartData, labels);
     });
   }
 
-  private initGraphsWithEmptyData() {
-    let emptyEmotion = new Emotion(0, 0, 0, 0, 0, 0, 0, 0);
-    let emptySentiment = new Sentiment(0);
-    let timeMarker = new TimeMarker('', 0, 0, emptyEmotion, emptySentiment);
-    let emotionDataChart = new EmotionTimelineChartData([timeMarker]);
-    this.fillChartsData(emotionDataChart);
-  }
-
-  fillChartsData(emotionChartdata: EmotionTimelineChartData) {
-    this.lineChartData = emotionChartdata.data;
-    this.lineChartLabels = emotionChartdata.markersLabels;
+  fillChartsData(chartData: ChartData, labels: string[]) {
+    this.lineChartData = [chartData];
+    this.lineChartLabels = labels;
   }
 
 }

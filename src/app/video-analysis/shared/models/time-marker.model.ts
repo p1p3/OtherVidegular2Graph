@@ -25,7 +25,7 @@ export class TimeMarker {
 
         let hDisplay = (h > 0 ? this.formatToNN(h) : '00') + ':';
         let mDisplay = (m > 0 ? this.formatToNN(m) : '00') + ':';
-        let sDisplay = (s > 0 ? this.formatToNN(s) : '00') + ':';
+        let sDisplay = (s > 0 ? this.formatToNN(s) : '00');
         return hDisplay + mDisplay + sDisplay;
     }
 

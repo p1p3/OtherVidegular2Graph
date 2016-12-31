@@ -1,16 +1,15 @@
+import { ChartData } from './chart-data.model';
 import { TimeMarker } from './time-marker.model';
 import { Emotion } from './emotion.model';
 
 
-export class EmotionChartData {
+export class EmotionChartData extends ChartData {
 
     public static chartLabels: string[] = ['Neutral', 'Happiness', 'Surprise', 'Sadness', 'Anger', 'Disgust', 'Fear', 'Contempt'];
-
-    label: string;
-    data = Array<number>();
     timeMarker: TimeMarker;
 
     constructor(timeMarker: TimeMarker, label: string ) {
+        super();
         this.label = label;
         this.timeMarker = timeMarker;
 
