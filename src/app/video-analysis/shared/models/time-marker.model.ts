@@ -6,7 +6,8 @@ export class TimeMarker {
         public startTime: number,
         public endTime: number,
         public emotion: Emotion,
-        public sentiment: Sentiment) { }
+        public sentiment: Sentiment,
+        public text: string) { }
 
 
     get formatedHmsStartTime() {

@@ -1,3 +1,4 @@
+import { MarkerPipe } from './shared/pipes/time-marker.pipe';
 import { VideoAnalysisComponent } from './video-analysis.component';
 import { BSChartsModule } from './../charts/bs-charts.module';
 import { NgModule } from '@angular/core';
@@ -41,7 +42,11 @@ import { ReadingEasePreviewComponent } from './reading-ease-preview/reading-ease
     TabsModule.forRoot(),
     TooltipModule.forRoot()
   ],
-  declarations: [EmotionPreviewComponent, VideoAnalysisComponent, SentimentsPreviewComponent, PersonalityInsightsComponent, EmotionTimeLineComponent, SentimentTimeLineComponent, TranscriptionPreviewComponent, ReadingEasePreviewComponent],
+  declarations: [EmotionPreviewComponent, VideoAnalysisComponent,
+    SentimentsPreviewComponent, PersonalityInsightsComponent,
+    EmotionTimeLineComponent, SentimentTimeLineComponent,
+    TranscriptionPreviewComponent, ReadingEasePreviewComponent,
+    MarkerPipe],
   exports: [VideoAnalysisComponent],
   providers: [{ provide: 'IEmotionService', useClass: EmotionService }, { provide: 'IInsightService', useClass: FakeInsightService }]
 })

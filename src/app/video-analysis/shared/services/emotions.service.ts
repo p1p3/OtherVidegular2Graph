@@ -41,8 +41,8 @@ export class EmotionService implements IEmotionService {
 
             let emotion: Emotion = this.getEmotionFromJSON(timeInfo.Emotion);
             let sentiment: Sentiment = this.getSentimentFromJSON(timeInfo.TimeTextSentiment);
-
-            return new TimeMarker(id, startTime, endTime, emotion, sentiment);
+            let text = timeInfo.TimeText;
+            return new TimeMarker(id, startTime, endTime, emotion, sentiment, text);
         });
 
 

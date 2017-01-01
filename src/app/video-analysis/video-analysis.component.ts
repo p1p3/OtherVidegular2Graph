@@ -22,6 +22,8 @@ export class VideoAnalysisComponent implements OnInit {
     private currentTimeMarkerSource = new Subject<TimeMarker>();
     private currentTimeMarkersSource = new Subject<TimeMarker[]>();
     private markersSource = new Array<TimeMarker>();
+    private timeMarkersObservable: Observable<TimeMarker[]>;
+
     private currentTimeMarker: TimeMarker;
 
     constructor( @Inject('IEmotionService') private emotionService: IEmotionService,
@@ -47,7 +49,8 @@ export class VideoAnalysisComponent implements OnInit {
     }
 
     private fetchTimeMarkers(recordId: string) {
-        this.emotionService.getRecordEmotions(recordId).subscribe(timeMarkers => {
+        this.timeMarkersObservable = this.emotionService.getRecordEmotions(recordId);
+        this.timeMarkersObservable.subscribe(timeMarkers => {
             this.markersSource = timeMarkers;
             this.markersSource.sort((a, b) => a.startTime - b.startTime)
         });
@@ -74,7 +77,7 @@ export class VideoAnalysisComponent implements OnInit {
     }
 
     timeMarkerInVideoRange(currentTime: number, timeMarker: TimeMarker): boolean {
-        return (timeMarker.endTime <= currentTime);
+        return (currentTime >= timeMarker.startTime);
     }
 
     isNotNull(obj: any): boolean {
@@ -99,7 +102,7 @@ export class VideoAnalysisComponent implements OnInit {
     private getEmptyTimeMarker() {
         let emptyEmotion = new Emotion(0, 0, 0, 0, 0, 0, 0, 0);
         let emptySentiment = new Sentiment(0);
-        let timeMarker = new TimeMarker('', 0, 0, emptyEmotion, emptySentiment);
+        let timeMarker = new TimeMarker('', 0, 0, emptyEmotion, emptySentiment, '');
         return timeMarker;
     }
 
