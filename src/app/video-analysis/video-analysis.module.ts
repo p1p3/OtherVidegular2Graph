@@ -33,6 +33,7 @@ import { EmotionTimeLineComponent } from './emotion-time-line/emotion-time-line.
 import { SentimentTimeLineComponent } from './sentiment-time-line/sentiment-time-line.component';
 import { TranscriptionPreviewComponent } from './transcription-preview/transcription-preview.component';
 import { ReadingEasePreviewComponent } from './reading-ease-preview/reading-ease-preview.component';
+import { WordCloudComponent } from './word-cloud/word-cloud.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { ReadingEasePreviewComponent } from './reading-ease-preview/reading-ease
     SentimentsPreviewComponent, PersonalityInsightsComponent,
     EmotionTimeLineComponent, SentimentTimeLineComponent,
     TranscriptionPreviewComponent, ReadingEasePreviewComponent,
-    MarkerPipe],
+    MarkerPipe,
+    WordCloudComponent],
   exports: [VideoAnalysisComponent],
   providers: [{ provide: 'IEmotionService', useClass: EmotionService },
   { provide: 'IInsightService', useClass: FakeInsightService },

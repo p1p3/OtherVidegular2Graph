@@ -25,8 +25,9 @@ export class VideoAnalysisComponent implements OnInit {
     private currentTimeMarkersSource = new Subject<TimeMarker[]>();
     private markersSource = new Array<TimeMarker>();
     private timeMarkersObservable: Observable<TimeMarker[]>;
+
     private textAnalytics: TextAnalytics;
-    private cloudData = new Array<WordWeight>();
+    private textAnalyticsObservable: Observable<TextAnalytics>;
 
     private currentTimeMarker: TimeMarker;
 
@@ -55,9 +56,9 @@ export class VideoAnalysisComponent implements OnInit {
     }
 
     private fetchTextAnalytics(recordId: string) {
-        this.textAnayticsService.getRecordTextAnalytics(recordId).subscribe(analytics => {
+        this.textAnalyticsObservable = this.textAnayticsService.getRecordTextAnalytics(recordId);
+        this.textAnalyticsObservable.subscribe(analytics => {
             this.textAnalytics = analytics;
-            this.cloudData = analytics.keywordDensity.map(keyword => new WordWeight(keyword.item, keyword.count));
         });
     }
 
@@ -103,6 +104,7 @@ export class VideoAnalysisComponent implements OnInit {
         return this.currentTimeMarkersSource
             .asObservable().startWith([this.getEmptyTimeMarker()]);
     }
+
 
     // tslint:disable-next-line:no-unused-variable
     private selectMarker(marker: TimeMarker) {

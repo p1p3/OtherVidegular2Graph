@@ -75,7 +75,7 @@
         <app-reading-ease-preview [readingEasePercentage]="textAnalytics.readingEase"></app-reading-ease-preview>
       </div>
       <div class="col-xs-5 reading-ease">
-        <canvas appWordCloud [data]="cloudData"></canvas>
+        <app-word-cloud [textAnalytics]="textAnalyticsObservable"></app-word-cloud>
       </div>
     </div>
   </div>
@@ -83,4 +83,3 @@
     <app-transcription-preview [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
   </div>
 </div>
-
