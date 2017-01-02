@@ -2,9 +2,9 @@ import { Sentiment } from './../models/sentiment.model';
 import { Emotion } from './../models/emotion.model';
 import { TimeMarker } from './../models/time-marker.model';
 import { Injectable, Inject } from '@angular/core';
-import { Observable, Operator } from 'rxjs/Rx';
-import 'rxjs/add/operator/map'
-import { Http, Response, Headers } from '@angular/http'
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import { Response } from '@angular/http';
 
 import { IAnalyticsService } from './../../../core/services/def/analytics.service';
 import { IEmotionService } from './def/emotions.service';

@@ -14,14 +14,17 @@ import { VgControlsModule } from 'videogular2/controls';
 import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 import { VgBufferingModule } from 'videogular2/buffering';
 
+// tslint:disable-next-line:no-unused-variable
 import { IEmotionService } from './shared/services/def/emotions.service';
 import { EmotionService } from './shared/services/emotions.service';
 
+// tslint:disable-next-line:no-unused-variable
 import { IInsightService } from './shared/services/def/insights.service';
 import { FakeInsightService } from './shared/services/insights-fake.service';
 
-import { TextAnalyticsService } from './shared/services/text-analytics.service';
+// tslint:disable-next-line:no-unused-variable
 import { ITextAnalyticsService } from './shared/services/def/text-analytics.service';
+import { TextAnalyticsService } from './shared/services/text-analytics.service';
 
 import { EmotionPreviewComponent } from './emotions-preview/emotion-preview.component';
 import { SentimentsPreviewComponent } from './sentiments-preview/sentiments-preview.component';

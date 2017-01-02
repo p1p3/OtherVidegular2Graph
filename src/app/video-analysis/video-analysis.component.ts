@@ -1,13 +1,10 @@
 import { ITextAnalyticsService } from './shared/services/def/text-analytics.service';
-import { AnalyticsService } from './../core/services/analytics.service';
-import { IAnalyticsService } from './../core/services/def/analytics.service';
 import { Sentiment } from './shared/models/sentiment.model';
-import { Insight } from './shared/models/Insights/insight.model';
 import { IInsightService } from './shared/services/def/insights.service';
 import { TimeMarker } from './shared/models/time-marker.model';
 import { Emotion } from './shared/models/emotion.model';
 import { IEmotionService } from './shared/services/def/emotions.service';
-import { Subject, Observable, Operator } from 'rxjs/Rx';
+import { Subject, Observable } from 'rxjs/Rx';
 import { VgAPI } from 'videogular2/core';
 import { Component, OnInit, Inject } from '@angular/core';
 
@@ -34,16 +31,16 @@ export class VideoAnalysisComponent implements OnInit {
         @Inject('ITextAnalyticsService') private textAnayticsService: ITextAnalyticsService) {
         this.sources = [
             {
-                src: "http://static.videogular.com/assets/videos/videogular.mp4",
-                type: "video/mp4"
+                src: 'http://static.videogular.com/assets/videos/videogular.mp4',
+                type: 'video/mp4'
             },
             {
-                src: "http://static.videogular.com/assets/videos/videogular.ogg",
-                type: "video/ogg"
+                src: 'http://static.videogular.com/assets/videos/videogular.ogg',
+                type: 'video/ogg'
             },
             {
-                src: "http://static.videogular.com/assets/videos/videogular.webm",
-                type: "video/webm"
+                src: 'http://static.videogular.com/assets/videos/videogular.webm',
+                type: 'video/webm'
             }
         ];
     }
@@ -57,7 +54,7 @@ export class VideoAnalysisComponent implements OnInit {
         this.timeMarkersObservable = this.emotionService.getRecordEmotions(recordId);
         this.timeMarkersObservable.subscribe(timeMarkers => {
             this.markersSource = timeMarkers;
-            this.markersSource.sort((a, b) => a.startTime - b.startTime)
+            this.markersSource.sort((a, b) => a.startTime - b.startTime);
         });
     }
 
@@ -72,10 +69,10 @@ export class VideoAnalysisComponent implements OnInit {
         this.api.getDefaultMedia().subscriptions.timeUpdate.subscribe(time => {
             let currentTime = this.api.getDefaultMedia().currentTime;
 
-            let timeMarker = this.markersSource.find(timeMarker => this.isCurrentTimeInTimeMarkerInRange(currentTime, timeMarker));
+            let timeMarkerResult = this.markersSource.find(timeMarker => this.isCurrentTimeInTimeMarkerInRange(currentTime, timeMarker));
 
-            if (timeMarker && (this.isNotBeingDisplayed(timeMarker) || (!this.isNotNull(this.currentTimeMarker)))) {
-                this.currentTimeMarkerSource.next(timeMarker);
+            if (timeMarkerResult && (this.isNotBeingDisplayed(timeMarkerResult) || (!this.isNotNull(this.currentTimeMarker)))) {
+                this.currentTimeMarkerSource.next(timeMarkerResult);
                 let timeMarkersSpan = this.markersSource.filter(timeMarker =>
                     this.timeMarkerInVideoRange(currentTime, timeMarker));
                 this.currentTimeMarkersSource.next(timeMarkersSpan);
@@ -110,6 +107,7 @@ export class VideoAnalysisComponent implements OnInit {
             .asObservable().startWith([this.getEmptyTimeMarker()]);
     }
 
+    // tslint:disable-next-line:no-unused-variable
     private selectMarker(marker: TimeMarker) {
         this.api.getDefaultMedia().currentTime = marker.startTime;
     }
