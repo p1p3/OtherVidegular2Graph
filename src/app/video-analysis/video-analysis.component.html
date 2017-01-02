@@ -71,7 +71,7 @@
   <div class="col-xs-12 col-md-5">
     <div class="row">
       <div class="col-xs-12">
-        <app-transcription-preview [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable"></app-transcription-preview>
+        <app-transcription-preview [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
       </div>
       <div class="col-xs-12">
         <div class="row">

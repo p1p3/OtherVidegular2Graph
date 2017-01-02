@@ -99,6 +99,10 @@ export class VideoAnalysisComponent implements OnInit {
             .asObservable().startWith([this.getEmptyTimeMarker()]);
     }
 
+    private selectMarker(marker: TimeMarker) {
+        this.api.getDefaultMedia().currentTime = marker.startTime;
+    }
+
     private getEmptyTimeMarker() {
         let emptyEmotion = new Emotion(0, 0, 0, 0, 0, 0, 0, 0);
         let emptySentiment = new Sentiment(0);

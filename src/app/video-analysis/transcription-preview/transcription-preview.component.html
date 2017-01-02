@@ -1,5 +1,5 @@
 <div class="list-group">
-  <a href="#" class="list-group-item" [ngClass]="{active: isSelected(timeMark)}" *ngFor="let timeMark of timeMarkers">
+  <a class="list-group-item marker" [ngClass]="{active: isSelected(timeMark)}" *ngFor="let timeMark of timeMarkers" (click)="selectMarker(timeMark)">
     <span class="badge">{{timeMark.markerId | marker }}</span> {{timeMark.text}}
   </a>
 </div>
