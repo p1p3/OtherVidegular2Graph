@@ -1,3 +1,4 @@
+import { WordWeight } from './../charts/word-cloud/shared/word-weight.model';
 import { TextAnalytics } from './shared/models/text-analytics/text-analytics.model';
 import { ITextAnalyticsService } from './shared/services/def/text-analytics.service';
 import { Sentiment } from './shared/models/sentiment.model';
@@ -15,7 +16,7 @@ import { Component, OnInit, Inject } from '@angular/core';
     styleUrls: ['video-analysis.component.css']
 })
 export class VideoAnalysisComponent implements OnInit {
-    public oneAtATime: boolean = true;
+    public oneAtATime: boolean = false;
 
     private sources: Array<Object>;
     private api: VgAPI;
@@ -25,6 +26,7 @@ export class VideoAnalysisComponent implements OnInit {
     private markersSource = new Array<TimeMarker>();
     private timeMarkersObservable: Observable<TimeMarker[]>;
     private textAnalytics: TextAnalytics;
+    private cloudData = new Array<WordWeight>();
 
     private currentTimeMarker: TimeMarker;
 
@@ -33,17 +35,9 @@ export class VideoAnalysisComponent implements OnInit {
         @Inject('ITextAnalyticsService') private textAnayticsService: ITextAnalyticsService) {
         this.sources = [
             {
-                src: 'http://static.videogular.com/assets/videos/videogular.mp4',
+                src: 'http://bskamsdev.streaming.mediaservices.windows.net/2d295f86-ce23-4f18-b6f4-4b694b7ee601/s12240135_428x240_428.mp4',
                 type: 'video/mp4'
             },
-            {
-                src: 'http://static.videogular.com/assets/videos/videogular.ogg',
-                type: 'video/ogg'
-            },
-            {
-                src: 'http://static.videogular.com/assets/videos/videogular.webm',
-                type: 'video/webm'
-            }
         ];
     }
 
@@ -63,6 +57,7 @@ export class VideoAnalysisComponent implements OnInit {
     private fetchTextAnalytics(recordId: string) {
         this.textAnayticsService.getRecordTextAnalytics(recordId).subscribe(analytics => {
             this.textAnalytics = analytics;
+            this.cloudData = analytics.keywordDensity.map(keyword => new WordWeight(keyword.item, keyword.count));
         });
     }
 

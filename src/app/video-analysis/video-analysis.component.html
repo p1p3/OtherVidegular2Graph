@@ -30,8 +30,7 @@
           </vg-controls>
           <video vg-media #media id="singleVideo" preload="auto" crossorigin>
             <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
-            <track kind="subtitles" label="English" src="http://static.videogular.com/assets/subs/pale-blue-dot.vtt" srclang="en" default>
-            <track kind="subtitles" label="Español" src="http://static.videogular.com/assets/subs/pale-blue-dot-es.vtt" srclang="es">
+            <track kind="subtitles" label="English" src="assets/mocks/subtitles.mp4.vtt" srclang="en">
           </video>
         </vg-player>
       </div>
@@ -65,23 +64,23 @@
           <accordion-group heading="Emotions Timeline" [isOpen]="'true'">
             <app-emotion-time-line [markers]="currentMarkerersObservable"></app-emotion-time-line>
           </accordion-group>
-          <accordion-group heading="Sentiment Timeline">
+          <accordion-group heading="Sentiment Timeline" [isOpen]="'true'">
             <app-sentiment-time-line [markers]="currentMarkerersObservable"></app-sentiment-time-line>
           </accordion-group>
         </accordion>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-6 col-xs-offset-3 reading-ease" *ngIf="textAnalytics">
+      <div class="col-xs-5 reading-ease" *ngIf="textAnalytics">
         <app-reading-ease-preview [readingEasePercentage]="textAnalytics.readingEase"></app-reading-ease-preview>
+      </div>
+      <div class="col-xs-5 reading-ease">
+        <canvas appWordCloud [data]="cloudData"></canvas>
       </div>
     </div>
   </div>
   <div class="col-xs-12 col-md-5">
-    <div class="row">
-      <div class="col-xs-12">
-        <app-transcription-preview [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
-      </div>
-    </div>
+    <app-transcription-preview [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
   </div>
 </div>
+

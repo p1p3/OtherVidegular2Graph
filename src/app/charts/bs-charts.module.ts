@@ -1,3 +1,4 @@
+import { WordCloudDirective } from './word-cloud/word-cloud.directive';
 import { ChartsJsModule } from './chartJs/chartsJs';
 import { linearGaugeComponent } from './linear-gauge/linear-gauge.component';
 import { NgModule } from '@angular/core';
@@ -12,10 +13,11 @@ import { GaugeModule } from 'ng2-kw-gauge';
     GaugeModule,
     //ChartsJsModule
   ],
-  declarations: [linearGaugeComponent],
+  declarations: [linearGaugeComponent, WordCloudDirective],
   exports: [ChartsModule,
     // ChartsJsModule ,
     linearGaugeComponent,
-    GaugeModule]
+    GaugeModule,
+    WordCloudDirective]
 })
 export class BSChartsModule { }

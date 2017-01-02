@@ -7,6 +7,15 @@ div[class*="col-"].full-height {
 
 /* Tabs Styles For RightPaneemotions*/
 
+.panel-title {
+  text-transform: capitalize;
+}
+
+.panel-default>.panel-heading {
+  background-color: rgba(149, 157, 160, 0.31) !important;
+  border-color: #ddd !important;
+}
+
 .group-tabs ul.nav.nav-tabs {
   height: 20%;
 }
