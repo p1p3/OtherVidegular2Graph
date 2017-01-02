@@ -72,8 +72,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-6 col-xs-offset-3 reading-ease">
-        <app-reading-ease-preview></app-reading-ease-preview>
+      <div class="col-xs-6 col-xs-offset-3 reading-ease" *ngIf="textAnalytics">
+        <app-reading-ease-preview [readingEasePercentage]="textAnalytics.readingEase"></app-reading-ease-preview>
       </div>
     </div>
   </div>

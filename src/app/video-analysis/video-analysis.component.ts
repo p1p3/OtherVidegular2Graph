@@ -1,3 +1,4 @@
+import { TextAnalytics } from './shared/models/text-analytics/text-analytics.model';
 import { ITextAnalyticsService } from './shared/services/def/text-analytics.service';
 import { Sentiment } from './shared/models/sentiment.model';
 import { IInsightService } from './shared/services/def/insights.service';
@@ -23,6 +24,7 @@ export class VideoAnalysisComponent implements OnInit {
     private currentTimeMarkersSource = new Subject<TimeMarker[]>();
     private markersSource = new Array<TimeMarker>();
     private timeMarkersObservable: Observable<TimeMarker[]>;
+    private textAnalytics: TextAnalytics;
 
     private currentTimeMarker: TimeMarker;
 
@@ -60,7 +62,7 @@ export class VideoAnalysisComponent implements OnInit {
 
     private fetchTextAnalytics(recordId: string) {
         this.textAnayticsService.getRecordTextAnalytics(recordId).subscribe(analytics => {
-            console.log(analytics);
+            this.textAnalytics = analytics;
         });
     }
 

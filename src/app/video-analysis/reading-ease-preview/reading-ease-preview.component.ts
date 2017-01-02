@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { colors } from './../shared/models/colors.model';
+import { Component, OnInit, Input } from '@angular/core';
 import { GaugeSegment, GaugeLabel } from 'ng2-kw-gauge';
 
 @Component({
@@ -7,52 +8,48 @@ import { GaugeSegment, GaugeLabel } from 'ng2-kw-gauge';
   styleUrls: ['./reading-ease-preview.component.css']
 })
 export class ReadingEasePreviewComponent implements OnInit {
+  @Input() readingEasePercentage: number;
+  private textToDisplay: string;
+  private progressGraph: any;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
+    this.textToDisplay = `${this.readingEasePercentage}%`;
+
+    this.progressGraph = {
+      bgRadius: 60,
+      bgColor: colors.indigo,
+      rounded: false,
+      reverse: false,
+      animationSecs: 1,
+      labels: [
+        new GaugeLabel({
+          color: colors.white,
+          text: 'Reading Ease',
+          x: 0,
+          y: 20,
+          fontSize: '1em'
+        }),
+        new GaugeLabel({
+          color: colors.pink,
+          text: this.textToDisplay,
+          x: 0,
+          y: 0,
+          fontSize: '2em'
+        })
+      ],
+      segments: [
+        new GaugeSegment({
+          value: this.readingEasePercentage,
+          color: colors.pink,
+          borderWidth: 20
+        })
+      ]
+    };
   }
 
 
-  colors = {
-    indigo: '#14143e',
-    pink: '#fd1c49',
-    orange: '#ff6e00',
-    yellow: '#f0c800',
-    mint: '#00efab',
-    cyan: '#05d1ff',
-    purple: '#841386',
-    white: '#fff'
-  };
-
-  progressGraph = {
-    bgRadius: 60,
-    bgColor: this.colors.indigo,
-    rounded: false,
-    reverse: false,
-    animationSecs: 1,
-    labels: [
-      new GaugeLabel({
-        color: this.colors.white,
-        text: 'Reading Ease',
-        x: 0,
-        y: 20,
-        fontSize: '1em'
-      }),
-      new GaugeLabel({
-        color: this.colors.pink,
-        text: '81%',
-        x: 0,
-        y: 0,
-        fontSize: '2em'
-      })
-    ],
-    segments: [
-      new GaugeSegment({
-        value: 81,
-        color: this.colors.pink,
-        borderWidth: 20
-      })
-    ]
-  };
 }
