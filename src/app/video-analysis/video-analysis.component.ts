@@ -1,3 +1,6 @@
+import { ITextAnalyticsService } from './shared/services/def/text-analytics.service';
+import { AnalyticsService } from './../core/services/analytics.service';
+import { IAnalyticsService } from './../core/services/def/analytics.service';
 import { Sentiment } from './shared/models/sentiment.model';
 import { Insight } from './shared/models/Insights/insight.model';
 import { IInsightService } from './shared/services/def/insights.service';
@@ -27,7 +30,8 @@ export class VideoAnalysisComponent implements OnInit {
     private currentTimeMarker: TimeMarker;
 
     constructor( @Inject('IEmotionService') private emotionService: IEmotionService,
-        @Inject('IInsightService') private insightService: IInsightService) {
+        @Inject('IInsightService') private insightService: IInsightService,
+        @Inject('ITextAnalyticsService') private textAnayticsService: ITextAnalyticsService) {
         this.sources = [
             {
                 src: "http://static.videogular.com/assets/videos/videogular.mp4",
@@ -46,6 +50,7 @@ export class VideoAnalysisComponent implements OnInit {
 
     ngOnInit() {
         this.fetchTimeMarkers(this.recordId);
+        this.fetchTextAnalytics(this.recordId);
     }
 
     private fetchTimeMarkers(recordId: string) {
@@ -53,6 +58,12 @@ export class VideoAnalysisComponent implements OnInit {
         this.timeMarkersObservable.subscribe(timeMarkers => {
             this.markersSource = timeMarkers;
             this.markersSource.sort((a, b) => a.startTime - b.startTime)
+        });
+    }
+
+    private fetchTextAnalytics(recordId: string) {
+        this.textAnayticsService.getRecordTextAnalytics(recordId).subscribe(analytics => {
+            console.log(analytics);
         });
     }
 

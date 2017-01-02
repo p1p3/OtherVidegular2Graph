@@ -20,6 +20,9 @@ import { EmotionService } from './shared/services/emotions.service';
 import { IInsightService } from './shared/services/def/insights.service';
 import { FakeInsightService } from './shared/services/insights-fake.service';
 
+import { TextAnalyticsService } from './shared/services/text-analytics.service';
+import { ITextAnalyticsService } from './shared/services/def/text-analytics.service';
+
 import { EmotionPreviewComponent } from './emotions-preview/emotion-preview.component';
 import { SentimentsPreviewComponent } from './sentiments-preview/sentiments-preview.component';
 import { PersonalityInsightsComponent } from './personality-insights/personality-insights.component';
@@ -48,6 +51,8 @@ import { ReadingEasePreviewComponent } from './reading-ease-preview/reading-ease
     TranscriptionPreviewComponent, ReadingEasePreviewComponent,
     MarkerPipe],
   exports: [VideoAnalysisComponent],
-  providers: [{ provide: 'IEmotionService', useClass: EmotionService }, { provide: 'IInsightService', useClass: FakeInsightService }]
+  providers: [{ provide: 'IEmotionService', useClass: EmotionService },
+  { provide: 'IInsightService', useClass: FakeInsightService },
+  { provide: 'ITextAnalyticsService', useClass: TextAnalyticsService }]
 })
 export class VideoAnalysisModule { }
