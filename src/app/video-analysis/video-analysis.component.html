@@ -21,64 +21,66 @@
             <vg-playback-button></vg-playback-button>
             <vg-time-display property="current" format="mm:ss"></vg-time-display>
             <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-<vg-time-display property="left" format="mm:ss"></vg-time-display>
-<vg-time-display property="total" format="mm:ss"></vg-time-display>
-<vg-track-selector></vg-track-selector>
-<vg-mute></vg-mute>
-<vg-volume></vg-volume>
-<vg-fullscreen></vg-fullscreen>
-</vg-controls>
-<video vg-media #media id="singleVideo" preload="auto" crossorigin>
-  <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
-  <track kind="subtitles" label="English" src="http://static.videogular.com/assets/subs/pale-blue-dot.vtt" srclang="en" default>
-  <track kind="subtitles" label="Español" src="http://static.videogular.com/assets/subs/pale-blue-dot-es.vtt" srclang="es">
-</video>
-</vg-player>
-</div>
-</div>
-</div>
-<div class="col-xs-12 col-md-5 right-pane">
-  <div class="row full-height">
-    <div class="col-xs-12 group-tabs">
-      <tabset>
-        <tab heading="Emotions">
-          <app-emotion-preview [markers]="currentMarkerObservable"></app-emotion-preview>
-        </tab>
-        <tab heading="Personality Insights">
-          <app-personality-insights [record]="recordId"></app-personality-insights>
-        </tab>
-        <tab>
-          <template tabHeading>
-            <i class="fa fa-share-alt" aria-hidden="true"></i> Share
-          </template>
-        </tab>
-      </tabset>
+            <vg-time-display property="left" format="mm:ss"></vg-time-display>
+            <vg-time-display property="total" format="mm:ss"></vg-time-display>
+            <vg-track-selector></vg-track-selector>
+            <vg-mute></vg-mute>
+            <vg-volume></vg-volume>
+            <vg-fullscreen></vg-fullscreen>
+          </vg-controls>
+          <video vg-media #media id="singleVideo" preload="auto" crossorigin>
+            <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
+            <track kind="subtitles" label="English" src="http://static.videogular.com/assets/subs/pale-blue-dot.vtt" srclang="en" default>
+            <track kind="subtitles" label="Español" src="http://static.videogular.com/assets/subs/pale-blue-dot-es.vtt" srclang="es">
+          </video>
+        </vg-player>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-5 right-pane">
+    <div class="row full-height">
+      <div class="col-xs-12 group-tabs">
+        <tabset>
+          <tab heading="Emotions">
+            <app-emotion-preview [markers]="currentMarkerObservable"></app-emotion-preview>
+          </tab>
+          <tab heading="Personality Insights">
+            <app-personality-insights [record]="recordId"></app-personality-insights>
+          </tab>
+          <tab>
+            <template tabHeading>
+              <i class="fa fa-share-alt" aria-hidden="true"></i> Share
+            </template>
+          </tab>
+        </tabset>
+      </div>
     </div>
   </div>
 </div>
-</div>
 <div class="row static-graphs">
   <div class="col-xs-12 col-md-7">
-    <accordion [closeOthers]="oneAtATime">
-      <accordion-group heading="Emotions Timeline" [isOpen]="'true'">
-        <app-emotion-time-line [markers]="currentMarkerersObservable"></app-emotion-time-line>
-      </accordion-group>
-      <accordion-group heading="Sentiment Timeline">
-        <app-sentiment-time-line [markers]="currentMarkerersObservable"></app-sentiment-time-line>
-      </accordion-group>
-    </accordion>
+    <div class="row">
+      <div class="col-xs-12">
+        <accordion [closeOthers]="oneAtATime">
+          <accordion-group heading="Emotions Timeline" [isOpen]="'true'">
+            <app-emotion-time-line [markers]="currentMarkerersObservable"></app-emotion-time-line>
+          </accordion-group>
+          <accordion-group heading="Sentiment Timeline">
+            <app-sentiment-time-line [markers]="currentMarkerersObservable"></app-sentiment-time-line>
+          </accordion-group>
+        </accordion>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3 reading-ease">
+        <app-reading-ease-preview></app-reading-ease-preview>
+      </div>
+    </div>
   </div>
   <div class="col-xs-12 col-md-5">
     <div class="row">
       <div class="col-xs-12">
         <app-transcription-preview [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
-      </div>
-      <div class="col-xs-12">
-        <div class="row">
-          <div class="col-xs-6 col-xs-offset-3">
-            <app-reading-ease-preview></app-reading-ease-preview>
-          </div>
-        </div>
       </div>
     </div>
   </div>
