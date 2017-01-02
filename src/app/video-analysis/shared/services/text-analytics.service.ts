@@ -49,7 +49,6 @@ export class TextAnalyticsService implements ITextAnalyticsService {
             textAnalyticsResponse.longest_word_syllables,
             textAnalyticsResponse.longest_sentence_words,
             keyWords);
-
         return textAnalytics;
     }
 
