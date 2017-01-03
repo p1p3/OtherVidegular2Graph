@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-xs-5 reading-ease" *ngIf="textAnalytics">
+    <app-reading-ease-preview [readingEasePercentage]="textAnalytics.readingEase"></app-reading-ease-preview>
+  </div>
+  <div class="col-xs-5 reading-ease">
+    <app-word-cloud [textAnalytics]="textAnalyticsObservable"></app-word-cloud>
+  </div>
+</div>

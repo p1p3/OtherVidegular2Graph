@@ -26,14 +26,9 @@ export class VideoAnalysisComponent implements OnInit {
     private markersSource = new Array<TimeMarker>();
     private timeMarkersObservable: Observable<TimeMarker[]>;
 
-    private textAnalytics: TextAnalytics;
-    private textAnalyticsObservable: Observable<TextAnalytics>;
-
     private currentTimeMarker: TimeMarker;
 
-    constructor( @Inject('IEmotionService') private emotionService: IEmotionService,
-        @Inject('IInsightService') private insightService: IInsightService,
-        @Inject('ITextAnalyticsService') private textAnayticsService: ITextAnalyticsService) {
+    constructor( @Inject('IEmotionService') private emotionService: IEmotionService) {
         this.sources = [
             {
                 src: 'http://bskamsdev.streaming.mediaservices.windows.net/2d295f86-ce23-4f18-b6f4-4b694b7ee601/s12240135_428x240_428.mp4',
@@ -44,7 +39,6 @@ export class VideoAnalysisComponent implements OnInit {
 
     ngOnInit() {
         this.fetchTimeMarkers(this.recordId);
-        this.fetchTextAnalytics(this.recordId);
     }
 
     private fetchTimeMarkers(recordId: string) {
@@ -52,13 +46,6 @@ export class VideoAnalysisComponent implements OnInit {
         this.timeMarkersObservable.subscribe(timeMarkers => {
             this.markersSource = timeMarkers;
             this.markersSource.sort((a, b) => a.startTime - b.startTime);
-        });
-    }
-
-    private fetchTextAnalytics(recordId: string) {
-        this.textAnalyticsObservable = this.textAnayticsService.getRecordTextAnalytics(recordId);
-        this.textAnalyticsObservable.subscribe(analytics => {
-            this.textAnalytics = analytics;
         });
     }
 
