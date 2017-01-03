@@ -9,11 +9,11 @@
   <div class="col-xs-12 insight-info">
     <div class="row insight-info-container">
       <div class="col-xs-12 insight-labels text-center">
-        <span class="label label-danger" *ngFor="let trait of rootLabels" (click)="selectRootTrait(trait.id)">{{trait.name}}</span>
+        <span class="label label-primary" *ngFor="let trait of rootLabels" (click)="selectRootTrait(trait.id)">{{trait.name}}</span>
       </div>
       <div class="col-xs-12 insight-graph" *ngIf="showGraph">
         <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
-          [chartType]="chartName"></canvas>
+          [chartType]="chartName" [colors]="chartColors"></canvas>
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@ span {
 .insight {
   margin-bottom: 25px;
 }
-
+/*
 .insights-display-container {
   height: 100%;
 }
@@ -43,7 +43,7 @@ span {
   display: flex;
   align-items: center;
 }
-
+*/
 .percent-bar {
   background-color: #ececec;
   height: 0rem;

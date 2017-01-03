@@ -1,3 +1,4 @@
+import { colors } from './../shared/models/colors.model';
 import { ChildTrait } from './../shared/models/Insights/child-trait.model';
 import { IInsightService } from './../shared/services/def/insights.service';
 import { TraitChartData } from './../shared/models/Insights/charts/trait-chart-data.model';
@@ -22,9 +23,7 @@ export class PersonalityInsightsComponent implements OnInit {
   public chartName = ChartJsNames.bar;
 
   public baseOptions: ChartBarWithLineOptions = {
-    scaleShowVerticalLines: false,
     responsive: true,
-    maintainAspectRatio: false,
     scales: {
       yAxes: [{
         ticks: {
@@ -35,6 +34,17 @@ export class PersonalityInsightsComponent implements OnInit {
       }]
     }
   };
+  
+  private chartColors: Array<any> = [
+    {
+      backgroundColor: colors.bluedan,
+      borderColor: colors.bluedandark,
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
 
   public barChartPersonalityLabels: string[];
   public barChartValuesLabels: string[];

@@ -1,3 +1,4 @@
+import { colors } from './../shared/models/colors.model';
 import { ChartData } from './../shared/models/chart-data.model';
 import { Sentiment } from './../shared/models/sentiment.model';
 import { Emotion } from './../shared/models/emotion.model';
@@ -21,6 +22,16 @@ export class SentimentTimeLineComponent implements OnInit {
     responsive: true
   };
   private lineChartType: string = 'line';
+  private  chartColors: Array<any> = [
+    { 
+      backgroundColor: colors.bluedan,
+      borderColor: colors.bluedandark,
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
 
   constructor() { }
 

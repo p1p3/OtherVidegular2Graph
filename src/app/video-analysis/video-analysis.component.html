@@ -21,56 +21,63 @@
             <vg-playback-button></vg-playback-button>
             <vg-time-display property="current" format="mm:ss"></vg-time-display>
             <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-            <vg-time-display property="left" format="mm:ss"></vg-time-display>
-            <vg-time-display property="total" format="mm:ss"></vg-time-display>
-            <vg-track-selector></vg-track-selector>
-            <vg-mute></vg-mute>
-            <vg-volume></vg-volume>
-            <vg-fullscreen></vg-fullscreen>
-          </vg-controls>
-          <video vg-media #media id="singleVideo" preload="auto" crossorigin>
-            <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
-            <track kind="subtitles" label="English" src="assets/mocks/subtitles.mp4.vtt" srclang="en">
-          </video>
-        </vg-player>
-      </div>
+<vg-time-display property="left" format="mm:ss"></vg-time-display>
+<vg-time-display property="total" format="mm:ss"></vg-time-display>
+<vg-track-selector></vg-track-selector>
+<vg-mute></vg-mute>
+<vg-volume></vg-volume>
+<vg-fullscreen></vg-fullscreen>
+</vg-controls>
+<video vg-media #media id="singleVideo" preload="auto" crossorigin>
+  <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
+  <track kind="subtitles" label="English" src="assets/mocks/subtitles.mp4.vtt" srclang="en">
+</video>
+</vg-player>
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-md-5 right-pane">
+  <div class="row full-height">
+    <div class="col-xs-12 group-tabs">
+      <tabset>
+        <tab heading="Emotions">
+          <app-emotion-preview [markers]="currentMarkerObservable"></app-emotion-preview>
+        </tab>
+        <tab>
+          <template tabHeading>
+            <i class="fa fa-share-alt" aria-hidden="true"></i> Share
+          </template>
+        </tab>
+      </tabset>
     </div>
   </div>
-  <div class="col-xs-12 col-md-5 right-pane">
-    <div class="row full-height">
-      <div class="col-xs-12 group-tabs">
-        <tabset>
-          <tab heading="Emotions">
-            <app-emotion-preview [markers]="currentMarkerObservable"></app-emotion-preview>
-          </tab>
-          <tab heading="Personality Insights">
-            <app-personality-insights [record]="recordId"></app-personality-insights>
-          </tab>
-          <tab>
-            <template tabHeading>
-              <i class="fa fa-share-alt" aria-hidden="true"></i> Share
-            </template>
-          </tab>
-        </tabset>
-      </div>
-    </div>
-  </div>
+</div>
 </div>
 <div class="row static-graphs">
   <div class="col-xs-12 col-md-7">
     <div class="row">
       <div class="col-xs-12">
-        <accordion [closeOthers]="oneAtATime">
-          <accordion-group heading="Emotions Timeline" [isOpen]="'true'">
-            <app-emotion-time-line [markers]="currentMarkerersObservable"></app-emotion-time-line>
-          </accordion-group>
-          <accordion-group heading="Sentiment Timeline" [isOpen]="'true'">
-            <app-sentiment-time-line [markers]="currentMarkerersObservable"></app-sentiment-time-line>
-          </accordion-group>
-        </accordion>
+        <h3>Emotions Timeline</h3>
+        <hr>
+      </div>
+      <div class="col-xs-12">
+        <app-emotion-time-line [markers]="currentMarkerersObservable"></app-emotion-time-line>
       </div>
     </div>
     <div class="row">
+      <div class="col-xs-12">
+        <h3>Sentiment Timeline</h3>
+        <hr>
+      </div>
+      <div class="col-xs-12">
+        <app-sentiment-time-line [markers]="currentMarkerersObservable"></app-sentiment-time-line>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Text Analytics</h3>
+        <hr>
+      </div>
       <div class="col-xs-5 reading-ease" *ngIf="textAnalytics">
         <app-reading-ease-preview [readingEasePercentage]="textAnalytics.readingEase"></app-reading-ease-preview>
       </div>
@@ -80,6 +87,19 @@
     </div>
   </div>
   <div class="col-xs-12 col-md-5">
-    <app-transcription-preview [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Time Marks</h3>
+        <hr>
+        <app-transcription-preview [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Personality Insights</h3>
+        <hr>
+        <app-personality-insights [record]="recordId"></app-personality-insights>
+      </div>
+    </div>
   </div>
 </div>

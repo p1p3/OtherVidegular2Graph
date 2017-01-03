@@ -1,3 +1,4 @@
+import { ChartColors } from './../shared/models/colors.model';
 import { EmotionTimelineChartData } from './../shared/models/emotion-timeline-chart-data.model';
 import { Sentiment } from './../shared/models/sentiment.model';
 import { Emotion } from './../shared/models/emotion.model';
@@ -21,7 +22,7 @@ export class EmotionTimeLineComponent implements OnInit {
     responsive: true
   };
   private lineChartType: string = 'line';
-
+  private chartColors: Array<any> = ChartColors;
   constructor() { }
 
 

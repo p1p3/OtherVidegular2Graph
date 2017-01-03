@@ -1,3 +1,4 @@
+import { colors } from './../shared/models/colors.model';
 import { BaseChartDirective } from './../../charts/chartJs/chartsJs';
 import { ChartJsNames } from './../../charts/chartJs/chart-js-names.constants';
 import { Sentiment } from './../shared/models/sentiment.model';
@@ -32,6 +33,17 @@ export class EmotionPreviewComponent implements OnInit {
     animation: false,
     maintainAspectRatio: false
   };
+
+  private chartColors: Array<any> = [
+    {
+      backgroundColor: colors.bluedan,
+      borderColor: colors.bluedandark,
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
 
   constructor() {
   }
