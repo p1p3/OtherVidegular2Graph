@@ -9,6 +9,8 @@ import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { TooltipModule } from 'ng2-bootstrap/tooltip';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { VgCoreModule } from 'videogular2/core';
 import { VgControlsModule } from 'videogular2/controls';
 import { VgOverlayPlayModule } from 'videogular2/overlay-play';
@@ -35,6 +37,8 @@ import { TranscriptionPreviewComponent } from './transcription-preview/transcrip
 import { ReadingEasePreviewComponent } from './reading-ease-preview/reading-ease-preview.component';
 import { WordCloudComponent } from './word-cloud/word-cloud.component';
 import { TextAnalysisPreviewComponent } from './text-analysis-preview/text-analysis-preview.component';
+import { RealTimeAnalysisComponent } from './real-time-analysis/real-time-analysis.component';
+import { StaticDataAnalysisComponent } from './static-data-analysis/static-data-analysis.component';
 
 
 @NgModule({
@@ -48,7 +52,8 @@ import { TextAnalysisPreviewComponent } from './text-analysis-preview/text-analy
     VgBufferingModule,
     AccordionModule.forRoot(),
     TabsModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    FlexLayoutModule.forRoot()
   ],
   declarations: [EmotionPreviewComponent, VideoAnalysisComponent,
     SentimentsPreviewComponent, PersonalityInsightsComponent,
@@ -56,7 +61,9 @@ import { TextAnalysisPreviewComponent } from './text-analysis-preview/text-analy
     TranscriptionPreviewComponent, ReadingEasePreviewComponent,
     MarkerPipe,
     WordCloudComponent,
-    TextAnalysisPreviewComponent],
+    TextAnalysisPreviewComponent,
+    RealTimeAnalysisComponent,
+    StaticDataAnalysisComponent],
   exports: [VideoAnalysisComponent],
   providers: [{ provide: 'IEmotionService', useClass: EmotionService },
   { provide: 'IInsightService', useClass: FakeInsightService },

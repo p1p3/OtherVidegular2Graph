@@ -1,29 +1,20 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="row">
-      <div class="col-xs-12 insight-options">
-        <ol class="breadcrumb  pull-right">
-          <li (click)="selectTab(tabs.Favorites)"><a [ngClass]="{active: selectedTab === tabs.Favorites}">Favorites</a></li>
-          <li (click)="selectTab(tabs.Percentages)"><a [ngClass]="{active: selectedTab === tabs.Percentages}">Percentages</a></li>
-          <li (click)="selectTab(tabs.Indexes)"><a [ngClass]="{active: selectedTab === tabs.Indexes}">Indexes</a></li>
-        </ol>
-      </div>
+<div fxLayout="column" fxLayoutAlign="start" class="colored box">
+  <div fxFlex="10" class=" box colorNested">
+    <ol class="breadcrumb  pull-right">
+      <li (click)="selectTab(tabs.Favorites)"><a [ngClass]="{active: selectedTab === tabs.Favorites}">Favorites</a></li>
+      <li (click)="selectTab(tabs.Percentages)"><a [ngClass]="{active: selectedTab === tabs.Percentages}">Percentages</a></li>
+      <li (click)="selectTab(tabs.Indexes)"><a [ngClass]="{active: selectedTab === tabs.Indexes}">Indexes</a></li>
+    </ol>
+  </div>
+  <div fxFlex="60" fxLayout="row" *ngIf="selectedTab===tabs.Favorites" class=" box colorNested " fxLayoutAlign="center">
+    <div fxFlex *ngIf="textAnalytics">
+      <app-reading-ease-preview [readingEasePercentage]="textAnalytics.fleschKincaidReadingEase"></app-reading-ease-preview>
     </div>
-    <div class="row favorites" *ngIf="selectedTab===tabs.Favorites">
-      <div class="col-xs-5" *ngIf="textAnalytics">
-        <app-reading-ease-preview [readingEasePercentage]="textAnalytics.fleschKincaidReadingEase"></app-reading-ease-preview>
-      </div>
-      <div class="col-xs-5">
-        <app-word-cloud [textAnalytics]="textAnalyticsObservable"></app-word-cloud>
-      </div>
+    <div fxFlex>
+      <app-word-cloud [textAnalytics]="textAnalyticsObservable"></app-word-cloud>
     </div>
-    <div class="row percentages" *ngIf="selectedTab===tabs.Percentages">
-      <!--<canvas baseChart [datasets]="percentagesChartData" [labels]="percentagesChartLabels" [options]="ChartOptions" [legend]="percentagesChartLegend"
-        [chartType]="percentagesChartType" [colors]="percentagesChartColors"></canvas>-->
-    </div>
-    <div class="row indexes" *ngIf="selectedTab===tabs.Indexes">
-      <!--<canvas baseChart [datasets]="indexesChartData" [labels]="indexesChartDataLabels" [options]="chartOptions" [legend]="indexesChartLegend"
-        [chartType]="indexesChartType" [colors]="indexesChartColors"></canvas>-->
-    </div>
+  </div>
+  <div fxFlex="30" class=" box colorNested ">
+    <app-word-cloud [textAnalytics]="textAnalyticsObservable"></app-word-cloud>
   </div>
 </div>

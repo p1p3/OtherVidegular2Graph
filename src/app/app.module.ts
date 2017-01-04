@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +18,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpModule,
     CoreModule,
     VideoAnalysisModule,
-    FlexLayoutModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
