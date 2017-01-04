@@ -1,8 +1,8 @@
 import { Keyword } from './keyword.model';
 export class TextAnalytics {
     constructor(public text: string,
-        public readingEase: number,
-        public gradeLevel: number, 
+        public fleschKincaidReadingEase: number,
+        public fleschKincaidGradeLevel: number,
         public gunningFogScore: number,
         public colemanLiauIndex: number,
         public smogIndex: number,

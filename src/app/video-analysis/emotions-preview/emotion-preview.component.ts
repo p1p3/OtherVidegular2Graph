@@ -16,18 +16,18 @@ import { Observable } from 'rxjs/Rx';
 })
 export class EmotionPreviewComponent implements OnInit {
   @Input() markers: Observable<TimeMarker>;
-  public graphs = GraphType;
-  public chartsNames = ChartJsNames;
+  private graphs = GraphType;
+  private chartsNames = ChartJsNames;
 
-  public selectedGraph: GraphType = GraphType.bars;
-  public chartLabels = EmotionChartData.chartLabels;
+  private selectedGraph: GraphType = GraphType.bars;
+  private chartLabels = EmotionChartData.chartLabels;
 
-  public radarChartData = new Array<EmotionChartData>();
-  public doughnutChartData: Array<number>;
-  public barChartData = new Array<EmotionChartData>();
+  private radarChartData = new Array<EmotionChartData>();
+  private doughnutChartData: Array<number>;
+  private barChartData = new Array<EmotionChartData>();
 
-  public chartLegend: boolean = false;
-  public chartOptions: ChartOptions = {
+  private chartLegend: boolean = false;
+  private chartOptions: ChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true,
     animation: false,
@@ -38,7 +38,7 @@ export class EmotionPreviewComponent implements OnInit {
     {
       backgroundColor: colors.bluedan,
       borderColor: colors.bluedandark,
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(75, 192, 192, 0.5);',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'

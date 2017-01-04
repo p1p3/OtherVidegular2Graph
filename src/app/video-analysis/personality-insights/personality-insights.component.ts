@@ -20,9 +20,9 @@ export class PersonalityInsightsComponent implements OnInit {
   private selectedInsightType = InsightType.Personality;
   private showGraph: boolean = true;
 
-  public chartName = ChartJsNames.bar;
+  private chartName = ChartJsNames.bar;
 
-  public baseOptions: ChartBarWithLineOptions = {
+  private baseOptions: ChartBarWithLineOptions = {
     responsive: true,
     scales: {
       yAxes: [{
@@ -39,24 +39,24 @@ export class PersonalityInsightsComponent implements OnInit {
     {
       backgroundColor: colors.bluedan,
       borderColor: colors.bluedandark,
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(75, 192, 192, 0.5);',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
 
-  public barChartPersonalityLabels: string[];
-  public barChartValuesLabels: string[];
-  public barChartNeedsLabels: string[];
+  private barChartPersonalityLabels: string[];
+  private barChartValuesLabels: string[];
+  private barChartNeedsLabels: string[];
 
-  public selectedRootTrait: RootTrait;
-  public rootLabels = Array<RootTrait>();
+  private selectedRootTrait: RootTrait;
+  private rootLabels = Array<RootTrait>();
 
-  public barChartOptions: ChartBarWithLineOptions;
-  public barChartLabels: string[];
-  public barChartLegend: boolean = false;
-  public barChartData: TraitChartData[];
+  private barChartOptions: ChartBarWithLineOptions;
+  private barChartLabels: string[];
+  private barChartLegend: boolean = false;
+  private barChartData: TraitChartData[];
 
   constructor( @Inject('IInsightService') private insightService: IInsightService) {
     this.mergeOptions({});

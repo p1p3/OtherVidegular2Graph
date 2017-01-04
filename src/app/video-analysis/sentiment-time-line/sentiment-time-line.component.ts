@@ -26,7 +26,7 @@ export class SentimentTimeLineComponent implements OnInit {
     { 
       backgroundColor: colors.bluedan,
       borderColor: colors.bluedandark,
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(75, 192, 192, 0.5);',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
