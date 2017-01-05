@@ -14,7 +14,7 @@ import { ChartJsNames } from './../../charts/chartJs/chart-js-names.constants';
   styleUrls: ['./personality-insights.component.css']
 })
 export class PersonalityInsightsComponent implements OnInit {
-  @Input() record: string;
+  @Input() recordId: string;
   private insight: Insight;
   private insightTypes = InsightType;
   private selectedInsightType = InsightType.Personality;
@@ -23,7 +23,10 @@ export class PersonalityInsightsComponent implements OnInit {
   private chartName = ChartJsNames.bar;
 
   private baseOptions: ChartBarWithLineOptions = {
+    scaleShowVerticalLines: false,
+    maintainAspectRatio: false,
     responsive: true,
+    animation: false,
     scales: {
       yAxes: [{
         ticks: {
@@ -34,7 +37,9 @@ export class PersonalityInsightsComponent implements OnInit {
       }]
     }
   };
-  
+
+
+
   private chartColors: Array<any> = [
     {
       backgroundColor: colors.bluedan,
@@ -63,7 +68,7 @@ export class PersonalityInsightsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchRecordInsights(this.record);
+    this.fetchRecordInsights(this.recordId);
   }
 
 

@@ -13,37 +13,8 @@ span {
   cursor: pointer;
 }
 
-.insight {
-  margin-bottom: 25px;
-}
-/*
-.insights-display-container {
-  height: 100%;
-}
 
-.insight-options {
-  height: 10%;
-}
-
-.insight-info {
-  height: 90%
-}
-
-.insight-info-container {
-  height: 100%;
-}
-
-.insight-labels {
-  padding-top: 8px;
-  height: 8%;
-}
-
-.insight-graph {
-  height: 92%;
-  display: flex;
-  align-items: center;
-}
-*/
+/* Watson */
 .percent-bar {
   background-color: #ececec;
   height: 0rem;

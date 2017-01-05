@@ -1,13 +1,4 @@
-<div class="colorNested box" fxLayout="column" fxLayout.gt-sm="row">
-  <div fxLayout="column" fxFlex>
-    <div fxFlex>
-      1
-    </div>
-    <div fxFlex>
-      2
-    </div>
-  </div>
-  <div fxLayout="column" fxFlex>
-    <app-text-analysis-preview [recordId]="recordId"></app-text-analysis-preview>
-  </div>
+<div class="colored box" fxLayout="row" fxLayoutAlign="space-between stretch">
+  <app-personality-insights [recordId]="recordId" fxFlex="48" fxLayout="column" fxFlex class="colorNested box"></app-personality-insights>
+  <app-text-analysis-preview fxFlex="48" [recordId]="recordId"></app-text-analysis-preview>
 </div>

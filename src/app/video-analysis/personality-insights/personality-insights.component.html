@@ -1,17 +1,45 @@
-<div class="row insights-display-container" *ngIf="insight">
-  <div class="col-xs-12 insight-options">
-    <ol class="breadcrumb  pull-right">
-      <li (click)="selectInsight(insightTypes.Personality)"><a [ngClass]="{active: selectedInsightType==insightTypes.Personality}">Personality</a></li>
-      <li (click)="selectInsight(insightTypes.ConsumerNeeds)"><a [ngClass]="{active: selectedInsightType==insightTypes.ConsumerNeeds}"> Consumer Needs</a></li>
-      <li (click)="selectInsight(insightTypes.Values)"><a [ngClass]="{active: selectedInsightType==insightTypes.Values}">Values</a></li>
-    </ol>
+<!--<div fxLayout="column" *ngIf="insight" class="colorNested box">
+  <div fxFlex="">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+      [chartType]="chartName" [colors]="chartColors"></canvas>
   </div>
-  <div class="col-xs-12 insight-info">
-    <div class="row insight-info-container">
-      <div class="col-xs-12 insight-labels text-center">
+  <div fxFlex="" fxLayout="column">
+    <div fxFlex="10">
+      <ol class="breadcrumb  pull-right">
+        <li (click)="selectInsight(insightTypes.Personality)"><a [ngClass]="{active: selectedInsightType==insightTypes.Personality}">Personality</a></li>
+        <li (click)="selectInsight(insightTypes.ConsumerNeeds)"><a [ngClass]="{active: selectedInsightType==insightTypes.ConsumerNeeds}"> Consumer Needs</a></li>
+        <li (click)="selectInsight(insightTypes.Values)"><a [ngClass]="{active: selectedInsightType==insightTypes.Values}">Values</a></li>
+      </ol>
+    </div>
+    <div fxFlex="90" fxLayout="column">
+      <div fxFlex="15" class="text-center">
         <span class="label label-primary" *ngFor="let trait of rootLabels" (click)="selectRootTrait(trait.id)">{{trait.name}}</span>
       </div>
-      <div class="col-xs-12 insight-graph" *ngIf="showGraph">
+      <div fxFlex *ngIf="showGraph">
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+          [chartType]="chartName" [colors]="chartColors"></canvas>
+      </div>
+    </div>
+  </div>
+</div>-->
+<div fxLayout="column" *ngIf="insight" fxLayoutAlign="start stretch" class="colored box" fxFlex>
+  <div fxFlex="40" class=" box colorNested">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+      [chartType]="chartName" [colors]="chartColors"></canvas>
+  </div>
+  <div fxFlex="60" fxLayout="column" class=" box colorNested " fxLayoutAlign="center">
+    <div fxFlex="15">
+      <ol class="breadcrumb  pull-right">
+        <li (click)="selectInsight(insightTypes.Personality)"><a [ngClass]="{active: selectedInsightType==insightTypes.Personality}">Personality</a></li>
+        <li (click)="selectInsight(insightTypes.ConsumerNeeds)"><a [ngClass]="{active: selectedInsightType==insightTypes.ConsumerNeeds}"> Consumer Needs</a></li>
+        <li (click)="selectInsight(insightTypes.Values)"><a [ngClass]="{active: selectedInsightType==insightTypes.Values}">Values</a></li>
+      </ol>
+    </div>
+    <div fxFlex="85" fxLayout="column">
+      <div fxFlex="15" class="text-center">
+        <span class="label label-primary" *ngFor="let trait of rootLabels" (click)="selectRootTrait(trait.id)">{{trait.name}}</span>
+      </div>
+      <div fxFlex *ngIf="showGraph">
         <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
           [chartType]="chartName" [colors]="chartColors"></canvas>
       </div>
