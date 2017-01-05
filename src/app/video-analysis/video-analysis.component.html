@@ -1,8 +1,8 @@
-<div fxLayout="row" class=" box colorNested">
+<div fxLayout="row" class="colored box" fxLayoutAlign="space-between start">
   <div fxFlex>
     <app-sentiments-preview [markers]="currentMarkerObservable"></app-sentiments-preview>
   </div>
-  <div fxFlex="50">
+  <div fxFlex="42">
     <vg-player (onPlayerReady)="onPlayerReady($event)" class="videoEmotion">
       <vg-overlay-play></vg-overlay-play>
       <vg-buffering></vg-buffering>
@@ -15,116 +15,40 @@
         <vg-playback-button></vg-playback-button>
         <vg-time-display property="current" format="mm:ss"></vg-time-display>
         <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-        <vg-time-display property="left" format="mm:ss"></vg-time-display>
-        <vg-time-display property="total" format="mm:ss"></vg-time-display>
-        <vg-track-selector></vg-track-selector>
-        <vg-mute></vg-mute>
-        <vg-volume></vg-volume>
-        <vg-fullscreen></vg-fullscreen>
-      </vg-controls>
-      <video vg-media #media id="singleVideo" preload="auto" crossorigin>
-        <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
-        <track kind="subtitles" label="English" src="assets/mocks/subtitles.mp4.vtt" srclang="en">
-      </video>
-    </vg-player>
-  </div>
-  <div fxFlex="40">
-    <tabset>
-      <tab heading="Emotions">
-        <app-emotion-preview [markers]="currentMarkerObservable"></app-emotion-preview>
-      </tab>
-      <tab>
-        <template tabHeading>
-          <i class="fa fa-share-alt" aria-hidden="true"></i> Share
-        </template>
-      </tab>
-    </tabset>
-  </div>
+<vg-time-display property="left" format="mm:ss"></vg-time-display>
+<vg-time-display property="total" format="mm:ss"></vg-time-display>
+<vg-track-selector></vg-track-selector>
+<vg-mute></vg-mute>
+<vg-volume></vg-volume>
+<vg-fullscreen></vg-fullscreen>
+</vg-controls>
+<video vg-media #media id="singleVideo" preload="auto" crossorigin>
+  <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
+  <track kind="subtitles" label="English" src="assets/mocks/subtitles.mp4.vtt" srclang="en">
+</video>
+</vg-player>
 </div>
-<!--<div class="row vertical-align emotion-preview-container full-height">
-  <div class="col-xs-12 col-md-7 ">
-    <div class="row full-height">
-      <div class="col-xs-3 col-md-2 text-center">
-        <div class="row full-height">
-          <div class="col-xs-12">
-            <app-sentiments-preview [markers]="currentMarkerObservable"></app-sentiments-preview>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-9 col-md-10 video-player-container text-center">
-        <vg-player (onPlayerReady)="onPlayerReady($event)" class="videoEmotion">
-          <vg-overlay-play></vg-overlay-play>
-          <vg-buffering></vg-buffering>
-          <vg-scrub-bar>
-            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-          </vg-scrub-bar>
-          <vg-controls>
-            <vg-play-pause></vg-play-pause>
-            <vg-playback-button></vg-playback-button>
-            <vg-time-display property="current" format="mm:ss"></vg-time-display>
-            <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-            <vg-time-display property="left" format="mm:ss"></vg-time-display>
-            <vg-time-display property="total" format="mm:ss"></vg-time-display>
-            <vg-track-selector></vg-track-selector>
-            <vg-mute></vg-mute>
-            <vg-volume></vg-volume>
-            <vg-fullscreen></vg-fullscreen>
-          </vg-controls>
-          <video vg-media #media id="singleVideo" preload="auto" crossorigin>
-            <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
-            <track kind="subtitles" label="English" src="assets/mocks/subtitles.mp4.vtt" srclang="en">
-          </video>
-        </vg-player>
-      </div>
+<div fxFlex="52">
+  <div fxLayout="row" fxFill fxLayoutAlign="space-between start">
+    <div fxFlex="69">
+      <app-emotion-preview [markers]="currentMarkerObservable"></app-emotion-preview>
     </div>
-  </div>
-  <div class="col-xs-12 col-md-5 right-pane">
-    <div class="row full-height">
-      <div class="col-xs-12 group-tabs">
-        <tabset>
-          <tab heading="Emotions">
-            <app-emotion-preview [markers]="currentMarkerObservable"></app-emotion-preview>
-          </tab>
-          <tab>
-            <template tabHeading>
-              <i class="fa fa-share-alt" aria-hidden="true"></i> Share
-            </template>
-          </tab>
-        </tabset>
-      </div>
-    </div>
-  </div>
-</div>-->
-<div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between">
-  <div fxLayout="column" fxFlex="50" fxFlex.gt-sm="60">
-    <div fxFlex>
-      <h3>Emotions Timeline</h3>
-      <hr>
-      <app-emotion-time-line [markers]="currentMarkerersObservable"></app-emotion-time-line>
-    </div>
-    <div fxFlex>
-      <h3>Sentiment Timeline</h3>
-      <hr>
-      <app-sentiment-time-line [markers]="currentMarkerersObservable"></app-sentiment-time-line>
-    </div>
-    <div fxFlex>
-      <h3>Text Analytics</h3>
-      <hr>
-      <!--<app-text-analysis-preview [recordId]="recordId"></app-text-analysis-preview>-->
-    </div>
-  </div>
-  <div fxLayout="column" fxFlex>
-    <div fxFlex>
-      <h3>Time Marks</h3>
-      <hr>
+    <div fxFlex="30">
       <app-transcription-preview [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
     </div>
-    <div>
-      <h3>Personality Insights</h3>
-      <hr>
-      <app-personality-insights [record]="recordId"></app-personality-insights>
-    </div>
+  </div>
+</div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between start">
+  <div fxFlex="48">
+    <h3>Emotions Timeline</h3>
+    <hr>
+    <app-emotion-time-line [markers]="currentMarkerersObservable"></app-emotion-time-line>
+  </div>
+  <div fxFlex="48">
+    <h3>Sentiment Timeline</h3>
+    <hr>
+    <app-sentiment-time-line [markers]="currentMarkerersObservable"></app-sentiment-time-line>
   </div>
 </div>
 <!--<app-real-time-analysis></app-real-time-analysis>

@@ -1,3 +1,14 @@
 .marker {
   cursor: pointer;
 }
+
+.transcription{
+  max-height: 18em;
+  overflow-y: scroll;
+}
+
+
+.list-group-item {
+  border:none;
+border-bottom: 2px solid #ddd !Important;
+}

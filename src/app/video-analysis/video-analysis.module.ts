@@ -9,6 +9,10 @@ import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { TooltipModule } from 'ng2-bootstrap/tooltip';
 
+
+import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'angular2-perfect-scrollbar';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { VgCoreModule } from 'videogular2/core';
@@ -41,6 +45,10 @@ import { RealTimeAnalysisComponent } from './real-time-analysis/real-time-analys
 import { StaticDataAnalysisComponent } from './static-data-analysis/static-data-analysis.component';
 
 
+const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -53,7 +61,8 @@ import { StaticDataAnalysisComponent } from './static-data-analysis/static-data-
     AccordionModule.forRoot(),
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
-    FlexLayoutModule.forRoot()
+    FlexLayoutModule.forRoot(),
+    PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG)
   ],
   declarations: [EmotionPreviewComponent, VideoAnalysisComponent,
     SentimentsPreviewComponent, PersonalityInsightsComponent,
@@ -70,3 +79,4 @@ import { StaticDataAnalysisComponent } from './static-data-analysis/static-data-
   { provide: 'ITextAnalyticsService', useClass: TextAnalyticsService }]
 })
 export class VideoAnalysisModule { }
+
