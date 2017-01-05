@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { MarkerPipe } from './shared/pipes/time-marker.pipe';
 import { VideoAnalysisComponent } from './video-analysis.component';
 import { BSChartsModule } from './../charts/bs-charts.module';
@@ -62,7 +63,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
     FlexLayoutModule.forRoot(),
-    PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG)
+    PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
+    SharedModule
   ],
   declarations: [EmotionPreviewComponent, VideoAnalysisComponent,
     SentimentsPreviewComponent, PersonalityInsightsComponent,

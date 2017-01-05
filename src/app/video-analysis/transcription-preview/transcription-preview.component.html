@@ -1,6 +1,6 @@
 <div class="list-group " fxLayout="column" fxLayoutAlign="center stretch" fxFill>
-  <perfect-scrollbar class="transcription" [config]="config" id="scrollableTranscription" fxFlex>
-    <a id="scrollMark-{{i}}" class="list-group-item marker" [ngClass]="{active: isSelected(timeMark)}" *ngFor="let timeMark of timeMarkers;let i = index;"
+  <perfect-scrollbar class="transcription" [config]="config" id="scrollableTranscription" fxFlex appAutoScroll [scrollTo]="'#'+currentSelector">
+    <a [id]="createIdSelector(i)" class="list-group-item marker" [ngClass]="{active: isSelected(timeMark)}" *ngFor="let timeMark of timeMarkers;let i = index;"
       (click)="selectMarker(timeMark)">
       <span class="badge">{{timeMark.markerId | marker }}</span> {{timeMark.text}}
     </a>

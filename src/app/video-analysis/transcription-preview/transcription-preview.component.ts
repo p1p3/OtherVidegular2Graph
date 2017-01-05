@@ -15,6 +15,8 @@ export class TranscriptionPreviewComponent implements OnInit {
 
   private currentMarker: TimeMarker;
   private timeMarkers: TimeMarker[];
+  private currentSelector: string;
+
   constructor() { }
 
   ngOnInit() {
@@ -22,7 +24,13 @@ export class TranscriptionPreviewComponent implements OnInit {
       this.timeMarkers = timeMarkers;
     });
 
-    this.selectedMarker.subscribe(marker => this.currentMarker = marker);
+    this.selectedMarker.subscribe(marker => {
+      this.currentMarker = marker;
+      if (this.timeMarkers) {
+        let index = this.timeMarkers.findIndex(markerIndex => marker.markerId === markerIndex.markerId);
+        this.currentSelector = this.createIdSelector(index);
+      }
+    });
   }
 
   private isSelected(marker: TimeMarker): boolean {
@@ -31,5 +39,9 @@ export class TranscriptionPreviewComponent implements OnInit {
 
   private selectMarker(marker: TimeMarker): void {
     this.markerClick.emit(marker);
+  }
+
+  private createIdSelector(num: number) {
+    return `scrollMark-${num}`;
   }
 }
