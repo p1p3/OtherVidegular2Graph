@@ -28,10 +28,15 @@ export class EmotionPreviewComponent implements OnInit {
 
   private chartLegend: boolean = false;
   private chartOptions: ChartOptions = {
-    scaleShowVerticalLines: false,
     responsive: true,
     animation: false,
-    maintainAspectRatio: false
+  };
+
+  private chartOptionsBarRadar: ChartOptions = {
+    scaleShowVerticalLines: false,
+    maintainAspectRatio: false,
+    responsive: true,
+    animation: false,
   };
 
   private chartColors: Array<any> = [

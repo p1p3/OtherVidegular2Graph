@@ -1,11 +1,19 @@
-<div class="list-group ">
-  <perfect-scrollbar class="transcription" [config]="config">
-    <a class="list-group-item marker" [ngClass]="{active: isSelected(timeMark)}" *ngFor="let timeMark of timeMarkers" (click)="selectMarker(timeMark)">
+<div class="list-group " fxLayout="column" fxLayoutAlign="center stretch" fxFill>
+  <perfect-scrollbar class="transcription" [config]="config" id="scrollableTranscription" fxFlex>
+    <a id="scrollMark-{{i}}" class="list-group-item marker" [ngClass]="{active: isSelected(timeMark)}" *ngFor="let timeMark of timeMarkers;let i = index;"
+      (click)="selectMarker(timeMark)">
       <span class="badge">{{timeMark.markerId | marker }}</span> {{timeMark.text}}
     </a>
   </perfect-scrollbar>
 </div>
+<!--
+<script>
+  function scrollTo(num) {
 
-https://www.npmjs.com/package/angular2-perfect-scrollbar
-http://manos.malihu.gr/jquery-custom-content-scroller/
-http://stackoverflow.com/questions/27784727/how-to-make-child-div-scrollable-when-it-exceeds-parent-height
+    var topPos = document.getElementById('scrollMark-' + num).offsetTop;
+
+    document.getElementById('scrollableTranscription').scrollTop = topPos - 10;
+
+  }
+
+</script>-->

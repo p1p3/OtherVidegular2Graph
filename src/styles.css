@@ -144,10 +144,6 @@ div.colored.box.nopad>div {
   min-height: 50px;
 }
 
-
-
-
-
 .row.full-height,
 .row.full-height>div[class*="col-"],
 div[class*="col-"].full-height {
@@ -315,7 +311,7 @@ header {
 }
 
 header .container {
-  padding-top: 100px;
+  padding-top: 0;
   padding-bottom: 50px;
 }
 
@@ -439,7 +435,11 @@ header .intro-text .skills {
 }
 
 section {
-  padding: 100px 0;
+  padding: 30px 0;
+}
+
+section#portfolio {
+  background-color: rgba(242, 242, 243, 0.14);
 }
 
 section h2 {

@@ -1,11 +1,11 @@
-<div class="row gauge-chart-container" fxFill>
-  <div class="col-xs-12 gauge-text">
+<div fxLayout="column" fxLayoutAlign="center stretch">
+  <div fxFlex>
     <span [tooltip]="'Probability of ...'">Positive</span>
   </div>
-  <div class="col-xs-12 gaugeChart">
+  <div fxFlex="90">
     <graph-linear-gauge [valueSource]="linearGaugeSource" [options]="linearGaugeOptions"></graph-linear-gauge>
   </div>
-  <div class="col-xs-12  gauge-text">
-    <span>Negative</span>
+  <div fxFlex>
+    <span [tooltip]="'Probability of ...'">Negative</span>
   </div>
 </div>
