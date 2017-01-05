@@ -347,11 +347,10 @@ header .intro-text .skills {
 }
 
 .navbar-custom {
-  background: #2C3E50;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
-  border: none;
+  margin-bottom: 0 !Important;
 }
 
 .navbar-custom a:focus {
@@ -359,14 +358,14 @@ header .intro-text .skills {
 }
 
 .navbar-custom .navbar-brand {
-  color: white;
+  /*color: white;*/
 }
 
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus,
 .navbar-custom .navbar-brand:active,
 .navbar-custom .navbar-brand.active {
-  color: white;
+  /*color: white;*/
 }
 
 .navbar-custom .navbar-nav {
@@ -374,7 +373,7 @@ header .intro-text .skills {
 }
 
 .navbar-custom .navbar-nav li a {
-  color: white;
+  /*color: white;*/
 }
 
 .navbar-custom .navbar-nav li a:hover {
@@ -388,19 +387,19 @@ header .intro-text .skills {
 }
 
 .navbar-custom .navbar-nav li.active a {
-  color: white;
+  /*color: white;*/
   background: #18BC9C;
 }
 
 .navbar-custom .navbar-nav li.active a:hover,
 .navbar-custom .navbar-nav li.active a:focus,
 .navbar-custom .navbar-nav li.active a:active {
-  color: white;
+  /*color: white;*/
   background: #18BC9C;
 }
 
 .navbar-custom .navbar-toggle {
-  color: white;
+  /*color: white;*/
   text-transform: uppercase;
   font-size: 10px;
   border-color: white;
@@ -409,7 +408,7 @@ header .intro-text .skills {
 .navbar-custom .navbar-toggle:hover,
 .navbar-custom .navbar-toggle:focus {
   background-color: #18BC9C;
-  color: white;
+  /*color: white;*/
   border-color: #18BC9C;
 }
 
