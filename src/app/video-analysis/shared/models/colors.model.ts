@@ -71,8 +71,8 @@ export const ChartColors: Array<any> = [
         pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
     { // dark grey
-        backgroundColor: 'rgba(235, 241, 7, 0.44)',
-        borderColor: '#e5ea0e',
+        backgroundColor: 'rgba(51, 53, 130, 0.41);',
+        borderColor: '#333582',
         pointBackgroundColor: 'rgba(77,83,96,1)',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',

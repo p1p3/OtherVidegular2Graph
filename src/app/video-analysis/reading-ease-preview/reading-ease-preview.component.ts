@@ -47,7 +47,7 @@ export class ReadingEasePreviewComponent implements OnInit {
       segments: [
         new GaugeSegment({
           value: this.readingEasePercentage,
-          color: colors.pink,
+          color: colors.white,
           borderWidth: 20
         })
       ]
