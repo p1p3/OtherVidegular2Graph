@@ -1,3 +1,4 @@
+import { ReadabilityTest } from './../shared/models/text-analytics/reading/readability-test.model';
 import { colors } from './../shared/models/colors.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { GaugeSegment, GaugeLabel } from 'ng2-kw-gauge';
@@ -9,6 +10,8 @@ import { GaugeSegment, GaugeLabel } from 'ng2-kw-gauge';
 })
 export class ReadingEasePreviewComponent implements OnInit {
   @Input() readingEasePercentage: number;
+  @Input() readabilityTest: ReadabilityTest;
+
   private textToDisplay: string;
   private progressGraph: any;
 

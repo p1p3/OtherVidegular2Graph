@@ -1,5 +1,25 @@
-<div class="gauge">
-  <ng2-kw-gauge [bgRadius]="progressGraph.bgRadius" [bgColor]="progressGraph.bgColor" [rounded]="progressGraph.rounded" [reverse]="progressGraph.reverse"
-    [animationSecs]="progressGraph.animationSecs" [labels]="progressGraph.labels" [segments]="progressGraph.segments">
-  </ng2-kw-gauge>
+<div fxLayout="row"  fxLayoutAlign="center center" class="content">
+  <div fxFlex [tooltip]="readabilityTest.meaning">
+    <div class="gauge">
+      <ng2-kw-gauge [bgRadius]="progressGraph.bgRadius" [bgColor]="progressGraph.bgColor" [rounded]="progressGraph.rounded" [reverse]="progressGraph.reverse"
+        [animationSecs]="progressGraph.animationSecs" [labels]="progressGraph.labels" [segments]="progressGraph.segments">
+      </ng2-kw-gauge>
+    </div>
+  </div>
+  <div fxFlex>
+    <table class="table table-fixed">
+      <thead>
+        <tr>
+          <th class="col-xs-3">Score</th>
+          <th class="col-xs-9">School Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let grade of readabilityTest.scores">
+          <td class="col-xs-3">{{grade.score}}</td>
+          <td class="col-xs-9">{{grade.schoolLevel}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,4 +1,16 @@
-<div class="colored box" fxLayout="row" fxLayoutAlign="space-between stretch">
-  <app-personality-insights [recordId]="recordId" fxFlex="48" fxLayout="column" fxFlex class="colorNested box"></app-personality-insights>
-  <app-text-analysis-preview fxFlex="48" [recordId]="recordId"></app-text-analysis-preview>
+<div fxLayout="row" fxLayoutAlign="space-between stretch">
+  <div fxFlex="48" fxLayout="column">
+    <div fxFlex="15">
+      <h3>Personality Insights</h3>
+      <hr>
+    </div>
+    <app-personality-insights [recordId]="recordId" fxFlex ></app-personality-insights>
+  </div>
+  <div fxFlex="48" fxLayout="column">
+    <div fxFlex="15">
+      <h3>Text Analysis</h3>
+      <hr>
+    </div>
+    <app-text-analysis-preview [recordId]="recordId"></app-text-analysis-preview>
+  </div>
 </div>

@@ -60,8 +60,13 @@ export class PersonalityInsightsComponent implements OnInit {
 
   private barChartOptions: ChartBarWithLineOptions;
   private barChartLabels: string[];
+  private big5Labels: string[];
+
   private barChartLegend: boolean = false;
+  private big5ChartLegend: boolean = false;
+
   private barChartData: TraitChartData[];
+  private big5DataSets: TraitChartData[];
 
   constructor( @Inject('IInsightService') private insightService: IInsightService) {
     this.mergeOptions({});
@@ -75,7 +80,8 @@ export class PersonalityInsightsComponent implements OnInit {
   private fetchRecordInsights(recordId: string) {
     this.insightService.getRecordInsights(recordId).subscribe(insight => {
       this.insight = insight;
-      this.selectInsight(this.insightTypes.Personality);
+      this.selectInsight(this.insightTypes.ConsumerNeeds);
+      this.displayPersonality(this.insight.personality);
     });
   }
 
@@ -85,15 +91,9 @@ export class PersonalityInsightsComponent implements OnInit {
     switch (insightType) {
       case this.insightTypes.ConsumerNeeds:
         this.displayRootTrait(this.insight.needs);
-        this.rootLabels = Array<RootTrait>();
         break;
       case this.insightTypes.Values:
         this.displayRootTrait(this.insight.values);
-        this.rootLabels = Array<RootTrait>();
-        break;
-      case this.insightTypes.Personality:
-        this.displayFirstRootTrait(this.insight.personality);
-        this.rootLabels = this.insight.personality;
         break;
     }
   }
@@ -102,23 +102,30 @@ export class PersonalityInsightsComponent implements OnInit {
     this.selectedRootTrait = trait;
     let data = trait.getChartData();
     let labels = data.chartLabels;
-    let options = data.getChartBarWithLineOptions();
-
-    this.mergeOptions(options);
     this.barChartData = [data];
     this.barChartLabels = labels;
-    //TODO:REMOVE THIS with other library, it is not removing old canvas so line is there for other graphs
-    this.showGraph = false;
-    setTimeout(() => this.showGraph = true, 50);
   }
 
-  displayFirstRootTrait(roots: Array<RootTrait>) {
-    this.displayRootTrait(roots[0]);
+  displayPersonality(roots: Array<RootTrait>) {
+    this.rootLabels = roots;
+    let trait = roots[0];
+    this.displayTraitInPersonality(trait);
+  }
+
+  displayTraitInPersonality(trait: RootTrait) {
+    let data = trait.getChartData();
+    this.big5DataSets = [data];
+    this.big5Labels = data.chartLabels;
+    setTimeout(() => {
+      let options = data.getChartBarWithLineOptions();
+      this.mergeOptions(options);
+    }, 20);
+
   }
 
   selectRootTrait(traitId: string) {
     let rootTraitSelected = this.insight.getPersonalityRootTraitById(traitId);
-    this.displayRootTrait(rootTraitSelected);
+    this.displayTraitInPersonality(rootTraitSelected);
   }
 
   mergeOptions(options: ChartBarWithLineOptions) {

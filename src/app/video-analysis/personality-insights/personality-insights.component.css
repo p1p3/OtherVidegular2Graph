@@ -13,8 +13,13 @@ span {
   cursor: pointer;
 }
 
+p {
+  text-align: justify;
+}
+
 
 /* Watson */
+
 .percent-bar {
   background-color: #ececec;
   height: 0rem;

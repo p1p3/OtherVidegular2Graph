@@ -1,20 +1,35 @@
-<div fxLayout="column" fxLayoutAlign="start stretch" class="colored box" fxFlex>
-  <div fxFlex="10" class=" box colorNested">
-    <ol class="breadcrumb  pull-right">
-      <li (click)="selectTab(tabs.Favorites)"><a [ngClass]="{active: selectedTab === tabs.Favorites}">Favorites</a></li>
-      <li (click)="selectTab(tabs.Percentages)"><a [ngClass]="{active: selectedTab === tabs.Percentages}">Percentages</a></li>
-      <li (click)="selectTab(tabs.Indexes)"><a [ngClass]="{active: selectedTab === tabs.Indexes}">Indexes</a></li>
-    </ol>
+<div fxLayout="column" *ngIf="textAnalytics" fxLayoutAlign="center stretch" fxFlex>
+  <div fxFlex="50">
+    <tabset>
+      <tab heading="Flesch Kincai Reading Ease">
+        <app-reading-ease-preview [readabilityTest]="fleschKincaidReadability" [readingEasePercentage]="textAnalytics.fleschKincaidReadingEase "></app-reading-ease-preview>
+      </tab>
+      <tab heading="Gunning Fog Score">
+        <app-reading-ease-preview [readabilityTest]="gunningFogReadability" [readingEasePercentage]="textAnalytics.gunningFogScore"></app-reading-ease-preview>
+      </tab>
+      <tab heading="Coleman Liau Index">
+        <app-reading-ease-preview [readabilityTest]="colemanLiauReadability" [readingEasePercentage]="textAnalytics.colemanLiauIndex"></app-reading-ease-preview>
+      </tab>
+      <tab heading="SMOG Index">
+        <app-reading-ease-preview [readabilityTest]="smogReadability" [readingEasePercentage]="textAnalytics.smogIndex"></app-reading-ease-preview>
+      </tab>
+      <tab heading="Automated Readability Index">
+        <app-reading-ease-preview [readabilityTest]="automatedReadability" [readingEasePercentage]="textAnalytics.automatedReadabilityIndex"></app-reading-ease-preview>
+      </tab>
+      <tab heading="Spache Readability Score">
+        <app-reading-ease-preview [readabilityTest]="spacheReadability" [readingEasePercentage]="textAnalytics.spacheReadabilityScore"></app-reading-ease-preview>
+      </tab>
+      <tab heading="Dale Chall Readability Score">
+        <app-reading-ease-preview [readabilityTest]="daleChallReadability" [readingEasePercentage]="textAnalytics.daleChallReadabilityScore"></app-reading-ease-preview>
+      </tab>
+    </tabset>
   </div>
-  <div fxFlex="60" fxLayout="row" *ngIf="selectedTab===tabs.Favorites" class=" box colorNested " fxLayoutAlign="center">
-    <div fxFlex *ngIf="textAnalytics">
-      <app-reading-ease-preview [readingEasePercentage]="textAnalytics.fleschKincaidReadingEase"></app-reading-ease-preview>
+  <div fxFlex="30" fxLayoutAlign="space-between center" fxLayout="row">
+    <div fxFlex="30">
+      <app-word-cloud fxFlex [textAnalytics]="textAnalyticsObservable"></app-word-cloud>
     </div>
-    <div fxFlex>
-      <app-word-cloud [textAnalytics]="textAnalyticsObservable"></app-word-cloud>
+    <div fxFlex="60">
+      <p>{{textAnalytics.text}}</p>
     </div>
-  </div>
-  <div fxFlex="30" class=" box colorNested ">
-    <app-word-cloud [textAnalytics]="textAnalyticsObservable"></app-word-cloud>
   </div>
 </div>
