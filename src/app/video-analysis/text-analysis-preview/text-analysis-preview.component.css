@@ -7,3 +7,6 @@ a.active {
   outline: none;
 }
 
+p {
+  text-align: justify;
+}
