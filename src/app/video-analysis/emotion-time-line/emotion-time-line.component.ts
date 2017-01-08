@@ -29,7 +29,7 @@ export class EmotionTimeLineComponent implements OnInit {
   ngOnInit() {
     this.markers.subscribe(timeMarkers => {
       //TODO: FIX ALGORITHM
-      let chartData = new EmotionTimelineChartData(timeMarkers);
+      let chartData = new EmotionTimelineChartData(timeMarkers,3);
       this.fillChartsData(chartData);
     });
   }

@@ -58,7 +58,7 @@ export class EmotionPreviewComponent implements OnInit {
   }
 
   displayData(timeMarker: TimeMarker) {
-    let emotionChartData = new EmotionChartData(timeMarker, 'Emotions');
+    let emotionChartData = new EmotionChartData(timeMarker, 'Emotions', 3);
     this.fillChartsData(emotionChartData);
   }
 

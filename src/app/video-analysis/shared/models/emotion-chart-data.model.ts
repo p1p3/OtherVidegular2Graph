@@ -8,19 +8,29 @@ export class EmotionChartData extends ChartData {
     public static chartLabels: string[] = ['Neutral', 'Happiness', 'Surprise', 'Sadness', 'Anger', 'Disgust', 'Fear', 'Contempt'];
     timeMarker: TimeMarker;
 
-    constructor(timeMarker: TimeMarker, label: string ) {
+    constructor(timeMarker: TimeMarker, label: string, normalizeFactor = 1) {
         super();
         this.label = label;
         this.timeMarker = timeMarker;
 
-        this.data.push(this.getPercentage(timeMarker.emotion.neutral));
-        this.data.push(this.getPercentage(timeMarker.emotion.happiness));
-        this.data.push(this.getPercentage(timeMarker.emotion.surprise));
-        this.data.push(this.getPercentage(timeMarker.emotion.sadness));
-        this.data.push(this.getPercentage(timeMarker.emotion.anger));
-        this.data.push(this.getPercentage(timeMarker.emotion.disgust));
-        this.data.push(this.getPercentage(timeMarker.emotion.fear));
-        this.data.push(this.getPercentage(timeMarker.emotion.contempt));
+        let AddToRest = 0;
+        let neutralValue = this.getPercentage(timeMarker.emotion.neutral);
+        if (normalizeFactor > 1) {
+            let originalValue = this.getPercentage(timeMarker.emotion.neutral);
+            neutralValue = originalValue / normalizeFactor;
+            let rest = originalValue - neutralValue;
+           // AddToRest = rest / (EmotionChartData.chartLabels.length - 1);
+        }
+
+        this.data.push(neutralValue);
+        this.data.push(this.getPercentage(timeMarker.emotion.happiness) + AddToRest);
+        this.data.push(this.getPercentage(timeMarker.emotion.surprise) + AddToRest);
+        this.data.push(this.getPercentage(timeMarker.emotion.sadness) + AddToRest);
+        this.data.push(this.getPercentage(timeMarker.emotion.anger) + AddToRest);
+        this.data.push(this.getPercentage(timeMarker.emotion.disgust) + AddToRest);
+        this.data.push(this.getPercentage(timeMarker.emotion.fear) + AddToRest);
+        this.data.push(this.getPercentage(timeMarker.emotion.contempt) + AddToRest);
+
 
         this.checkIfDataMatchLabels();
     }
