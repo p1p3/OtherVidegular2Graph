@@ -1,35 +1,42 @@
-<div fxLayout="column" *ngIf="textAnalytics" fxLayoutAlign="center stretch" fxFlex>
-  <div fxFlex="50">
+<div fxLayout="column" *ngIf="textAnalytics" fxLayoutAlign="center stretch" fxFill>
+  <div fxFlex="60">
     <tabset>
       <tab heading="Flesch Kincai Reading Ease">
-        <app-reading-ease-preview [readabilityTest]="fleschKincaidReadability" [readingEasePercentage]="textAnalytics.fleschKincaidReadingEase "></app-reading-ease-preview>
+        <app-reading-ease-preview [readabilityTest]="fleschKincaidReadability" [goal]="fleschKincaidReadability.maxScore" [invert]="fleschKincaidReadability.lessIsBetter"
+          [readingEasePercentage]="textAnalytics.fleschKincaidReadingEase "></app-reading-ease-preview>
       </tab>
       <tab heading="Gunning Fog Score">
-        <app-reading-ease-preview [readabilityTest]="gunningFogReadability" [readingEasePercentage]="textAnalytics.gunningFogScore"></app-reading-ease-preview>
+        <app-reading-ease-preview [readabilityTest]="gunningFogReadability" [goal]="gunningFogReadability.maxScore" [invert]="gunningFogReadability.lessIsBetter"
+          [readingEasePercentage]="textAnalytics.gunningFogScore"></app-reading-ease-preview>
       </tab>
       <tab heading="Coleman Liau Index">
-        <app-reading-ease-preview [readabilityTest]="colemanLiauReadability" [readingEasePercentage]="textAnalytics.colemanLiauIndex"></app-reading-ease-preview>
+        <app-reading-ease-preview [readabilityTest]="colemanLiauReadability" [goal]="colemanLiauReadability.maxScore" [invert]="colemanLiauReadability.lessIsBetter"
+          [readingEasePercentage]="textAnalytics.colemanLiauIndex"></app-reading-ease-preview>
       </tab>
       <tab heading="SMOG Index">
-        <app-reading-ease-preview [readabilityTest]="smogReadability" [readingEasePercentage]="textAnalytics.smogIndex"></app-reading-ease-preview>
+        <app-reading-ease-preview [readabilityTest]="smogReadability" [goal]="smogReadability.maxScore" [invert]="smogReadability.lessIsBetter"
+          [readingEasePercentage]="textAnalytics.smogIndex"></app-reading-ease-preview>
       </tab>
       <tab heading="Automated Readability Index">
-        <app-reading-ease-preview [readabilityTest]="automatedReadability" [readingEasePercentage]="textAnalytics.automatedReadabilityIndex"></app-reading-ease-preview>
+        <app-reading-ease-preview [readabilityTest]="automatedReadability" [goal]="automatedReadability.maxScore" [invert]="automatedReadability.lessIsBetter"
+          [readingEasePercentage]="textAnalytics.automatedReadabilityIndex"></app-reading-ease-preview>
       </tab>
       <tab heading="Spache Readability Score">
-        <app-reading-ease-preview [readabilityTest]="spacheReadability" [readingEasePercentage]="textAnalytics.spacheReadabilityScore"></app-reading-ease-preview>
+        <app-reading-ease-preview [readabilityTest]="spacheReadability" [goal]="spacheReadability.maxScore" [invert]="spacheReadability.lessIsBetter"
+          [readingEasePercentage]="textAnalytics.spacheReadabilityScore"></app-reading-ease-preview>
       </tab>
       <tab heading="Dale Chall Readability Score">
-        <app-reading-ease-preview [readabilityTest]="daleChallReadability" [readingEasePercentage]="textAnalytics.daleChallReadabilityScore"></app-reading-ease-preview>
+        <app-reading-ease-preview [readabilityTest]="daleChallReadability" [goal]="daleChallReadability.maxScore" [invert]="daleChallReadability.lessIsBetter"
+          [readingEasePercentage]="textAnalytics.daleChallReadabilityScore"></app-reading-ease-preview>
       </tab>
     </tabset>
   </div>
-  <div fxFlex="30" fxLayoutAlign="space-between center" fxLayout="row">
-    <div fxFlex="50"  fxFlex.gt-lg="30">
+  <div fxFlex="40" fxLayoutAlign="space-between center" fxLayout="row">
+    <div fxFlex="50" fxFlex.gt-lg="30">
       <app-word-cloud fxFlex [textAnalytics]="textAnalyticsObservable"></app-word-cloud>
     </div>
-    <div fxFlex="50"  fxFlex.gt-lg="60">
-      <p>{{textAnalytics.text}}</p>
+    <div fxFlex="50" fxFlex.gt-lg="60">
+      <img class="img-responsive" src="/assets/Credit-Score-Meter.png">
     </div>
   </div>
 </div>

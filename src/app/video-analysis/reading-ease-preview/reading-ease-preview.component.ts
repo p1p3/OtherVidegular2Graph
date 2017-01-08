@@ -11,6 +11,8 @@ import { GaugeSegment, GaugeLabel } from 'ng2-kw-gauge';
 export class ReadingEasePreviewComponent implements OnInit {
   @Input() readingEasePercentage: number;
   @Input() readabilityTest: ReadabilityTest;
+  @Input() goal: number;
+  @Input() invert: boolean;
 
   private textToDisplay: string;
   private progressGraph: any;
@@ -20,8 +22,10 @@ export class ReadingEasePreviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.textToDisplay = `${this.readingEasePercentage}%`;
-
+    this.textToDisplay = `${this.readingEasePercentage}`;
+    if (!this.goal || this.goal == 0){
+      this.goal = 100;
+    }
     this.progressGraph = {
       bgRadius: 60,
       bgColor: colors.indigo,
@@ -31,16 +35,9 @@ export class ReadingEasePreviewComponent implements OnInit {
       labels: [
         new GaugeLabel({
           color: colors.white,
-          text: 'Reading Ease',
-          x: 0,
-          y: 20,
-          fontSize: '1em'
-        }),
-        new GaugeLabel({
-          color: colors.white,
           text: this.textToDisplay,
           x: 0,
-          y: 0,
+          y: 10,
           fontSize: '2em'
         })
       ],
@@ -48,7 +45,8 @@ export class ReadingEasePreviewComponent implements OnInit {
         new GaugeSegment({
           value: this.readingEasePercentage,
           color: colors.pink,
-          borderWidth: 20
+          borderWidth: 20,
+          goal: this.goal
         })
       ]
     };
