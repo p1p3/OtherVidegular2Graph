@@ -1,5 +1,5 @@
 <div fxLayout="column" *ngIf="textAnalytics" fxLayoutAlign="center stretch" fxFill>
-  <div fxFlex="60">
+  <div fxFlex="55">
     <tabset>
       <tab heading="Flesch Kincai Reading Ease">
         <app-reading-ease-preview [readabilityTest]="fleschKincaidReadability" [goal]="fleschKincaidReadability.maxScore" [invert]="fleschKincaidReadability.lessIsBetter"
@@ -31,7 +31,7 @@
       </tab>
     </tabset>
   </div>
-  <div fxFlex="40" fxLayoutAlign="space-between center" fxLayout="row">
+  <div fxFlex="45" fxLayoutAlign="space-between center" fxLayout="row">
     <div fxFlex="50" fxFlex.gt-lg="30">
       <app-word-cloud fxFlex [textAnalytics]="textAnalyticsObservable"></app-word-cloud>
     </div>

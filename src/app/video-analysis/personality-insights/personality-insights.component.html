@@ -1,23 +1,19 @@
 <div fxLayout="column" *ngIf="insight" fxLayoutAlign="start stretch" fxFlex fxFill>
-  <div fxFlex="50" fxLayout="column" >
-    <div fxFlex="10" class="text-center">
+  <div fxFlex="50" class="text-center" >
       <h4><span class="label label-primary" *ngFor="let trait of rootLabels" (click)="selectRootTrait(trait.id)">{{trait.name}}</span></h4>
-    </div>
-    <div fxFlex>
       <canvas baseChart [datasets]="big5DataSets" [labels]="big5Labels" [options]="barChartOptions" [legend]="big5ChartLegend"
         [chartType]="chartName" [colors]="chartColors"></canvas>
-    </div>
   </div>
   <div fxFlex="50" fxLayout="column" fxLayoutAlign="center" style="margin-top: 15px;">
-    <div fxFlex="10">
-      <ol class="breadcrumb  pull-right">
-        <li (click)="selectInsight(insightTypes.ConsumerNeeds)"><a [ngClass]="{active: selectedInsightType==insightTypes.ConsumerNeeds}"> Needs</a></li>
-        <li (click)="selectInsight(insightTypes.Values)"><a [ngClass]="{active: selectedInsightType==insightTypes.Values}">Values</a></li>
-      </ol>
-    </div>
-    <div fxFlex="85">
-      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="baseOptions" [legend]="barChartLegend"
-        [chartType]="chartName" [colors]="chartColors"></canvas>
-    </div>
-  </div>
+<div fxFlex="10">
+  <ol class="breadcrumb  pull-right">
+    <li (click)="selectInsight(insightTypes.ConsumerNeeds)"><a [ngClass]="{active: selectedInsightType==insightTypes.ConsumerNeeds}"> Needs</a></li>
+    <li (click)="selectInsight(insightTypes.Values)"><a [ngClass]="{active: selectedInsightType==insightTypes.Values}">Values</a></li>
+  </ol>
+</div>
+<div fxFlex="85">
+  <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="baseOptions" [legend]="barChartLegend" [chartType]="chartName"
+    [colors]="chartColors"></canvas>
+</div>
+</div>
 </div>

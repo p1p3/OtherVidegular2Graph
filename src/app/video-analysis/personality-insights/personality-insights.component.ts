@@ -23,8 +23,7 @@ export class PersonalityInsightsComponent implements OnInit {
   private chartName = ChartJsNames.bar;
 
   private baseOptions: ChartBarWithLineOptions = {
-    scaleShowVerticalLines: false,
-    maintainAspectRatio: false,
+ 
     responsive: true,
     animation: false,
     scales: {
