@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="space-between stretch">
   <div fxLayout="row" fxLayoutAlign="space-between stretch">
-    <app-sentiments-preview fxFlex="3" fxLayoutAlign="space-between stretch" [markers]="currentMarkerObservable"></app-sentiments-preview>
-    <div fxFlex="42">
+    <app-sentiments-preview fxFlex="4" fxLayoutAlign="space-between stretch" [markers]="currentMarkerObservable"></app-sentiments-preview>
+    <div fxFlex="41">
       <vg-player (onPlayerReady)="onPlayerReady($event)" class="videoEmotion">
         <vg-overlay-play></vg-overlay-play>
         <vg-buffering></vg-buffering>
@@ -27,21 +27,21 @@
         </video>
       </vg-player>
     </div>
-    <div fxFlex="52">
+    <div fxFlex="51">
       <div fxLayout="row" fxFill fxLayoutAlign="space-between strecth">
-        <app-emotion-preview fxFlex="69" [markers]="currentMarkerObservable"></app-emotion-preview>
-        <app-transcription-preview fxFlex="30" [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
+        <app-transcription-preview fxFlex="40" [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
+        <app-emotion-preview fxFlex="59" [markers]="currentMarkerObservable"></app-emotion-preview>
       </div>
     </div>
   </div>
 </div>
 <div fxLayout="row" fxLayoutAlign="space-between start">
-  <div fxFlex="48">
+  <div fxFlex="49">
     <h3>Emotions Timeline</h3>
     <hr>
     <app-emotion-time-line [markers]="currentMarkerersObservable"></app-emotion-time-line>
   </div>
-  <div fxFlex="48">
+  <div fxFlex="49">
     <h3>Sentiment Timeline</h3>
     <hr>
     <app-sentiment-time-line [markers]="currentMarkerersObservable"></app-sentiment-time-line>

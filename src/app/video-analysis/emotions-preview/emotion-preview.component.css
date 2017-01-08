@@ -1,26 +1,9 @@
-.emotions-chart-container {
-  height: 100%;
-}
-
-.graph-options{
-  height: 20%;
-}
 
 
 .chart-container {
   /*max-height: 300px;*/
 }
 
-.lineChart {
-  margin-top: 10px;
-}
 
-.chart {
-  margin-top: 35px;
-}
-
-.charts{
-  height: 80%;
-}
 
 

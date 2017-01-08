@@ -1,4 +1,4 @@
-<div fxLayout="column" fxFill fxLayoutAlign="space-between stretch" >
+<div fxLayout="column" fxFill fxLayoutAlign="center stretch">
   <div fxFlex="10">
     <ol class="breadcrumb  pull-right">
       <li (click)="selectEmotionGraph(graphs.bars)"><a [ngClass]="{active: selectedGraph==graphs.bars}">Bars</a></li>
@@ -6,20 +6,16 @@
       <li (click)="selectEmotionGraph(graphs.radar)"><a [ngClass]="{active: selectedGraph==graphs.radar}">Radar</a></li>
     </ol>
   </div>
-  <div fxFlex="90" *ngIf="selectedGraph==graphs.radar">
-    <div class="chart-container">
-      <canvas baseChart [datasets]="radarChartData" [labels]="chartLabels" [options]="chartOptionsBarRadar" [legend]="chartLegend" [chartType]="chartsNames.radar"
-        [colors]="chartColors">
+  <div fxFlex="90" fxLayout="column" fxLayoutAlign="center stretch">
+    <div class="chart-container" *ngIf="selectedGraph==graphs.radar">
+      <canvas baseChart [datasets]="radarChartData" [labels]="chartLabels" [options]="chartOptionsBarRadar" [legend]="chartLegend"
+        [chartType]="chartsNames.radar" [colors]="chartColors">
       </canvas>
     </div>
-  </div>
-  <div fxFlex="90" *ngIf="selectedGraph==graphs.doughnut">
-    <div class="chart-container">
+    <div class="chart-container" *ngIf="selectedGraph==graphs.doughnut">
       <canvas baseChart [data]="doughnutChartData" [labels]="chartLabels" [options]="chartOptionsBarRadar" [chartType]="chartsNames.doughnut"></canvas>
     </div>
-  </div>
-  <div fxFlex="90" *ngIf="selectedGraph==graphs.bars">
-    <div class="chart-container">
+    <div class="chart-container" *ngIf="selectedGraph==graphs.bars">
       <canvas baseChart [datasets]="barChartData" id="myCanvas" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
         [chartType]="chartsNames.bar" [colors]="chartColors"></canvas>
     </div>
