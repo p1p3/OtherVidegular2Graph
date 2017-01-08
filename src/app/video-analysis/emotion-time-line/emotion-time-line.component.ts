@@ -25,7 +25,6 @@ export class EmotionTimeLineComponent implements OnInit {
   private chartColors: Array<any> = ChartColors;
   constructor() { }
 
-
   ngOnInit() {
     this.markers.subscribe(timeMarkers => {
       //TODO: FIX ALGORITHM
