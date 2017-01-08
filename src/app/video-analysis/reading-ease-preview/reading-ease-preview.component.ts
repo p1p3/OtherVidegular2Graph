@@ -37,7 +37,7 @@ export class ReadingEasePreviewComponent implements OnInit {
           fontSize: '1em'
         }),
         new GaugeLabel({
-          color: colors.pink,
+          color: colors.white,
           text: this.textToDisplay,
           x: 0,
           y: 0,
@@ -47,7 +47,7 @@ export class ReadingEasePreviewComponent implements OnInit {
       segments: [
         new GaugeSegment({
           value: this.readingEasePercentage,
-          color: colors.white,
+          color: colors.pink,
           borderWidth: 20
         })
       ]
