@@ -1,3 +1,4 @@
+import { VideoAnalysisRoutingModule } from './video-analysis-routing.module';
 import { SharedModule } from './../shared/shared.module';
 import { MarkerPipe } from './shared/pipes/time-marker.pipe';
 import { VideoAnalysisComponent } from './video-analysis.component';
@@ -52,8 +53,6 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 @NgModule({
   imports: [
-    BrowserModule,
-    CommonModule,
     BSChartsModule,
     VgCoreModule,
     VgOverlayPlayModule,
@@ -64,7 +63,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TooltipModule.forRoot(),
     FlexLayoutModule.forRoot(),
     PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
-    SharedModule
+    SharedModule,
+    VideoAnalysisRoutingModule
   ],
   declarations: [EmotionPreviewComponent, VideoAnalysisComponent,
     SentimentsPreviewComponent, PersonalityInsightsComponent,
