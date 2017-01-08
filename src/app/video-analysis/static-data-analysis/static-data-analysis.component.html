@@ -1,16 +1,16 @@
 <div fxLayout="row" fxLayoutAlign="space-between stretch">
   <div fxFlex="48" fxLayout="column">
-    <div fxFlex="15">
+    <div fxFlex>
       <h3>Personality Insights</h3>
       <hr>
     </div>
-    <app-personality-insights [recordId]="recordId" fxFlex ></app-personality-insights>
+    <app-personality-insights [recordId]="recordId" fxFlex="90" ></app-personality-insights>
   </div>
   <div fxFlex="48" fxLayout="column">
-    <div fxFlex="15">
+    <div fxFlex>
       <h3>Text Analysis</h3>
       <hr>
     </div>
-    <app-text-analysis-preview [recordId]="recordId"></app-text-analysis-preview>
+    <app-text-analysis-preview [recordId]="recordId" fxFlex="90"></app-text-analysis-preview>
   </div>
 </div>

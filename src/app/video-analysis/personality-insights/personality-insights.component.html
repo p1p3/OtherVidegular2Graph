@@ -1,7 +1,7 @@
 <div fxLayout="column" *ngIf="insight" fxLayoutAlign="start stretch" fxFlex fxFill>
   <div fxFlex="50" fxLayout="column" >
     <div fxFlex="10" class="text-center">
-      <span class="label label-primary" *ngFor="let trait of rootLabels" (click)="selectRootTrait(trait.id)">{{trait.name}}</span>
+      <h4><span class="label label-primary" *ngFor="let trait of rootLabels" (click)="selectRootTrait(trait.id)">{{trait.name}}</span></h4>
     </div>
     <div fxFlex>
       <canvas baseChart [datasets]="big5DataSets" [labels]="big5Labels" [options]="barChartOptions" [legend]="big5ChartLegend"
