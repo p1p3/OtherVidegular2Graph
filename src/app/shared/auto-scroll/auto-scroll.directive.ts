@@ -41,7 +41,7 @@ export class AutoScrollDirective implements OnInit, OnChanges {
       let child = this.container.querySelector(query);
       if (child && !this.hovering) {
         let childOffsetFromTop: number = child.offsetTop;
-        this.container.scrollTop = childOffsetFromTop - 10;
+        this.container.scrollTop = childOffsetFromTop;
       }
     }
   }

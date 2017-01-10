@@ -18,12 +18,14 @@ export class SentimentTimeLineComponent implements OnInit {
   private lineChartData = Array<any>();
   private lineChartLabels: Array<string>;
   private lineChartOptions: any = {
+    // scaleShowVerticalLines: false,
+    // maintainAspectRatio: false,
     animation: false,
     responsive: true
   };
   private lineChartType: string = 'line';
-  private  chartColors: Array<any> = [
-    { 
+  private chartColors: Array<any> = [
+    {
       backgroundColor: colors.bluedan,
       borderColor: colors.bluedandark,
       pointBackgroundColor: 'rgba(75, 192, 192, 0.5);',

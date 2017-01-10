@@ -4,6 +4,28 @@
   box-sizing: content-box !important;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+section {
+  height: 100vh;
+}
+
+
+/*html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+section {
+  height: 100%;
+  width: 100%;
+}*/
+
 .colorNested,
 .colored,
 .coloredContainerX {
@@ -259,6 +281,7 @@ h5,
 h6 {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
+  color: #44b19c;
 }
 
 hr.star-light,
@@ -438,7 +461,9 @@ section {
 }
 
 section#portfolio {
-  background-color: rgba(242, 242, 243, 0.14);
+  background-image: url("./assets/geometry2.png");
+  background-repeat: repeat;
+  /*background-color: rgba(242, 242, 243, 0.14);*/
 }
 
 section h2 {

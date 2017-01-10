@@ -1,12 +1,5 @@
-<div fxLayout="column" fxFill fxLayoutAlign="center stretch">
-  <div fxFlex="10">
-    <ol class="breadcrumb  pull-right">
-      <li (click)="selectEmotionGraph(graphs.bars)"><a [ngClass]="{active: selectedGraph==graphs.bars}">Bars</a></li>
-      <li (click)="selectEmotionGraph(graphs.doughnut)"><a [ngClass]="{active: selectedGraph==graphs.doughnut}"> Doughnut</a></li>
-      <li (click)="selectEmotionGraph(graphs.radar)"><a [ngClass]="{active: selectedGraph==graphs.radar}">Radar</a></li>
-    </ol>
-  </div>
-  <div fxFlex="90" fxLayout="column" fxLayoutAlign="center stretch">
+<div fxLayout="column" fxFill fxLayoutAlign="start">
+  <div fxFlex="100" fxLayout="column" fxLayoutAlign="start">
     <div class="chart-container" *ngIf="selectedGraph==graphs.radar">
       <canvas baseChart [datasets]="radarChartData" [labels]="chartLabels" [options]="chartOptionsBarRadar" [legend]="chartLegend"
         [chartType]="chartsNames.radar" [colors]="chartColors">
@@ -16,8 +9,15 @@
       <canvas baseChart [data]="doughnutChartData" [labels]="chartLabels" [options]="chartOptionsBarRadar" [chartType]="chartsNames.doughnut"></canvas>
     </div>
     <div class="chart-container" *ngIf="selectedGraph==graphs.bars">
-      <canvas baseChart [datasets]="barChartData" id="myCanvas" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
+      <canvas height="90" baseChart [datasets]="barChartData" id="myCanvas" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
         [chartType]="chartsNames.bar" [colors]="chartColors"></canvas>
     </div>
   </div>
+  <!--<div fxFlex="30">
+    <ol class="breadcrumb  pull-left">
+      <li (click)="selectEmotionGraph(graphs.bars)"><a [ngClass]="{active: selectedGraph==graphs.bars}">Bars</a></li>
+      <li (click)="selectEmotionGraph(graphs.doughnut)"><a [ngClass]="{active: selectedGraph==graphs.doughnut}"> Doughnut</a></li>
+      <li (click)="selectEmotionGraph(graphs.radar)"><a [ngClass]="{active: selectedGraph==graphs.radar}">Radar</a></li>
+    </ol>
+  </div>-->
 </div>

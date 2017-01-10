@@ -96,7 +96,9 @@ export class RealTimeAnalysisComponent implements OnInit {
 
   // tslint:disable-next-line:no-unused-variable
   private selectMarker(marker: TimeMarker) {
-    this.api.getDefaultMedia().currentTime = marker.startTime;
+    let player = this.api.getDefaultMedia();
+    player.currentTime = marker.startTime;
+    player.play();
   }
 
   private getEmptyTimeMarker() {

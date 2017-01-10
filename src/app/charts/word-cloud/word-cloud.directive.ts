@@ -31,14 +31,15 @@ export class WordCloudDirective implements OnDestroy, OnChanges, OnInit {
 
   private draw() {
     if (this.data && this.data.length > 0) {
-      
+
       let outarray = this.data.map((ww) => [ww.word, ww.count]);
 
       WordCloud(this.canvas, {
         list: outarray,
         gridSize: 1,
         minSize: 10,
-        weightFactor: 10
+        weightFactor: 10,
+        backgroundColor: 'rgba(247, 240, 240, 0)'
       });
     }
   }
