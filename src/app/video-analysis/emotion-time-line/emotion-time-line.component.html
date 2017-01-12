@@ -1,4 +1,7 @@
-<div>
-  <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="showUpperLabels"
-    [chartType]="lineChartType" [colors]="chartColors"></canvas>
+<div fxLayout="column" fxLayoutAlign="center stretch" fxFill>
+  <div fxFlex="80">
+    <canvas baseChart height="90" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="showUpperLabels"
+      [chartType]="lineChartType" [colors]="chartColors"></canvas>
+  </div>
 </div>
+

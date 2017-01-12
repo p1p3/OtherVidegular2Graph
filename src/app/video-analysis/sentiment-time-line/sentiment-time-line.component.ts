@@ -18,8 +18,8 @@ export class SentimentTimeLineComponent implements OnInit {
   private lineChartData = Array<any>();
   private lineChartLabels: Array<string>;
   private lineChartOptions: any = {
-    // scaleShowVerticalLines: false,
-    // maintainAspectRatio: false,
+    scaleShowVerticalLines: true,
+    maintainAspectRatio: false,
     animation: false,
     responsive: true
   };

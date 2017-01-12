@@ -12,7 +12,7 @@ import { Observable, Operator } from 'rxjs/Rx';
 export class FakeInsightService implements IInsightService {
     constructor(private http: Http) { }
     public getRecordInsights(recordId: string): Observable<Insight> {
-        return this.http.get('assets/mocks/insights.json')
+        return this.http.get('assets/mocks/asset-insights.json')
             .map((res: Response) => this.mapJsonToInsight(res.json()));
     }
 

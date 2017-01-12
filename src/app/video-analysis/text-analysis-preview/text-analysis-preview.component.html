@@ -5,10 +5,6 @@
         <app-reading-ease-preview [readabilityTest]="fleschKincaidReadability" [goal]="fleschKincaidReadability.maxScore" [invert]="fleschKincaidReadability.lessIsBetter"
           [readingEasePercentage]="textAnalytics.fleschKincaidReadingEase "></app-reading-ease-preview>
       </tab>
-      <tab heading="Gunning Fog Score">
-        <app-reading-ease-preview [readabilityTest]="gunningFogReadability" [goal]="gunningFogReadability.maxScore" [invert]="gunningFogReadability.lessIsBetter"
-          [readingEasePercentage]="textAnalytics.gunningFogScore"></app-reading-ease-preview>
-      </tab>
       <tab heading="Coleman Liau Index">
         <app-reading-ease-preview [readabilityTest]="colemanLiauReadability" [goal]="colemanLiauReadability.maxScore" [invert]="colemanLiauReadability.lessIsBetter"
           [readingEasePercentage]="textAnalytics.colemanLiauIndex"></app-reading-ease-preview>
@@ -21,7 +17,7 @@
         <app-reading-ease-preview [readabilityTest]="automatedReadability" [goal]="automatedReadability.maxScore" [invert]="automatedReadability.lessIsBetter"
           [readingEasePercentage]="textAnalytics.automatedReadabilityIndex"></app-reading-ease-preview>
       </tab>
-      <tab heading="Spache Readability Score">
+      <!--<tab heading="Spache Readability Score">
         <app-reading-ease-preview [readabilityTest]="spacheReadability" [goal]="spacheReadability.maxScore" [invert]="spacheReadability.lessIsBetter"
           [readingEasePercentage]="textAnalytics.spacheReadabilityScore"></app-reading-ease-preview>
       </tab>
@@ -29,6 +25,10 @@
         <app-reading-ease-preview [readabilityTest]="daleChallReadability" [goal]="daleChallReadability.maxScore" [invert]="daleChallReadability.lessIsBetter"
           [readingEasePercentage]="textAnalytics.daleChallReadabilityScore"></app-reading-ease-preview>
       </tab>
+      <tab heading="Gunning Fog Score">
+        <app-reading-ease-preview [readabilityTest]="gunningFogReadability" [goal]="gunningFogReadability.maxScore" [invert]="gunningFogReadability.lessIsBetter"
+          [readingEasePercentage]="textAnalytics.gunningFogScore"></app-reading-ease-preview>
+      </tab>-->
     </tabset>
   </div>
   <div fxFlex="45" fxLayoutAlign="space-between center" fxLayout="row">

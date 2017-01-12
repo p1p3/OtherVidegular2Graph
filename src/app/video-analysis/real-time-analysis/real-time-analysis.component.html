@@ -1,8 +1,8 @@
-<div fxLayout="column" fxLayoutAlign="space-between stretch">
-  <div fxLayout="row" fxLayoutAlign="space-between stretch">
-    <app-sentiments-preview fxFlex="4" fxLayoutAlign="space-between stretch" [markers]="currentMarkerObservable"></app-sentiments-preview>
-    <div fxFlex="41" fxLayout="column">
-      <div fxFlex="90">
+<div fxLayout="column" fxLayoutAlign="center stretch" fxFill>
+  <div fxLayout="row" fxLayoutAlign="space-between stretch" fxFlex>
+    <app-sentiments-preview fxFlex="3" fxLayoutAlign="space-between stretch" [markers]="currentMarkerObservable"></app-sentiments-preview>
+    <div fxFlex="35" fxLayout="column">
+      <div fxFlex>
         <vg-player (onPlayerReady)="onPlayerReady($event)" class="videoEmotion">
           <vg-overlay-play></vg-overlay-play>
           <vg-buffering></vg-buffering>
@@ -28,27 +28,27 @@
           </video>
         </vg-player>
       </div>
-      <div fxFlex>
-        <app-transcription-preview fxFlex="40" [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
+    </div>
+    <div fxFlex="59" fxLayout="row" fxLayoutAlign="space-between stretch">
+      <app-emotion-preview fxFlex="48" [markers]="currentMarkerObservable"></app-emotion-preview>
+      <app-sentiment-time-line fxFlex="48" [markers]="currentMarkerersObservable"></app-sentiment-time-line>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between stretch" fxFlex>
+    <div fxFlex="40" fxLayout="column" fxLayoutAlign="start stretch">
+      <div fxFlex="15">
+        <h3>Time marks</h3>
+        <hr>
       </div>
+      <app-transcription-preview fxFlex [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
     </div>
-    <div fxFlex="51">
-      <!--<div fxLayout="row" fxFill fxLayoutAlign="space-between strecth">-->
-      <!--<app-transcription-preview fxFlex="40" [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>-->
-      <app-emotion-time-line [markers]="currentMarkerersObservable"></app-emotion-time-line>
-      <!--</div>-->
+    <div fxFlex="58" fxLayout="column" fxLayoutAlign="start stretch">
+      <div fxFlex="15">
+        <h3>Emotions</h3>
+        <hr>
+      </div>
+      <app-emotion-time-line fxFlex [markers]="currentMarkerersObservable"></app-emotion-time-line>
+      <!---->
     </div>
-  </div>
-</div>
-<div fxLayout="row" fxLayoutAlign="space-between stretch">
-  <div fxFlex="49">
-    <h3>Emotions</h3>
-    <hr>
-    <app-emotion-preview [markers]="currentMarkerObservable"></app-emotion-preview>
-  </div>
-  <div fxFlex="49">
-    <h3>Sentiment</h3>
-    <hr>
-    <app-sentiment-time-line [markers]="currentMarkerersObservable"></app-sentiment-time-line>
   </div>
 </div>
