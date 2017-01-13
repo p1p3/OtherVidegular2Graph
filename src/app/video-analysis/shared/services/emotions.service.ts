@@ -16,7 +16,7 @@ export class EmotionService implements IEmotionService {
 
     public getRecordEmotions(recordId: string): Observable<TimeMarker[]> {
         return this.analyticsService
-            .getRecordEmotions(recordId)
+            .getRecordTimeMarkers(recordId)
             .map(response => this.mapResponseToMarkers(response));
     }
 

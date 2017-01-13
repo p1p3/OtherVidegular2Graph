@@ -13,7 +13,7 @@ export class TextAnalyticsService implements ITextAnalyticsService {
 
     getRecordTextAnalytics(recordId: string): Observable<TextAnalytics> {
         return this.analyticsService
-            .getRecordEmotions(recordId)
+            .getRecordTextAnalytics(recordId)
             .map(response => this.mapResponseToTextAnalytics(response));
     }
 

@@ -8,6 +8,7 @@ export class MarkerPipe implements PipeTransform {
     transform(value: string): string {
         let cleanMarker = this.removeGreater(value);
         cleanMarker = this.removeFractions(cleanMarker);
+        cleanMarker = this.removeDoubleDash(cleanMarker);
         return cleanMarker;
     }
 
@@ -17,5 +18,9 @@ export class MarkerPipe implements PipeTransform {
 
     private removeFractions(value: string): string {
         return value.replace(/(\.[0-9])\w+/g, '');
+    }
+
+    private removeDoubleDash(value: string): string {
+        return value.replace('--', '-');
     }
 }

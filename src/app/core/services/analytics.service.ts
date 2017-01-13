@@ -1,3 +1,5 @@
+import { Insight } from './../../video-analysis/shared/models/Insights/insight.model';
+import { TextAnalytics } from './../../video-analysis/shared/models/text-analytics/text-analytics.model';
 import { IAnalyticsService } from './def/analytics.service';
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
@@ -8,7 +10,8 @@ export enum AssetRecordType {
   Emotion = 2,
   TextAnalytics = 3,
   FullText = 4,
-  KeyPhrase = 5
+  KeyPhrase = 5,
+  Insights = 6
 }
 
 @Injectable()
@@ -25,16 +28,33 @@ export class AnalyticsService implements IAnalyticsService {
 
   constructor(private http: Http) { }
 
-  public getRecordEmotions(recordId: string): Observable<Response> {
+  private getRecordInformation(recordId: string, dataType: AssetRecordType): Observable<Response> {
     let headers = new Headers(this.TokenHeader);
     let options = { headers: headers };
-    //let dataType =AssetRecordType.Emotion.toString();
-
-    let dataType = '1';
     let getURL = this.AnalyticsURL + this.GetURI
-      .replace(this.dataTypeInterpolation, dataType)
+      .replace(this.dataTypeInterpolation, dataType.toString())
       .replace(this.assetIdInterpolation, recordId);
 
     return this.http.get(getURL, options);
+  }
+
+  public getRecordEmotions(recordId: string): Observable<Response> {
+    return this.getRecordInformation(recordId, AssetRecordType.Emotion);
+  }
+
+  getRecordTimeMarkers(recordId: string): Observable<Response> {
+    return this.getRecordInformation(recordId, AssetRecordType.TimeMarker);
+  }
+  getRecordTextAnalytics(recordId: string): Observable<Response> {
+    return this.getRecordInformation(recordId, AssetRecordType.TextAnalytics);
+  }
+  getRecordFullText(recordId: string): Observable<Response> {
+    return this.getRecordInformation(recordId, AssetRecordType.FullText);
+  }
+  getRecordKeyPhrase(recordId: string): Observable<Response> {
+    return this.getRecordInformation(recordId, AssetRecordType.KeyPhrase);
+  }
+  getRecordInsights(recordId: string): Observable<Response> {
+    return this.getRecordInformation(recordId, AssetRecordType.Insights);
   }
 }
