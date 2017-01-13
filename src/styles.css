@@ -284,6 +284,10 @@ h6 {
   color: #44b19c;
 }
 
+#portfolio h3 {
+  color: #425563;
+}
+
 hr.star-light,
 hr.star-primary {
   padding: 0;
@@ -380,6 +384,13 @@ header .intro-text .skills {
   outline: none;
 }
 
+.navbar-custom {
+  background-color: #425563;
+  border-color: #425563;
+  border-radius: 0;
+  color: #FFF;
+}
+
 .navbar-custom .navbar-brand {
   /*color: white;*/
 }
@@ -396,17 +407,22 @@ header .intro-text .skills {
 }
 
 .navbar-custom .navbar-nav li a {
-  /*color: white;*/
-}
-
-.navbar-custom .navbar-nav li a:hover {
-  color: #18BC9C;
+  color: #FFF !important;
   outline: none;
 }
 
 .navbar-custom .navbar-nav li a:focus,
 .navbar-custom .navbar-nav li a:active {
   color: white;
+}
+
+.navbar-custom .navbar-brand img {
+  height: 100%;
+}
+
+.navbar-custom .navbar-brand {
+  padding: 6px;
+  padding-left: 30px;
 }
 
 .navbar-custom .navbar-nav li.active a {
@@ -615,8 +631,10 @@ footer h3 {
 }
 
 footer .footer-above {
+  /*padding-top: 50px;
+  background-color: #2C3E50;*/
   padding-top: 50px;
-  background-color: #2C3E50;
+  background-color: #425563;
 }
 
 footer .footer-col {
@@ -626,6 +644,7 @@ footer .footer-col {
 footer .footer-below {
   padding: 25px 0;
   background-color: #233140;
+  background-color: #425563;
 }
 
 .btn-outline {

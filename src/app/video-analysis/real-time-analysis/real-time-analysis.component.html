@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="center stretch" fxFill>
   <div fxLayout="row" fxLayoutAlign="space-between stretch" fxFlex>
-    <app-sentiments-preview fxFlex="3" fxLayoutAlign="space-between stretch" [markers]="currentMarkerObservable"></app-sentiments-preview>
+    <app-sentiments-preview fxFlex="4" fxLayoutAlign="space-between stretch" [markers]="currentMarkerObservable"></app-sentiments-preview>
     <div fxFlex="35" fxLayout="column">
       <div fxFlex>
         <vg-player (onPlayerReady)="onPlayerReady($event)" class="videoEmotion">
@@ -29,7 +29,7 @@
         </vg-player>
       </div>
     </div>
-    <div fxFlex="59" fxLayout="row" fxLayoutAlign="space-between stretch">
+    <div fxFlex="57" fxLayout="row" fxLayoutAlign="space-between stretch">
       <app-emotion-preview fxFlex="48" [markers]="currentMarkerObservable"></app-emotion-preview>
       <app-sentiment-time-line fxFlex="48" [markers]="currentMarkerersObservable"></app-sentiment-time-line>
     </div>
@@ -48,7 +48,6 @@
         <hr>
       </div>
       <app-emotion-time-line fxFlex [markers]="currentMarkerersObservable"></app-emotion-time-line>
-      <!---->
     </div>
   </div>
 </div>
