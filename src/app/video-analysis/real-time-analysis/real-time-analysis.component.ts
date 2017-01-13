@@ -21,7 +21,7 @@ export class RealTimeAnalysisComponent implements OnInit {
 
   private sources: Array<Object>;
   private api: VgAPI;
-  private recordId = '0cfffe55-d725-45a7-8bed-a322f1caa303';
+  private recordId = 'cad2b5fc-7870-4694-8aa3-d4cc7f68470d';
   private currentTimeMarkerSource = new Subject<TimeMarker>();
   private currentTimeMarkersSource = new Subject<TimeMarker[]>();
   private markersSource = new Array<TimeMarker>();
@@ -35,10 +35,18 @@ export class RealTimeAnalysisComponent implements OnInit {
       //   src: 'http://bskamsdev.streaming.mediaservices.windows.net/2d295f86-ce23-4f18-b6f4-4b694b7ee601/s12240135_428x240_428.mp4',
       //   type: 'video/mp4'
       // },
+
+
+      //0cfffe55-d725-45a7-8bed-a322f1caa303
+      // {
+      //   src: 'http://bskamsdev.streaming.mediaservices.windows.net/0b51898e-1a24-4b6c-b1aa-25efac642072/Nat_1920x1080_6750.mp4',
+      //   type: 'video/mp4'
+      // },
+      //cad2b5fc-7870-4694-8aa3-d4cc7f68470d
       {
-        src: 'http://bskamsdev.streaming.mediaservices.windows.net/0b51898e-1a24-4b6c-b1aa-25efac642072/Nat_1920x1080_6750.mp4',
+        src: 'http://bskamsdev.streaming.mediaservices.windows.net/85c8f6eb-8c8b-49ef-a3f4-5a5d3675c2fe/WIN_20170112_19_17_16_Pro_960x540_1500.mp4',
         type: 'video/mp4'
-      }
+      },
     ];
   }
 
