@@ -5,7 +5,7 @@ import { Emotion } from './emotion.model';
 
 export class EmotionChartData extends ChartData {
 
-    public static chartLabels: string[] = ['Neutral', 'Happiness', 'Surprise', 'Sadness', 'Anger', 'Disgust', 'Fear', 'Contempt'];
+    public static chartLabels: string[] = ['Happiness', 'Surprise', 'Sadness', 'Anger', 'Disgust', 'Fear', 'Contempt'];
     timeMarker: TimeMarker;
 
     constructor(timeMarker: TimeMarker, label: string, normalizeFactor = 1) {
@@ -14,15 +14,15 @@ export class EmotionChartData extends ChartData {
         this.timeMarker = timeMarker;
 
         let AddToRest = 0;
-        let neutralValue = this.getPercentage(timeMarker.emotion.neutral);
+        let neutralValue = 0//this.getPercentage(timeMarker.emotion.neutral);
         if (normalizeFactor > 1) {
             let originalValue = this.getPercentage(timeMarker.emotion.neutral);
             neutralValue = originalValue / normalizeFactor;
             let rest = originalValue - neutralValue;
-            // AddToRest = rest / (EmotionChartData.chartLabels.length - 1);
+            AddToRest = rest / (EmotionChartData.chartLabels.length - 1);
         }
 
-        this.data.push(neutralValue);
+        //this.data.push(neutralValue);
         this.data.push(this.getPercentage(timeMarker.emotion.happiness) + AddToRest);
         this.data.push(this.getPercentage(timeMarker.emotion.surprise) + AddToRest);
         this.data.push(this.getPercentage(timeMarker.emotion.sadness) + AddToRest);
