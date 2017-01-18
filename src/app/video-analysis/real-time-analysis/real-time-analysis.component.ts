@@ -1,5 +1,3 @@
-import { WordWeight } from '../../charts/word-cloud/shared/word-weight.model';
-import { TextAnalytics } from '../shared/models/text-analytics/text-analytics.model';
 import { ITextAnalyticsService } from '../shared/services/def/text-analytics.service';
 import { Sentiment } from '../shared/models/sentiment.model';
 import { IInsightService } from '../shared/services/def/insights.service';
@@ -9,7 +7,7 @@ import { IEmotionService } from '../shared/services/def/emotions.service';
 import { Subject, Observable } from 'rxjs/Rx';
 import { VgAPI } from 'videogular2/core';
 import { Component, OnInit, Inject } from '@angular/core';
-
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-real-time-analysis',
@@ -21,7 +19,7 @@ export class RealTimeAnalysisComponent implements OnInit {
 
   private sources: Array<Object>;
   private api: VgAPI;
-  private recordId = 'cad2b5fc-7870-4694-8aa3-d4cc7f68470d';
+  private recordId = 'f0b40320-a73a-43d6-acd1-dadc4eb6f2d6';
   private currentTimeMarkerSource = new Subject<TimeMarker>();
   private currentTimeMarkersSource = new Subject<TimeMarker[]>();
   private markersSource = new Array<TimeMarker>();
@@ -29,7 +27,8 @@ export class RealTimeAnalysisComponent implements OnInit {
 
   private currentTimeMarker: TimeMarker;
 
-  constructor( @Inject('IEmotionService') private emotionService: IEmotionService) {
+  constructor( @Inject('IEmotionService') private emotionService: IEmotionService,
+    private route: ActivatedRoute, ) {
     this.sources = [
       // {
       //   src: 'http://bskamsdev.streaming.mediaservices.windows.net/2d295f86-ce23-4f18-b6f4-4b694b7ee601/s12240135_428x240_428.mp4',
@@ -43,11 +42,25 @@ export class RealTimeAnalysisComponent implements OnInit {
       //   type: 'video/mp4'
       // },
       //cad2b5fc-7870-4694-8aa3-d4cc7f68470d
+      // {
+      //   src: 'http://bskamsdev.streaming.mediaservices.windows.net/85c8f6eb-8c8b-49ef-a3f4-5a5d3675c2fe/WIN_20170112_19_17_16_Pro_960x540_1500.mp4',
+      //   type: 'video/mp4'
+      // },
+      //f0b40320-a73a-43d6-acd1-dadc4eb6f2d6
       {
-        src: 'http://bskamsdev.streaming.mediaservices.windows.net/85c8f6eb-8c8b-49ef-a3f4-5a5d3675c2fe/WIN_20170112_19_17_16_Pro_960x540_1500.mp4',
+        src: 'http://bskamsdev.streaming.mediaservices.windows.net/5382e90b-84a7-44b0-8000-ba81d84a7cd2/Justin%20Hill%20Test%20Demo_640x360_1000.mp4',
         type: 'video/mp4'
-      },
+
+      }
     ];
+
+    // let asd;
+    // this.route.params
+    //   .switchMap((params: Params) => {
+    //     debugger;
+    //     asd = +params['id'];
+    //     return asd;
+    //   });
   }
 
   ngOnInit() {
@@ -71,8 +84,7 @@ export class RealTimeAnalysisComponent implements OnInit {
 
       if (timeMarkerResult && (this.isNotBeingDisplayed(timeMarkerResult) || (!this.isNotNull(this.currentTimeMarker)))) {
         this.currentTimeMarkerSource.next(timeMarkerResult);
-        let timeMarkersSpan = this.markersSource.filter(timeMarker =>
-          this.timeMarkerInVideoRange(currentTime, timeMarker));
+        let timeMarkersSpan = this.markersSource.filter(timeMarker => this.timeMarkerInVideoRange(currentTime, timeMarker));
         this.currentTimeMarkersSource.next(timeMarkersSpan);
       }
     });

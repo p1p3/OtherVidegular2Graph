@@ -19,7 +19,7 @@ export class EmotionChartData extends ChartData {
             let originalValue = this.getPercentage(timeMarker.emotion.neutral);
             neutralValue = originalValue / normalizeFactor;
             let rest = originalValue - neutralValue;
-           // AddToRest = rest / (EmotionChartData.chartLabels.length - 1);
+            // AddToRest = rest / (EmotionChartData.chartLabels.length - 1);
         }
 
         this.data.push(neutralValue);
@@ -31,7 +31,7 @@ export class EmotionChartData extends ChartData {
         this.data.push(this.getPercentage(timeMarker.emotion.fear) + AddToRest);
         this.data.push(this.getPercentage(timeMarker.emotion.contempt) + AddToRest);
 
-
+        // this.removeEmotion('Neutral');
         this.checkIfDataMatchLabels();
     }
 
@@ -43,6 +43,13 @@ export class EmotionChartData extends ChartData {
 
     private getPercentage(value: number) {
         return value * 100;
+    }
+
+    private removeEmotion(emotionName: string) {
+        let index = EmotionChartData.chartLabels.indexOf(emotionName);
+        debugger;
+        this.data.slice(index, 1);
+        EmotionChartData.chartLabels.slice(index, 1);
     }
 
 }
