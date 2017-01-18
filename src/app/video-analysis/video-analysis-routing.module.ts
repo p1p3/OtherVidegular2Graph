@@ -14,7 +14,7 @@ const VideoAnalysisRoutes: Routes = [
                 component: RealTimeAnalysisComponent,
             },
             {
-                path: 'static-analysis/:id',
+                path: 'static-analysis',
                 component: StaticDataAnalysisComponent
             },
             // {
