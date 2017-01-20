@@ -19,7 +19,7 @@ export class RealTimeAnalysisComponent implements OnInit {
 
   private sources: Array<Object>;
   private api: VgAPI;
-  private recordId = '87a4a843-a0d2-435f-9f62-bed4b54cc498';
+  private recordId = '03685a6c-37b1-453a-8aa8-cc62e4698074';
   private currentTimeMarkerSource = new Subject<TimeMarker>();
   private currentTimeMarkersSource = new Subject<TimeMarker[]>();
   private markersSource = new Array<TimeMarker>();
@@ -58,8 +58,13 @@ export class RealTimeAnalysisComponent implements OnInit {
       //   type: 'video/mp4'
       // },
       //87a4a843-a0d2-435f-9f62-bed4b54cc498
+      // {
+      //   src: 'http://bskamsdev.streaming.mediaservices.windows.net/fe446693-abb0-4c47-9722-4c6a2811f294/00005_1280x720_4500.mp4',
+      //   type: 'video/mp4'
+      // },
+      //
       {
-        src:'http://bskamsdev.streaming.mediaservices.windows.net/fe446693-abb0-4c47-9722-4c6a2811f294/00005_1280x720_4500.mp4',
+        src: 'http://bskamsdev.streaming.mediaservices.windows.net/62e03eba-75e0-4632-ace6-a40e0ca3edcc/00008_1280x720_4500.mp4',
         type: 'video/mp4'
       }
     ];
