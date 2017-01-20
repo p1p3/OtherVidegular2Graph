@@ -19,7 +19,7 @@ export class RealTimeAnalysisComponent implements OnInit {
 
   private sources: Array<Object>;
   private api: VgAPI;
-  private recordId = 'c2365e78-a30c-49d8-bd62-439fef02df67';
+  private recordId = '87a4a843-a0d2-435f-9f62-bed4b54cc498';
   private currentTimeMarkerSource = new Subject<TimeMarker>();
   private currentTimeMarkersSource = new Subject<TimeMarker[]>();
   private markersSource = new Array<TimeMarker>();
@@ -53,8 +53,13 @@ export class RealTimeAnalysisComponent implements OnInit {
 
       // }
       //c2365e78-a30c-49d8-bd62-439fef02df67
+      // {
+      //   src: 'http://bskamsdev.streaming.mediaservices.windows.net/e066b911-e10d-4173-a96a-eb3db4a48a39/Justin%20Hill%20Coaching%20Demo%202_960x540_1500.mp4',
+      //   type: 'video/mp4'
+      // },
+      //87a4a843-a0d2-435f-9f62-bed4b54cc498
       {
-        src: 'http://bskamsdev.streaming.mediaservices.windows.net/e066b911-e10d-4173-a96a-eb3db4a48a39/Justin%20Hill%20Coaching%20Demo%202_960x540_1500.mp4',
+        src:'http://bskamsdev.streaming.mediaservices.windows.net/fe446693-abb0-4c47-9722-4c6a2811f294/00005_1280x720_4500.mp4',
         type: 'video/mp4'
       }
     ];
