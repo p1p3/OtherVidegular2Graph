@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./static-data-analysis.component.css']
 })
 export class StaticDataAnalysisComponent implements OnInit {
-  private recordId = 'f0b40320-a73a-43d6-acd1-dadc4eb6f2d6';
+  private recordId = 'c2365e78-a30c-49d8-bd62-439fef02df67';
   constructor() { }
 
   ngOnInit() {
