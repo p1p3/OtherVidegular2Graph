@@ -19,7 +19,8 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule,
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

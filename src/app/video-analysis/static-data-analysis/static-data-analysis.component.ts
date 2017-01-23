@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { SelectRecordService } from './../../core/services/select-record.service';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-static-data-analysis',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaticDataAnalysisComponent implements OnInit {
   private recordId = '03685a6c-37b1-453a-8aa8-cc62e4698074';
-  constructor() { }
+  constructor( @Inject('ISelectRecordService') private recordSelectService: SelectRecordService) {
+    this.recordId = this.recordSelectService.selectedRecord.assetId;
+  }
 
   ngOnInit() {
   }

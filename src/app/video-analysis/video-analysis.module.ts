@@ -4,13 +4,11 @@ import { MarkerPipe } from './shared/pipes/time-marker.pipe';
 import { VideoAnalysisComponent } from './video-analysis.component';
 import { BSChartsModule } from './../charts/bs-charts.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { TooltipModule } from 'ng2-bootstrap/tooltip';
-
+import { ModalModule } from 'ng2-bootstrap/modal';
 
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'angular2-perfect-scrollbar';
@@ -62,6 +60,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
     FlexLayoutModule.forRoot(),
+    ModalModule.forRoot(),
     PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
     SharedModule,
     VideoAnalysisRoutingModule
