@@ -25,4 +25,10 @@ export class SelectRecordComponent implements OnInit {
     location.reload();
   }
 
+  selectDefault() {
+    let defaultRecord = this.recordSelectService.getDefault();
+    this.recordSelectService.selectRecord(defaultRecord);
+    location.reload();
+  }
+
 }
