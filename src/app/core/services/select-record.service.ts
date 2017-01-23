@@ -23,6 +23,7 @@ export class SelectRecordService implements ISelectRecordService {
   public selectRecord(record: RecordSelect): void {
     this.recordInMemory = record;
     localStorage.setItem(this.recordStorageKey, JSON.stringify(record));
+    
   }
 
   public getDefault(): RecordSelect {
