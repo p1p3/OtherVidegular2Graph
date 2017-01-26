@@ -30,7 +30,7 @@
     "d3": "^4.4.1",
     "jquery": "^3.1.1",
     "ng2-bootstrap": "^1.1.16-9",
-    "ng2-charts": "^1.4.4",
+    "ng2-charts": "1.4.4",
     "ng2-kw-gauge": "0.0.7",
     "personality-sunburst-chart": "^1.0.2",
     "rxjs": "5.0.0-beta.12",
