@@ -1,3 +1,4 @@
+
 import { Sentiment } from './../models/sentiment.model';
 import { Emotion } from './../models/emotion.model';
 import { TimeMarker } from './../models/time-marker.model';
@@ -8,7 +9,7 @@ import { Response } from '@angular/http';
 
 import { IAnalyticsService } from './../../../core/services/def/analytics.service';
 import { IEmotionService } from './def/emotions.service';
-
+import { FullEmotion } from './../models/full-emotions/full-emotion.model';
 @Injectable()
 export class EmotionService implements IEmotionService {
 
@@ -18,6 +19,10 @@ export class EmotionService implements IEmotionService {
         return this.analyticsService
             .getRecordTimeMarkers(recordId)
             .map(response => this.mapResponseToMarkers(response));
+    }
+
+    public getFullRecordEmotions(recordId: string): Observable<FullEmotion> {
+        return Observable.of(null);
     }
 
     private mapResponseToMarkers(response: Response) {

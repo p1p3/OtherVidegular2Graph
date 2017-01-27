@@ -43,6 +43,7 @@ import { WordCloudComponent } from './word-cloud/word-cloud.component';
 import { TextAnalysisPreviewComponent } from './text-analysis-preview/text-analysis-preview.component';
 import { RealTimeAnalysisComponent } from './real-time-analysis/real-time-analysis.component';
 import { StaticDataAnalysisComponent } from './static-data-analysis/static-data-analysis.component';
+import { EmotionsFulldataPreviewComponent } from './emotions-fulldata-preview/emotions-fulldata-preview.component';
 
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -73,7 +74,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     WordCloudComponent,
     TextAnalysisPreviewComponent,
     RealTimeAnalysisComponent,
-    StaticDataAnalysisComponent],
+    StaticDataAnalysisComponent,
+    EmotionsFulldataPreviewComponent],
   exports: [VideoAnalysisComponent],
   providers: [{ provide: 'IEmotionService', useClass: EmotionService },
   { provide: 'IInsightService', useClass: FakeInsightService },

@@ -8,7 +8,7 @@ import { Emotion } from '../shared/models/emotion.model';
 import { IEmotionService } from '../shared/services/def/emotions.service';
 import { Subject, Observable } from 'rxjs/Rx';
 import { VgAPI } from 'videogular2/core';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ import { ActivatedRoute, Params } from '@angular/router';
   templateUrl: './real-time-analysis.component.html',
   styleUrls: ['./real-time-analysis.component.css']
 })
-export class RealTimeAnalysisComponent implements OnInit {
+export class RealTimeAnalysisComponent implements OnInit, OnDestroy {
   private selectedRecord: RecordSelect;
   private recordId: string;
   private sources: Array<Object>;
@@ -28,7 +28,7 @@ export class RealTimeAnalysisComponent implements OnInit {
   private currentTimeMarkersSource = new Subject<TimeMarker[]>();
   private markersSource = new Array<TimeMarker>();
   private timeMarkersObservable: Observable<TimeMarker[]>;
-
+  private currentTimeObsevable: Observable<number>;
   private currentTimeMarker: TimeMarker;
 
   constructor( @Inject('IEmotionService') private emotionService: IEmotionService,
@@ -46,6 +46,7 @@ export class RealTimeAnalysisComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentTimeObsevable = new Observable<number>().startWith(0);
     this.fetchTimeMarkers(this.recordId);
   }
 
@@ -59,9 +60,11 @@ export class RealTimeAnalysisComponent implements OnInit {
 
   onPlayerReady(api: VgAPI) {
     this.api = api;
-    this.api.getDefaultMedia().subscriptions.timeUpdate.subscribe(time => {
-      let currentTime = this.api.getDefaultMedia().currentTime;
+    this.currentTimeObsevable = this.api.getDefaultMedia()
+      .subscriptions.timeUpdate
+      .map(time => this.api.getDefaultMedia().currentTime);
 
+    this.currentTimeObsevable.subscribe(currentTime => {
       let timeMarkerResult = this.markersSource.find(timeMarker => this.isCurrentTimeInTimeMarkerInRange(currentTime, timeMarker));
 
       if (timeMarkerResult && (this.isNotBeingDisplayed(timeMarkerResult) || (!this.isNotNull(this.currentTimeMarker)))) {
@@ -70,6 +73,10 @@ export class RealTimeAnalysisComponent implements OnInit {
         this.currentTimeMarkersSource.next(timeMarkersSpan);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.currentTimeObsevable = null;
   }
 
   isCurrentTimeInTimeMarkerInRange(currentTime: number, timeMarker: TimeMarker): boolean {

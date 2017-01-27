@@ -1,0 +1,7 @@
+<div fxLayout="column" fxLayoutAlign="center stretch" fxFill>
+  <div fxFlex="80" *ngIf="lineChartData?.length > 0">
+    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="showUpperLabels"
+      [chartType]="lineChartType" [colors]="chartColors"></canvas>
+  </div>
+</div>
+

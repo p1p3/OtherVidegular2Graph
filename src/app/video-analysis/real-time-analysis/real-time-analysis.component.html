@@ -47,8 +47,11 @@
         <h3>Emotions</h3>
         <hr>
       </div>
-      <app-emotion-time-line fxFlex [markers]="currentMarkerersObservable"></app-emotion-time-line>
+        <app-emotions-fulldata-preview [currentTime]="currentTimeObsevable" fxFlex> </app-emotions-fulldata-preview>
+      <!--<app-emotion-time-line fxFlex [markers]="currentMarkerersObservable"></app-emotion-time-line>-->
     </div>
   </div>
+  <!--<div fxLayout="row" fxLayoutAlign="space-between stretch" fxFlex>
+    <app-emotions-fulldata-preview [currentTime]="currentTimeObsevable" fxFill> </app-emotions-fulldata-preview>
+  </div>-->
 </div>
-
