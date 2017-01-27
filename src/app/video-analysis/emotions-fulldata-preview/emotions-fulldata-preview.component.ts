@@ -31,7 +31,9 @@ export class EmotionsFulldataPreviewComponent implements OnInit {
   private lineChartType: string = 'line';
 
 
-  constructor( @Inject('IEmotionService') private emotionService: IEmotionService) { }
+  constructor( @Inject('IEmotionService') private emotionService: IEmotionService) {
+    this.setDefaultData();
+  }
 
   ngOnInit() {
     this.emotionService.getFullRecordEmotions('fakeId').subscribe(emotion => {
@@ -39,7 +41,7 @@ export class EmotionsFulldataPreviewComponent implements OnInit {
       this.chartData = new FullEmotionTimelineChartData(this.emotionsData, 3);
 
       this.currentTime.subscribe(t => {
-        let dataForCurrentTime = this.chartData.getDataUntil(t, 2);
+        let dataForCurrentTime = this.chartData.getDataUntil(t, 2, 10);
         let data = dataForCurrentTime.data;
         let labels = dataForCurrentTime.labels;
         this.fillChartsData(data, labels);
@@ -50,6 +52,13 @@ export class EmotionsFulldataPreviewComponent implements OnInit {
   fillChartsData(chartData: Array<ChartData>, labels: string[]) {
     this.lineChartData = chartData;
     this.lineChartLabels = labels;
+  }
+
+  setDefaultData() {
+    let chartData = [new ChartData([0])];
+    let chartLabels = [];
+    this.lineChartData = chartData;
+    this.lineChartLabels = chartLabels;
   }
 
 }

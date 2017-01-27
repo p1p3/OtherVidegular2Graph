@@ -12,14 +12,14 @@ export class FullEmotionTimelineChartData {
         this.normalizeFactor = normalizeFactor;
     }
 
-    public getDataUntil(seconds: number, normalizeFactor = 1): { data: Array<ChartData>, labels: Array<string> } {
+    public getDataUntil(seconds: number, normalizeFactor = 1, limitDataTo = 0): { data: Array<ChartData>, labels: Array<string> } {
         let data = new Array<ChartData>(this.chartLabels.length);
         let markersLabels = new Array<string>();
         for (let index = 0; index < this.chartLabels.length; index++) {
             data[index] = new ChartData();
             data[index].label = this.chartLabels[index];
         }
-        let limitDataTo = 5;
+
         markersGroupLoop:
         for (let markerGroup of this.fullEmotion.TickMarkers) {
             let groupEndingTimeLessThanCurrentTime = markerGroup.endTimeInSeconds <= seconds;
@@ -46,13 +46,13 @@ export class FullEmotionTimelineChartData {
                 data[5].data.push(this.getPercentage(marker.emotion.fear) + AddToRest);
                 data[6].data.push(this.getPercentage(marker.emotion.contempt) + AddToRest);
 
-                if (data[0].data.length > limitDataTo) {
+                if (limitDataTo > 0 && data[0].data.length > limitDataTo) {
                     data.forEach(emotionsData => {
                         emotionsData.data.shift();
                     });
                     markersLabels.shift();
                 }
-                console.log();
+
                 if (markerEndingTimeGreaterThanLimit) {
                     break markersGroupLoop;
                 }

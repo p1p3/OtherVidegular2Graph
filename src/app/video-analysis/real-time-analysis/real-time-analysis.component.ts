@@ -46,7 +46,7 @@ export class RealTimeAnalysisComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.currentTimeObsevable = new Observable<number>().startWith(0);
+    this.currentTimeObsevable = new Observable<number>();
     this.fetchTimeMarkers(this.recordId);
   }
 
@@ -62,7 +62,7 @@ export class RealTimeAnalysisComponent implements OnInit, OnDestroy {
     this.api = api;
     this.currentTimeObsevable = this.api.getDefaultMedia()
       .subscriptions.timeUpdate
-      .map(time => this.api.getDefaultMedia().currentTime);
+      .map(time => this.api.getDefaultMedia().currentTime).startWith(0);
 
     this.currentTimeObsevable.subscribe(currentTime => {
       let timeMarkerResult = this.markersSource.find(timeMarker => this.isCurrentTimeInTimeMarkerInRange(currentTime, timeMarker));
