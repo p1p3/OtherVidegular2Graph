@@ -2,6 +2,7 @@ import { ISubmitJobService } from './../shared/definitions/i-submit-job.service'
 import { VideoMetadata } from './../shared/video-metadata.model';
 import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
 import { FileDropDirective, FileUploader, FileItem } from 'ng2-file-upload';
+import { Router } from "@angular/router";
 
 const URL = 'http://bsksimulationapi.azurewebsites.net/v1/uploadVideoFile/';
 
@@ -24,13 +25,16 @@ export class UploadFormComponent implements OnInit {
   }
 
   public onSubmit() {
+    this.allCompleted = false;
     this.submitJobService.submitJob(this.AssetId, this.model).subscribe(response => {
       console.log(response);
+      location.reload();
     });
   }
 
   constructor(private ref: ChangeDetectorRef,
-    @Inject('ISubmitJobService') private submitJobService: ISubmitJobService) {
+    @Inject('ISubmitJobService') private submitJobService: ISubmitJobService,
+    private router: Router) {
     this.uploader.onProgressItem = (fileItem: FileItem, progress: any) => {
       this.ref.detectChanges();
     };
