@@ -53,6 +53,10 @@
           <label for="name">Overall score</label>
           <input type="number" class="form-control" [(ngModel)]="model.overall_score" name="overall_score" id="overall_score" placeholder="Overall score">
         </div>
+        <div class="form-group" class="col-xs-6">
+          <label for="name">Challenge Id</label>
+          <input type="number" class="form-control" [(ngModel)]="model.challenge_id" name="challenge_id" id="challenge_id" placeholder="Challenge Id">
+        </div>
         <div class="col-xs-12 buttons-container">
           {{AssetId}}
           <button type="submit" class="btn btn-default" [disabled]="!allCompleted">Submit</button>

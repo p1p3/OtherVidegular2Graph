@@ -4,6 +4,7 @@ export class VideoMetadata {
         public pres_id?: number,
         public attempt?: number,
         public overall_score?: number,
-        public duration?: number
+        public duration?: number,
+        public challenge_id?: number
     ) { }
 }
