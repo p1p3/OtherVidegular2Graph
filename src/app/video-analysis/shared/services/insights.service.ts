@@ -10,7 +10,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Observable, Operator } from 'rxjs/Rx';
 
 @Injectable()
-export class FakeInsightService implements IInsightService {
+export class InsightService implements IInsightService {
     constructor( @Inject('IAnalyticsService') private analyticsService: IAnalyticsService) { }
     public getRecordInsights(recordId: string): Observable<Insight> {
         return this.analyticsService.getRecordInsights(recordId)
@@ -19,15 +19,17 @@ export class FakeInsightService implements IInsightService {
 
     private mapJsonToInsight(jsonResponse: any): Insight {
         let mappedInsight = new Insight();
-        for (let jsonRootTrait of jsonResponse.personality) {
+        let jsonObject = JSON.parse(jsonResponse.Insights);
+
+        for (let jsonRootTrait of jsonObject.personality) {
             mappedInsight.addPersonalyTrait(this.mapJsonToRootTrait(jsonRootTrait));
         }
 
-        for (let jsonRootTrait of jsonResponse.values) {
+        for (let jsonRootTrait of jsonObject.values) {
             mappedInsight.addValuesTrait(this.mapJsonToRootTrait(jsonRootTrait));
         }
 
-        for (let jsonRootTrait of jsonResponse.needs) {
+        for (let jsonRootTrait of jsonObject.needs) {
             mappedInsight.addNeedsTrait(this.mapJsonToRootTrait(jsonRootTrait));
         }
         return mappedInsight;

@@ -49,9 +49,6 @@ export class FakeEmotionService implements IEmotionService {
         return mappedInsight;
     }
 
-    private mapJsonToTickMarker(jsonResponse: any, timeScale: number): TickMarkerData {
-        return new TickMarkerData(jsonResponse.FaceDistribution, jsonResponse.StartTick, jsonResponse.EndTick, timeScale);
-    }
 
     private mapJsonToTickMarkerGroup(jsonResponse: any, timeScale: number): TickMarkerGroup {
         let markers: Array<TickMarkerData> = jsonResponse.FaceDistributions.map(element => {
@@ -59,4 +56,9 @@ export class FakeEmotionService implements IEmotionService {
         });
         return new TickMarkerGroup(markers, jsonResponse.StartTick, jsonResponse.EndTick, timeScale);
     }
+
+    private mapJsonToTickMarker(jsonResponse: any, timeScale: number): TickMarkerData {
+        return new TickMarkerData(jsonResponse.FaceDistribution, jsonResponse.StartTick, jsonResponse.EndTick, timeScale);
+    }
+
 }

@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 uploader-container">
+      <div *ngIf="uploader?.queue?.length === 0">
+        <h3>Select files</h3>
+        <div ng2FileDrop [uploader]="uploader" class="well my-drop-zone">
+          Drop your video
+        </div>
+      </div>
+      <div *ngFor="let item of uploader.queue" class="row">
+        <div class="col-xs-12">
+          <strong>{{ item?.file?.name }}</strong>
+        </div>
+        <div class="col-xs-6">
+          <div class="progress" style="margin-bottom: 0;">
+            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+          </div>
+        </div>
+        <div class="col-xs-12 buttons-container">
+          <button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+            <span class="glyphicon glyphicon-upload"></span> Upload
+          </button>
+          <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
+            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+          </button>
+          <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
+            <span class="glyphicon glyphicon-trash"></span> Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <form class="row" (ngSubmit)="onSubmit()" #metaDataForm="ngForm">
+        <div class="form-group" class="col-xs-6">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" [(ngModel)]="model.name" name="name" id="name" placeholder="Your full name">
+        </div>
+        <div class="form-group" class="col-xs-6">
+          <label for="name">Submission Id</label>
+          <input type="number" class="form-control" [(ngModel)]="model.submission_id" name="submission_id" id="submission_id" placeholder="Submission Id">
+        </div>
+        <div class="form-group" class="col-xs-6">
+          <label for="name">Presentation Id</label>
+          <input type="number" class="form-control" [(ngModel)]="model.pres_id" name="pres_id" id="presentation_id" placeholder="Presentation Id">
+        </div>
+        <div class="form-group" class="col-xs-6">
+          <label for="name">Attemp number</label>
+          <input type="number" class="form-control" [(ngModel)]="model.attempt" name="attempt" id="attempt_number" placeholder="Attempt number">
+        </div>
+        <div class="form-group" class="col-xs-6">
+          <label for="name">Overall score</label>
+          <input type="number" class="form-control" [(ngModel)]="model.overall_score" name="overall_score" id="overall_score" placeholder="Overall score">
+        </div>
+        <div class="col-xs-12 buttons-container">
+          {{AssetId}}
+          <button type="submit" class="btn btn-default" [disabled]="!allCompleted">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

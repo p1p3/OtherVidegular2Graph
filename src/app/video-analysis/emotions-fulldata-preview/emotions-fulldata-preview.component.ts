@@ -1,3 +1,5 @@
+import { RecordSelect } from './../../core/models/record-select.model';
+import { SelectRecordService } from './../../core/services/select-record.service';
 import { ChartData } from './../shared/models/chart-data.model';
 import { colors, ChartColors } from './../shared/models/colors.model';
 import { FullEmotionTimelineChartData } from './../shared/models/full-emotions/full-emotion-timeline-chart-data.model';
@@ -10,12 +12,12 @@ import { Component, OnInit, Inject, Input } from '@angular/core';
 @Component({
   selector: 'app-emotions-fulldata-preview',
   templateUrl: './emotions-fulldata-preview.component.html',
-  styleUrls: ['./emotions-fulldata-preview.component.css'],
-  providers: [{ provide: 'IEmotionService', useClass: FakeEmotionService }]
+  styleUrls: ['./emotions-fulldata-preview.component.css']
 })
 export class EmotionsFulldataPreviewComponent implements OnInit {
   @Input() currentTime: Observable<number>;
 
+  private selectedRecord: RecordSelect;
   private emotionsData: FullEmotion;
   private chartData: FullEmotionTimelineChartData;
   private showUpperLabels: boolean = true;
@@ -31,17 +33,19 @@ export class EmotionsFulldataPreviewComponent implements OnInit {
   private lineChartType: string = 'line';
 
 
-  constructor( @Inject('IEmotionService') private emotionService: IEmotionService) {
+  constructor( @Inject('IEmotionService') private emotionService: IEmotionService,
+    @Inject('ISelectRecordService') private recordSelectService: SelectRecordService) {
+    this.selectedRecord = this.recordSelectService.selectedRecord;
     this.setDefaultData();
   }
 
   ngOnInit() {
-    this.emotionService.getFullRecordEmotions('fakeId').subscribe(emotion => {
+    this.emotionService.getFullRecordEmotions(this.selectedRecord.assetId).subscribe(emotion => {
       this.emotionsData = emotion;
       this.chartData = new FullEmotionTimelineChartData(this.emotionsData, 3);
 
       this.currentTime.subscribe(t => {
-        let dataForCurrentTime = this.chartData.getDataUntil(t, 2, 10);
+        let dataForCurrentTime = this.chartData.getDataUntil(t, 2);
         let data = dataForCurrentTime.data;
         let labels = dataForCurrentTime.labels;
         this.fillChartsData(data, labels);

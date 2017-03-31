@@ -1,3 +1,4 @@
+
 import { VideoAnalysisRoutingModule } from './video-analysis-routing.module';
 import { SharedModule } from './../shared/shared.module';
 import { MarkerPipe } from './shared/pipes/time-marker.pipe';
@@ -26,7 +27,7 @@ import { EmotionService } from './shared/services/emotions.service';
 
 // tslint:disable-next-line:no-unused-variable
 import { IInsightService } from './shared/services/def/insights.service';
-import { FakeInsightService } from './shared/services/insights-fake.service';
+import { InsightService } from './shared/services/insights.service';
 
 // tslint:disable-next-line:no-unused-variable
 import { ITextAnalyticsService } from './shared/services/def/text-analytics.service';
@@ -78,7 +79,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     EmotionsFulldataPreviewComponent],
   exports: [VideoAnalysisComponent],
   providers: [{ provide: 'IEmotionService', useClass: EmotionService },
-  { provide: 'IInsightService', useClass: FakeInsightService },
+  { provide: 'IInsightService', useClass: InsightService },
   { provide: 'ITextAnalyticsService', useClass: TextAnalyticsService }]
 })
 export class VideoAnalysisModule { }

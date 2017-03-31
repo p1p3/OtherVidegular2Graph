@@ -8,4 +8,5 @@ export interface IAnalyticsService {
     getRecordFullText(recordId: string): Observable<Response>;
     getRecordKeyPhrase(recordId: string): Observable<Response>;
     getRecordInsights(recordId: string): Observable<Response>;
+    getRecordRawEmotions(recordId: string): Observable<Response>;
 }

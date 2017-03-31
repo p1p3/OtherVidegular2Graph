@@ -1,3 +1,5 @@
+import { TickMarkerGroup } from './../models/full-emotions/tick-marker-group.model';
+import { TickMarkerData } from './../models/full-emotions/tick-marker-data.model';
 
 import { Sentiment } from './../models/sentiment.model';
 import { Emotion } from './../models/emotion.model';
@@ -22,7 +24,8 @@ export class EmotionService implements IEmotionService {
     }
 
     public getFullRecordEmotions(recordId: string): Observable<FullEmotion> {
-        return Observable.of(null);
+        return this.analyticsService.getRecordRawEmotions(recordId)
+            .map((res: Response) => this.mapJsonFullEmotiont(res.json()));
     }
 
     private mapResponseToMarkers(response: Response) {
@@ -73,5 +76,29 @@ export class EmotionService implements IEmotionService {
 
     private getEmotionFromJSON(jsonEmotion: any): Emotion {
         return JSON.parse(jsonEmotion) as Emotion;
+    }
+
+    private mapJsonFullEmotiont(jsonResponse: any): FullEmotion {
+        let timeScale: number = jsonResponse.Timescale;
+        let groupedMarkers = jsonResponse.TickMarkers.map(element => {
+            return this.mapJsonToTickMarkerGroup(element, timeScale);
+        });
+
+        let mappedInsight = new FullEmotion(groupedMarkers, timeScale);
+
+        return mappedInsight;
+    }
+
+
+
+    private mapJsonToTickMarkerGroup(jsonResponse: any, timeScale: number): TickMarkerGroup {
+        let markers: Array<TickMarkerData> = jsonResponse.FaceDistributions.map(element => {
+            return this.mapJsonToTickMarker(element, timeScale);
+        });
+        return new TickMarkerGroup(markers, jsonResponse.StartTick, jsonResponse.EndTick, timeScale);
+    }
+
+    private mapJsonToTickMarker(jsonResponse: any, timeScale: number): TickMarkerData {
+        return new TickMarkerData(jsonResponse.FaceDistribution, jsonResponse.StartTick, jsonResponse.EndTick, timeScale);
     }
 }

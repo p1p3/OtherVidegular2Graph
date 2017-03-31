@@ -35,19 +35,20 @@
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="space-between stretch" fxFlex>
-    <div fxFlex="40" fxLayout="column" fxLayoutAlign="start stretch">
+    <div fxFlex="50" fxLayout="column" fxLayoutAlign="start stretch">
       <div fxFlex="15">
         <h3>Time marks</h3>
         <hr>
       </div>
       <app-transcription-preview fxFlex [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
+      <!--<app-emotion-time-line fxFlex [markers]="currentMarkerersObservable"></app-emotion-time-line>-->
     </div>
-    <div fxFlex="58" fxLayout="column" fxLayoutAlign="start stretch">
+    <div fxFlex="50" fxLayout="column" fxLayoutAlign="start stretch">
       <div fxFlex="15">
         <h3>Emotions</h3>
         <hr>
       </div>
-        <app-emotions-fulldata-preview [currentTime]="currentTimeObsevable" fxFlex> </app-emotions-fulldata-preview>
+      <app-emotions-fulldata-preview [currentTime]="currentTimeObsevable" fxFlex> </app-emotions-fulldata-preview>
       <!--<app-emotion-time-line fxFlex [markers]="currentMarkerersObservable"></app-emotion-time-line>-->
     </div>
   </div>

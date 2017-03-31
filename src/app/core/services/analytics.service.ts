@@ -11,7 +11,8 @@ export enum AssetRecordType {
   TextAnalytics = 3,
   FullText = 4,
   KeyPhrase = 5,
-  Insights = 6
+  Insights = 6,
+  RawEmotions = 7
 }
 
 @Injectable()
@@ -56,5 +57,8 @@ export class AnalyticsService implements IAnalyticsService {
   }
   getRecordInsights(recordId: string): Observable<Response> {
     return this.getRecordInformation(recordId, AssetRecordType.Insights);
+  }
+  getRecordRawEmotions(recordId: string): Observable<Response> {
+    return this.getRecordInformation(recordId, AssetRecordType.RawEmotions);
   }
 }
