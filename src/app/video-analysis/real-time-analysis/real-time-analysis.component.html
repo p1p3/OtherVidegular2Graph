@@ -1,8 +1,8 @@
 <div fxLayout="column" fxLayoutAlign="center stretch" fxFill>
   <div fxLayout="row" fxLayoutAlign="space-between stretch" fxFlex>
     <app-sentiments-preview fxFlex="4" fxLayoutAlign="space-between stretch" [markers]="currentMarkerObservable"></app-sentiments-preview>
-    <div fxFlex="35" fxLayout="column">
-      <div fxFlex>
+    <div fxFlex="40" fxLayout="column">
+      <div fxFlex fxFill>
         <vg-player (onPlayerReady)="onPlayerReady($event)" class="videoEmotion">
           <vg-overlay-play></vg-overlay-play>
           <vg-buffering></vg-buffering>
@@ -29,30 +29,25 @@
         </vg-player>
       </div>
     </div>
-    <div fxFlex="57" fxLayout="row" fxLayoutAlign="space-between stretch">
+    <div fxFlex="52" fxLayout="row" fxLayoutAlign="space-between stretch">
       <app-emotion-preview fxFlex="48" [markers]="currentMarkerObservable"></app-emotion-preview>
       <app-sentiment-time-line fxFlex="48" [markers]="currentMarkerersObservable"></app-sentiment-time-line>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="space-between stretch" fxFlex>
-    <div fxFlex="50" fxLayout="column" fxLayoutAlign="start stretch">
-      <div fxFlex="15">
+    <div fxFlex="49" fxLayout="column" fxLayoutAlign="start stretch">
+      <div fxFlex="21">
         <h3>Time marks</h3>
         <hr>
       </div>
       <app-transcription-preview fxFlex [markers]="timeMarkersObservable" [selectedMarker]="currentMarkerObservable" (markerClick)="selectMarker($event)"></app-transcription-preview>
-      <!--<app-emotion-time-line fxFlex [markers]="currentMarkerersObservable"></app-emotion-time-line>-->
     </div>
-    <div fxFlex="50" fxLayout="column" fxLayoutAlign="start stretch">
+    <div fxFlex="49" fxLayout="column" fxLayoutAlign="start stretch">
       <div fxFlex="15">
         <h3>Emotions</h3>
         <hr>
       </div>
       <app-emotions-fulldata-preview [currentTime]="currentTimeObsevable" fxFlex> </app-emotions-fulldata-preview>
-      <!--<app-emotion-time-line fxFlex [markers]="currentMarkerersObservable"></app-emotion-time-line>-->
     </div>
   </div>
-  <!--<div fxLayout="row" fxLayoutAlign="space-between stretch" fxFlex>
-    <app-emotions-fulldata-preview [currentTime]="currentTimeObsevable" fxFill> </app-emotions-fulldata-preview>
-  </div>-->
 </div>

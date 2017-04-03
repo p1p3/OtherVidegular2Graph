@@ -79,8 +79,10 @@ export class EmotionService implements IEmotionService {
     }
 
     private mapJsonFullEmotiont(jsonResponse: any): FullEmotion {
-        let timeScale: number = jsonResponse.Timescale;
-        let groupedMarkers = jsonResponse.TickMarkers.map(element => {
+        let jsonRawEmotions = JSON.parse(jsonResponse.RawEmotionData);
+
+        let timeScale: number = jsonRawEmotions.Timescale;
+        let groupedMarkers = jsonRawEmotions.TickMarkers.map(element => {
             return this.mapJsonToTickMarkerGroup(element, timeScale);
         });
 
