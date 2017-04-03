@@ -45,7 +45,7 @@ export class EmotionsFulldataPreviewComponent implements OnInit {
       this.chartData = new FullEmotionTimelineChartData(this.emotionsData, 3);
 
       this.currentTime.subscribe(t => {
-        let dataForCurrentTime = this.chartData.getDataUntil(t, 2);
+        let dataForCurrentTime = this.chartData.getDataUntil(t, 2, 10);
         let data = dataForCurrentTime.data;
         let labels = dataForCurrentTime.labels;
         this.fillChartsData(data, labels);
