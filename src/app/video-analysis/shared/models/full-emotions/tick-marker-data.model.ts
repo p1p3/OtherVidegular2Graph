@@ -9,5 +9,15 @@ export class TickMarkerData extends TickMarker {
         super(startTick, endTick, timeScale);
     }
 
+    public equals(marker: TickMarkerData): boolean {
+        let equal = marker
+            && Math.round(marker.startTimeInSeconds) === Math.round(this.startTimeInSeconds)
+            && Math.round(marker.endTimeInSeconds) === Math.round(this.endTimeInSeconds);
+        return equal;
+    }
 
+    public equalStartTime(marker: TickMarkerData): boolean {
+        let equal = marker && marker.formatedHmsStartTime === this.formatedHmsStartTime;
+        return equal;
+    }
 }

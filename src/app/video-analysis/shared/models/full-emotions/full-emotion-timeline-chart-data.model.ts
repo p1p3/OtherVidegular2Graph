@@ -1,3 +1,4 @@
+import { TickMarkerData } from './tick-marker-data.model';
 import { ChartData } from './../chart-data.model';
 import { FullEmotion } from './full-emotion.model';
 
@@ -23,9 +24,17 @@ export class FullEmotionTimelineChartData {
         markersGroupLoop:
         for (let markerGroup of this.fullEmotion.TickMarkers) {
             let groupEndingTimeLessThanCurrentTime = markerGroup.endTimeInSeconds <= seconds;
+            let lastMarker: TickMarkerData;
+
             for (let marker of markerGroup.faceDistributions) {
 
+                if (marker.equalStartTime(lastMarker)) {
+                    //TODO : Mean between seconds, for the moment just ignore the others.
+                    continue;
+                };
+
                 markersLabels.push(marker.formatedHmsStartTime);
+                lastMarker = marker;
 
                 let markerEndingTimeGreaterThanLimit = marker.endTimeInSeconds > seconds;
                 let AddToRest = 0;
@@ -62,8 +71,12 @@ export class FullEmotionTimelineChartData {
                 break;
             }
         }
+
         return { data: data, labels: markersLabels };
     }
+
+
+
 
     private getPercentage(value: number) {
         return value * 100;
