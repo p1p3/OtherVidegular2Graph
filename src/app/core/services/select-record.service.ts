@@ -28,7 +28,7 @@ export class SelectRecordService implements ISelectRecordService {
 
   public getDefault(): RecordSelect {
     return new RecordSelect('0f79ef18-ec8d-495f-8a73-8e3b3538f7b7',
-      'http://bskamsdev.streaming.mediaservices.windows.net/e066b911-e10d-4173-a96a-eb3db4a48a39/Justin%20Hill%20Coaching%20Demo%202_960x540_1500.mp4'
+      'http://bskamsdev.streaming.mediaservices.windows.net/1a9def6c-4ac0-4ba1-9179-0c13468377a2/Justin%20Hill%20Coaching%20Demo%202_1280x720_3400.mp4'
       , true);
   }
 
